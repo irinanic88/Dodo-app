@@ -1,4 +1,5 @@
 import createElement from './createElement.js';
+import Column from './column.js';
 
 export default class Board {
     constructor(headings) {
@@ -11,30 +12,22 @@ export default class Board {
        return this.container;
     }
 
-    boardColumnTemplate(heading) {
-        return `
-        <div class="board-column">
-            <div class="board-column-header">
-                <h2>${heading}</h2>
-            </div>
-            <div class="board-column-body">
-            </div>
-        </div>`;
-    }
-
-    boardTemplate(headings) {
+    boardContainerTemplate() {
         return `
         <div class="board-container">
-        ${this.renderColumns(headings)}
         </div>`;
     }
 
     renderColumns(headings) {
-        return headings.map((heading) => this.boardColumnTemplate(heading)).join('');
+        headings.map((heading) => {
+            let column = new Column(heading);
+            this.container.append(column.elem);
+        });
     }
 
     render() {
-        let template = this.boardTemplate(this.headings);
+        let template = this.boardContainerTemplate();
         this.container = createElement(template);
+        this.renderColumns(this.headings);
     }
 }
