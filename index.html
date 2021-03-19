@@ -17,50 +17,7 @@
         </div>
     </header>
 
-    <main>
-        <div class="board-container">
-            <div class="board-column">
-                <div class="board-column-header">
-                    <h2>To do</h2>
-                </div>
-                <div class="board-column-body">
-                    <div class="ticket">
-                        <div class="ticket-class-line"></div>
-                        <div class="ticket-info">
-                            <p class="ticket-number">TN-001</p>
-                            <p class="ticket-name">Finish CSS for "Scrum Board"</p>
-                        </div>
-
-                    </div>
-                    <div class="ticket">
-                        <div class="ticket-class-line"></div>
-                        <div class="ticket-info">              
-                            <p class="ticket-number">TN-002</p>          
-                            <p class="ticket-name">Make board-container render in JavaScript up to 50</p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="board-column">
-                <div class="board-column-header">
-                    <h2>in Progress</h2>
-                </div>
-                <div class="board-column-body"></div>
-            </div>
-            <div class="board-column">
-                <div class="board-column-header">
-                    <h2>Review</h2>
-                </div>
-                <div class="board-column-body"></div>
-            </div>
-            <div class="board-column">
-                <div class="board-column-header">
-                    <h2>Done</h2>
-                </div>
-                <div class="board-column-body"></div>
-            </div>
-        </div>
+    <main class="board-section">
     </main>
   
     <section class="modal-description-container">
@@ -119,6 +76,10 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <script type="module">
+        import Main from './index.js';
+        let main = new Main();
+        main.render();
+    </script>
 </body>
 </html>
