@@ -8,14 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
 
-<header>
+<body>
+    <header>
         <div class="header">
             <h1>My scrum board</h1>
-            <button class="button-header">Create</button>
+            <button class="create-button">Create</button>
         </div>
     </header>
+
     <main>
         <div class="board-container">
             <div class="board-column">
@@ -62,8 +63,8 @@
         </div>
     </main>
   
-    <section hidden class="modal-description">
-        <div class="modal">
+    <section class="modal-description-container">
+        <div class="modal" dataModal="modal-description">
             <div class="modal-overlay"></div>
             <div class="modal-inner">
                 <div class="modal-header">
@@ -96,10 +97,9 @@
             </div>
     </div> 
     </section>
-   
-       
-    <section hidden class="modal-create">
-        <div class="modal">
+          
+    <section class="modal-create-container">
+        <div class="modal" dataModal="modal-create">
             <div class="modal-overlay"></div>
             <div class="modal-inner">
                 <button class="close-button"><i class="fa fa-times"></i></button>
@@ -119,5 +119,6 @@
         </div>
     </section>
 
+    <script src="script.js"></script>
 </body>
 </html>

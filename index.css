@@ -52,7 +52,7 @@ h2 {
     margin: 4rem 4rem 3rem 4rem;
 }
 
-.button-header {
+.create-button {
     margin-right: 5rem;
 }
 
@@ -113,7 +113,7 @@ h2 {
     height: 100vh;
     width: 100vw;
     overflow-y: auto;
-    display: block;
+    display: none;
 }
   
 .modal-overlay {
