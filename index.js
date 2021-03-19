@@ -11,12 +11,12 @@ export default class Main {
         this.modalCreatecontainer = document.querySelector('.modal-create-container');
     }
 
-    get boardHeadings() {
+    get boardTitles() {
         return ['to do', 'in progress', 'on review', 'done'];
     }
 
     createBoard() {
-        let board = new Board(this.boardHeadings);
+        let board = new Board(this.boardTitles);
         this.board = board;
         this.boardSection.append(this.board.elem);
     }

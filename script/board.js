@@ -1,10 +1,12 @@
 import createElement from './createElement.js';
 import Column from './column.js';
+import Ticket from './ticket.js';
 
 export default class Board {
-    constructor(headings) {
-        this.headings = headings;
+    constructor(titles) {
+        this.titles = titles;
         this.container = null;
+        this.columns = {};
         this.tickets = [];
         this.render();
     }
@@ -19,17 +21,19 @@ export default class Board {
         </div>`;
     }
 
-    renderColumns(headings) {
-        headings.map((heading) => {
-            let column = new Column(heading);
+    renderColumns(titles) {
+        titles.map((title) => {
+            const column = new Column(title);
             this.container.append(column.elem);
+
+            this.columns[title] = column;
         });
     }
 
     render() {
-        let template = this.boardContainerTemplate();
+        const template = this.boardContainerTemplate();
         this.container = createElement(template);
-        this.renderColumns(this.headings);
+        this.renderColumns(this.titles);
 
         this.addEventListeners();
     }
@@ -39,8 +43,18 @@ export default class Board {
     }
 
     onCreateTicket = (event) => {
-        console.log(event.detail);
+        const ticket = event.detail;
+        this.tickets.push(ticket);
+        
+        this.addTicket(ticket);
     }
 
+    addTicket(ticketDetails) {
+       const ticket = new Ticket(ticketDetails);
+       ticket.render();
+
+       const column = this.columns[ticketDetails.status];
+       column.container.append(ticket.elem); 
+    }
 
 }

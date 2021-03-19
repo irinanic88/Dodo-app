@@ -4,7 +4,6 @@ export default class CreateTicketModal {
     constructor() {
         this.container = null;
         this.render();
-        this.setElements();
     }
 
     get elem() {

@@ -1,8 +1,8 @@
 import createElement from './createElement.js';
 
 export default class Column {
-    constructor(heading) {
-        this.heading = heading;
+    constructor(title) {
+        this.title = title;
         this.container = null;
         this.render();
     }
@@ -11,11 +11,11 @@ export default class Column {
         return this.container;
     }
 
-    columnTemplate(heading) {
+    columnTemplate(title) {
         return `
         <div class="board-column">
             <div class="board-column-header">
-                <h2>${heading}</h2>
+                <h2>${title}</h2>
             </div>
             <div class="board-column-body">
             </div>
@@ -23,7 +23,7 @@ export default class Column {
     }
 
     render() {
-        let template = this.columnTemplate(this.heading);
+        let template = this.columnTemplate(this.title);
         this.container = createElement(template);
     }
 

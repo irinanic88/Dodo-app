@@ -116,10 +116,6 @@ h2 {
     overflow-y: auto;
     display: block;
 }
-
-.modal-description-container {
-    display: none;
-}
   
 .modal-overlay {
     height: 100%;
