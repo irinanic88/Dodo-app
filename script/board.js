@@ -5,6 +5,7 @@ export default class Board {
     constructor(headings) {
         this.headings = headings;
         this.container = null;
+        this.tickets = [];
         this.render();
     }
 
@@ -29,5 +30,17 @@ export default class Board {
         let template = this.boardContainerTemplate();
         this.container = createElement(template);
         this.renderColumns(this.headings);
+
+        this.addEventListeners();
     }
+
+    addEventListeners(){
+        document.body.addEventListener('create-ticket', this.onCreateTicket);
+    }
+
+    onCreateTicket = (event) => {
+        console.log(event.detail);
+    }
+
+
 }

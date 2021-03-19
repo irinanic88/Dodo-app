@@ -1,10 +1,5 @@
-import {activateCloseButtons, activateCreateButton, openTicketDescription} from './script/functions.js';
 import Board from './script/board.js';
-
-activateCreateButton();
-//openTicketDescription();
-//activateCloseButtons();
-
+import CreateTicketModal from './script/modalCreate.js';
 export default class Main {
     constructor() {
         this.setElements();
@@ -12,6 +7,8 @@ export default class Main {
 
     setElements() {
         this.boardSection = document.querySelector('.board-section');
+        this.buttonCreate = document.querySelector('.create-button');
+        this.modalCreatecontainer = document.querySelector('.modal-create-container');
     }
 
     get boardHeadings() {
@@ -26,5 +23,15 @@ export default class Main {
 
     render() {
         this.createBoard();
+        this.addEventListeners();
+    }
+
+    addEventListeners() {
+        this.buttonCreate.addEventListener('click', this.onCreateClick);
+    }
+
+    onCreateClick = () => {
+        let modalCreate = new CreateTicketModal();
+        this.modalCreatecontainer.append(modalCreate.elem);
     }
 }
