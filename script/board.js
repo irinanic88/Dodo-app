@@ -54,7 +54,7 @@ export default class Board {
        ticket.render();
 
        const column = this.columns[ticketDetails.status];
-       column.container.append(ticket.elem); 
+       column.addTicket(ticket); 
     }
 
 }
