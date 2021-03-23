@@ -17,108 +17,20 @@
         </div>
     </header>
 
-    <main>
-        <div class="board-container">
-            <div class="board-column">
-                <div class="board-column-header">
-                    <h2>To do</h2>
-                </div>
-                <div class="board-column-body">
-                    <div class="ticket">
-                        <div class="ticket-class-line"></div>
-                        <div class="ticket-info">
-                            <p class="ticket-number">TN-001</p>
-                            <p class="ticket-name">Finish CSS for "Scrum Board"</p>
-                        </div>
-
-                    </div>
-                    <div class="ticket">
-                        <div class="ticket-class-line"></div>
-                        <div class="ticket-info">              
-                            <p class="ticket-number">TN-002</p>          
-                            <p class="ticket-name">Make board-container render in JavaScript up to 50</p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="board-column">
-                <div class="board-column-header">
-                    <h2>in Progress</h2>
-                </div>
-                <div class="board-column-body"></div>
-            </div>
-            <div class="board-column">
-                <div class="board-column-header">
-                    <h2>Review</h2>
-                </div>
-                <div class="board-column-body"></div>
-            </div>
-            <div class="board-column">
-                <div class="board-column-header">
-                    <h2>Done</h2>
-                </div>
-                <div class="board-column-body"></div>
-            </div>
-        </div>
+    <main class="board-section">
     </main>
-  
-    <section class="modal-description-container">
-        <div class="modal" dataModal="modal-description">
-            <div class="modal-overlay"></div>
-            <div class="modal-inner">
-                <div class="modal-header">
-
-                    <p class="ticket-number">TN-003</p>
-                    <h2>Save your tears for another day</h2>
-                    <p class="ticket-status">Status: To do</p>
-                    <button class="close-button"><i class="fa fa-times"></i></button>
-                </div>
-                <p class="ticket-description"> I saw you dancing in a crowded room
-                    You look so happy when I'm not with you
-                    But then you saw me, caught you by surprise
-                    A single teardrop falling from your eye
-                    I don't know why I run away
-                    I'll make you cry when I run away
-                    You could have asked me why I broke your heart
-                    You could've told me that you fell apart
-                    But you walked past me like I wasn't there
-                    And just pretended like you didn't care
-                    I don't know why I run away
-                    I'll make you cry when I run away
-                    Take me back 'cause I wanna stay
-                    Save your tears for another
-                    Save your tears for another day
-                    Save your tears for another day
-                    So I made you think that I would always stay
-                    I said some things that I should never say
-                    Yeah, I broke your heart like someone did to mine
-                    And now you won't love me for a second time</p>
-            </div>
-    </div> 
+ 
+   <section class="modal-description-container">
     </section>
-          
+ 
+        
     <section class="modal-create-container">
-        <div class="modal" dataModal="modal-create">
-            <div class="modal-overlay"></div>
-            <div class="modal-inner">
-                <button class="close-button"><i class="fa fa-times"></i></button>
-                <form class="create-ticket-form">
-                    <div class="form-element">
-                        <label for="create-title" class="create-ticket-label">Title:</label>
-                        <input type="text" id="create-title" maxlength="50" size="50" class="create-ticket-input">
-                    </div>
-                    <div class="form-element">
-                        <label for="create-description" class="create-ticket-label">Description:</label>
-                        <textarea type="text" id="create-description" size="2000" class="create-ticket-input description-input"></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Create</button>
-
-                </form>
-            </div>
-        </div>
     </section>
 
-    <script src="script.js"></script>
+    <script type="module">
+        import Main from './index.js';
+        let main = new Main();
+        main.render();
+    </script>
 </body>
 </html>

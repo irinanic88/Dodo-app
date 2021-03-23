@@ -38,7 +38,8 @@ button:hover {
 }
 
 button:focus {
-    border:none;
+    outline: none;
+    border: 2px solid #818181;
 }
 
 h2 {
@@ -113,7 +114,7 @@ h2 {
     height: 100vh;
     width: 100vw;
     overflow-y: auto;
-    display: none;
+    display: block;
 }
   
 .modal-overlay {
