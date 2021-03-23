@@ -30,7 +30,7 @@ export default class Ticket {
 
         this.container = createElement(template);
         this.addEventListeners();
-        //this.onChangeColumn();
+        this.onChangeColumn();
     }
 
     addEventListeners() {
@@ -43,7 +43,7 @@ export default class Ticket {
         modalContainer.append(ticketDescriptionModal.elem);
     }
 
-    /*
+    
     onChangeColumn() {
         this.container.addEventListener('dragstart', () => false);
         this.container.addEventListener('mousedown', this.onTicketMouseDown);
@@ -78,7 +78,7 @@ export default class Ticket {
     ticketChangeStatus() {
         console.log(this.shiftX);
     }
-    */
+    
 }
 
 

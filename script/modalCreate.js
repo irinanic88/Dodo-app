@@ -1,4 +1,5 @@
 import createElement from './createElement.js';
+import Spinner from './spinner.js';
 
 export default class CreateTicketModal {
     constructor() {
@@ -54,44 +55,56 @@ export default class CreateTicketModal {
     onSubmit = async (event) => {
         event.preventDefault();
 
+        this.loadSpinner();
         const formData = {
             status: 'to do',
             title: this.ticketTitle.value,
             description: this.ticketDescription.value
         }
 
-        const response = await fetch('http://localhost:5000/api/tickets/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-              },
-            body: JSON.stringify(formData)
-        });
-
-        const responseStatus = response.status;
-
-        if (responseStatus < 300 && responseStatus > 199) {
-            const result = await response.json();
-    
-            const createTicket = new CustomEvent('create-ticket', {
-                bubbles: true,
-                detail: {
-                    status: 'to do',
-                    title: result.title,
-                    description: result.description,
-                    id: result.id
-                }
+        try {
+            const response = await fetch('http://localhost:5000/api/tickets/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify(formData)
             });
-            
-            this.container.dispatchEvent(createTicket);
-    
-            this.container.remove();
-    
-        } else {
-            console.log('Error: ' + responseStatus);
-        }
 
+            const responseStatus = response.status;
+
+            if (responseStatus > 299 || responseStatus < 200) {
+                throw new Error('Error occured. Please, try again');
+            }
+
+            const result = await response.json();
         
+                const createTicket = new CustomEvent('create-ticket', {
+                    bubbles: true,
+                    detail: {
+                        status: 'to do',
+                        title: result.title,
+                        description: result.description,
+                        id: result.id
+                    }
+                });
+                
+                this.container.dispatchEvent(createTicket);
+    
+                this.spinner.elem.remove();
+                this.container.remove();
+
+       } catch(error) {
+           this.spinner.onError();
+           console.log(error.message);
+       }
+
+    }
+
+    loadSpinner() {
+        let spinner = new Spinner();
+        this.spinner = spinner;
+        document.body.append(this.spinner.elem);
     }
 
 
