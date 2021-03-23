@@ -47,6 +47,7 @@ export default class Board {
         this.tickets.push(ticket);
         
         this.addTicket(ticket);
+
     }
 
     addTicket(ticketDetails) {
@@ -56,5 +57,9 @@ export default class Board {
        const column = this.columns[ticketDetails.status];
        column.addTicket(ticket); 
     }
+
+
+
+
 
 }

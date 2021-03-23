@@ -30,6 +30,7 @@ export default class Ticket {
 
         this.container = createElement(template);
         this.addEventListeners();
+        //this.onChangeColumn();
     }
 
     addEventListeners() {
@@ -41,6 +42,43 @@ export default class Ticket {
         let modalContainer = document.querySelector('.modal-description-container');
         modalContainer.append(ticketDescriptionModal.elem);
     }
+
+    /*
+    onChangeColumn() {
+        this.container.addEventListener('dragstart', () => false);
+        this.container.addEventListener('mousedown', this.onTicketMouseDown);
+        document.addEventListener('mousemove', this.onTicketMouseMove);
+        this.container.addEventListener('mouseup', this.onTicketMouseUp);
+    }
+
+    onTicketMouseDown = (event) => {
+        this.container.style.position = 'absolute';
+        this.container.style.zIndex = '1000';
+
+        this.shiftX = event.clientX - this.container.getBoundingClientRect().left;
+        this.shiftY = event.clientY - this.container.getBoundingClientRect().top;
+     
+        this.moveAt(event.pageX, event.pageY);
+    }
+
+    onTicketMouseMove = (event) => {
+        this.moveAt(event.pageX, event.pageY);
+    }
+
+    onTicketMouseUp = () => {
+        this.ticketChangeStatus();
+        document.removeEventListener('mousemove', this.onTicketMouseMove, {once: true});
+    }
+
+    moveAt(pageX, pageY) {
+        this.container.style.left = pageX - this.container.offsetWidth / 2 - this.shiftX + 'px';
+        this.container.style.top = pageY - this.container.offsetHeight / 2 - this.shiftY + 'px';
+    }
+
+    ticketChangeStatus() {
+        console.log(this.shiftX);
+    }
+    */
 }
 
-/*  */
+

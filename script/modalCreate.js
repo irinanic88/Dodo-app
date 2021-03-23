@@ -51,23 +51,47 @@ export default class CreateTicketModal {
         this.form.addEventListener('submit', this.onSubmit);
     }
 
-    onSubmit = (event) => {
+    onSubmit = async (event) => {
         event.preventDefault();
 
-        const createTicket = new CustomEvent('create-ticket', {
-            bubbles: true,
-            detail: {
-                status: 'to do',
-                title: this.ticketTitle.value,
-                description: this.ticketDescription.value,
-                id: 'ID-123'
-            }
+        const formData = {
+            status: 'to do',
+            title: this.ticketTitle.value,
+            description: this.ticketDescription.value
+        }
+
+        const response = await fetch('http://localhost:5000/api/tickets/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+              },
+            body: JSON.stringify(formData)
         });
+
+        const responseStatus = response.status;
+
+        if (responseStatus < 300 && responseStatus > 199) {
+            const result = await response.json();
+    
+            const createTicket = new CustomEvent('create-ticket', {
+                bubbles: true,
+                detail: {
+                    status: 'to do',
+                    title: result.title,
+                    description: result.description,
+                    id: result.id
+                }
+            });
+            
+            this.container.dispatchEvent(createTicket);
+    
+            this.container.remove();
+    
+        } else {
+            console.log('Error: ' + responseStatus);
+        }
+
         
-        this.container.dispatchEvent(createTicket);
-
-        this.container.remove();
-
     }
 
 
