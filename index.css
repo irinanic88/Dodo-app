@@ -58,35 +58,36 @@ h2 {
 }
 
 .board-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 4rem;
-}
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0px 5px;
+    height: 79.5vh;
+    margin: 1rem 4rem;
+  }
 
-.board-column {
-    width: 100%;
-    height: 80vh;
-    margin: 0 0.5rem;
-    border: 1px solid #b4b4b4; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+  .board-column {
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    grid-template-areas:
+      "board-column-header"
+      "board-column-body";
+  }
 
-.board-column-header {
-    width: 101%;
-    height: 6rem;
+  .board-column-header { 
     background-color: #6487c8;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2rem;
-}
+    }
+
+
+  .board-column-body {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #b4b4b4;  
+  }
 
 .ticket {
-
-    height: 100px;
-    width: 300px;
     margin: 1.5rem;
 }
 
