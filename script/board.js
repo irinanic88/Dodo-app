@@ -1,6 +1,7 @@
 import createElement from './createElement.js';
 import Column from './column.js';
 import Ticket from './ticket.js';
+import Spinner from './spinner.js';
 
 export default class Board {
     constructor(titles) {
@@ -9,6 +10,7 @@ export default class Board {
         this.columns = {};
         this.tickets = [];
         this.render();
+        this.showAllTickets();
     }
 
     get elem() {
@@ -56,6 +58,29 @@ export default class Board {
 
        const column = this.columns[ticketDetails.status];
        column.addTicket(ticket); 
+    }
+
+    showAllTickets = async () => {
+        this.loadSpinner();
+
+        try {
+            const response = await fetch('http://localhost:5000/api/tickets/');
+            const allTickets = await response.json();
+
+            allTickets.map((ticket) => this.addTicket(ticket));
+
+            this.spinner.elem.remove();
+        }
+        catch(error) {
+            this.spinner.onError();
+            console.log(error);
+        }
+    }
+
+    loadSpinner() {
+        let spinner = new Spinner();
+        this.spinner = spinner;
+        document.body.append(this.spinner.elem);
     }
 
 
