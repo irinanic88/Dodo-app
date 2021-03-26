@@ -8,7 +8,7 @@ export default class Board {
         this.titles = titles;
         this.container = null;
         this.columns = {};
-        this.tickets = [];
+        this.tickets = {};
         this.render();
         this.showAllTickets();
     }
@@ -42,21 +42,37 @@ export default class Board {
 
     addEventListeners(){
         document.body.addEventListener('create-ticket', this.onCreateTicket);
+        document.body.addEventListener('delete-ticket', this.onDeleteTicket);
     }
 
     onCreateTicket = (event) => {
-        const ticket = event.detail;
-        this.tickets.push(ticket);
-        
-        this.addTicket(ticket);
+        const ticketDetails = event.detail;
+    
+        this.addTicket(ticketDetails);
+    }
+
+    onDeleteTicket = (event) => {
+        const ticketId = event.detail;
+       
+        this.removeTicket(ticketId);   
+    }
+
+    removeTicket(ticketId) {
+        const ticket = this.tickets[ticketId];
+        const column = this.columns[ticket.status];
+        column.removeTicket(ticketId);
+
+        delete this.tickets[ticketId];
+
 
     }
 
     addTicket(ticketDetails) {
        const ticket = new Ticket(ticketDetails);
+       this.tickets[ticket.id] = ticket;
        ticket.render();
 
-       const column = this.columns[ticketDetails.status];
+       const column = this.columns[ticket.status];
        column.addTicket(ticket); 
     }
 
@@ -67,7 +83,7 @@ export default class Board {
             const response = await fetch('http://localhost:5000/api/tickets/');
             const allTickets = await response.json();
 
-            allTickets.map((ticket) => this.addTicket(ticket));
+            allTickets.map((ticketDetails) => this.addTicket(ticketDetails));
 
             this.spinner.elem.remove();
         }

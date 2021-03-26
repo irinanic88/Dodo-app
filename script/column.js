@@ -5,6 +5,7 @@ export default class Column {
         this.title = title;
         this.container = null;
         this.ticketContainer = null;
+        this.tickets = {};
         this.render();
     }
 
@@ -36,7 +37,15 @@ export default class Column {
     }
 
     addTicket(ticket) {
+        this.tickets[ticket.id] = ticket;
         this.ticketContainer.append(ticket.elem);
+    }
+
+    removeTicket(ticketId) {
+        const ticketNode = this.ticketContainer.querySelector(`[data-ticket-id="${ticketId}"]`);
+        ticketNode.remove();
+        
+        delete this.tickets[ticketId];
     }
 
 }

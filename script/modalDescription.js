@@ -95,9 +95,9 @@ export default class ShowTicketModal {
             if (response.status == 202) {
                 console.log(`Deleted`);
                 
-                this.container.remove();
-
                 this.container.dispatchEvent(deleteTicket);
+
+                this.container.remove();
             }
             
         } catch(error) {
