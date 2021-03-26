@@ -1,5 +1,5 @@
 import createElement from './createElement.js';
-import boardTitles from '../board-titles.js';
+import config from '../config.js';
 
 export default class ShowTicketModal {
     constructor(ticket) {
@@ -57,11 +57,10 @@ export default class ShowTicketModal {
 
         this.setElements();
         this.addEventListeners();
-
     }
 
     changeStatusOptions(currentStatus) {
-        const allStatuses = boardTitles();
+        const allStatuses = config.titles;
         
         return allStatuses.map((string) => string.replace(' ', '-'))
                     .map((status) => {
@@ -88,13 +87,12 @@ export default class ShowTicketModal {
         });
 
         try {
-            const response = await fetch (`http://localhost:5000/api/tickets/${ticketId}/`, {
+            const url = config.url;
+            const response = await fetch (`${url}${ticketId}/`, {
                 method: 'DELETE'
             });
 
-            if (response.status == 202) {
-                console.log(`Deleted`);
-                
+            if (response.status == 202) { 
                 this.container.dispatchEvent(deleteTicket);
 
                 this.container.remove();
