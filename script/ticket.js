@@ -30,7 +30,7 @@ export default class Ticket {
 
         this.container = createElement(template);
         this.addEventListeners();
-        this.onChangeColumn();
+        //this.onChangeColumn();
     }
 
     addEventListeners() {
@@ -76,7 +76,7 @@ export default class Ticket {
     }
 
     ticketChangeStatus() {
-        console.log(this.shiftX);
+        
     }
     
 }
