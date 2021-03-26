@@ -2,8 +2,11 @@ import createElement from './createElement.js';
 import ShowTicketModal from './modalDescription.js';
 
 export default class Ticket {
-    constructor (ticket) {
-        this.ticket = ticket;
+    constructor (ticketDetails) {
+        this.id = ticketDetails.id;
+        this.status = ticketDetails.status;
+        this.title = ticketDetails.title;
+        this.description = ticketDetails.description;
         this.container = null;
     }
 
@@ -11,12 +14,12 @@ export default class Ticket {
         return this.container;
     }
 
-    ticketTemplate({name, number}) {
+    ticketTemplate({name, id}) {
         return `
-        <div class="ticket">
+        <div class="ticket" data-ticket-id="${id}">
             <div class="ticket-class-line"></div>
                  <div class="ticket-info">              
-                    <p class="ticket-number">${number}</p>          
+                    <p class="ticket-number">${id}</p>          
                     <p class="ticket-name">${name}</p>
                 </div>
         </div>`;
@@ -24,13 +27,13 @@ export default class Ticket {
 
     render() {
         const template = this.ticketTemplate({
-            name: this.ticket.title,
-            number: this.ticket.id,
+            name: this.title,
+            id: this.id,
         });
 
         this.container = createElement(template);
         this.addEventListeners();
-        this.onChangeColumn();
+        //this.onChangeColumn();
     }
 
     addEventListeners() {
@@ -38,7 +41,7 @@ export default class Ticket {
     }
 
     onTicketClick = () => {
-        const ticketDescriptionModal = new ShowTicketModal(this.ticket);
+        const ticketDescriptionModal = new ShowTicketModal(this);
         let modalContainer = document.querySelector('.modal-description-container');
         modalContainer.append(ticketDescriptionModal.elem);
     }
@@ -76,7 +79,7 @@ export default class Ticket {
     }
 
     ticketChangeStatus() {
-        console.log(this.shiftX);
+        
     }
     
 }
