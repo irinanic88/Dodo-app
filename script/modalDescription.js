@@ -15,6 +15,8 @@ export default class ShowTicketModal {
     setElements() {
         this.closeButton = this.container.querySelector('.close-button');
         this.deleteButton = this.container.querySelector('.modal-delete-ticket-button');
+        this.form = this.container.querySelector('.change-status-form');
+        this.statusDisplay = this.container.querySelector('.ticket-status');
     }
 
     modalTemplate({title, number, description, status, changeStatusOptions}) {
@@ -30,9 +32,9 @@ export default class ShowTicketModal {
             </div>
             <p class="ticket-description">${description}</p>
             <div class="modal-description-buttons">
-                <form>
+                <form class="change-status-form">
                     <label for="status-change">Change status: </label>
-                    <select id="status-change">
+                    <select id="status">
                     ${changeStatusOptions}
                     </select>
                     <button type="submit">Submit new status</button>
@@ -62,10 +64,11 @@ export default class ShowTicketModal {
     changeStatusOptions(currentStatus) {
         const allStatuses = config.titles;
         
-        return allStatuses.map((string) => string.replace(' ', '-'))
-                    .map((status) => {
-                        if (status != currentStatus.replace(' ', '-')) {
+        return allStatuses.map((status) => {
+                        if (status != currentStatus) {
                             return `<option value='${status}'>${status}</option> `;
+                        } else {
+                            return `<option value='${status}' selected>${status}</option> `;
                         }
                     })
                     .join('');
@@ -75,20 +78,19 @@ export default class ShowTicketModal {
     addEventListeners() {
         this.closeButton.addEventListener('click', () => this.elem.remove(), {once: true});
         this.deleteButton.addEventListener('click', this.onDeleteTicket);
+        this.form.addEventListener('submit', this.onFormSubmit);
+        document.body.addEventListener('status-change', this.onChangeStatus);
     }
 
-    onDeleteTicket = async (event) => {
-        const target = event.target;
-        const ticketId = target.getAttribute('ticket-id');
-
+    onDeleteTicket = async () => {
         const deleteTicket = new CustomEvent('delete-ticket', {
             bubbles: true,
-            detail: ticketId
+            detail: this.ticket.id
         });
 
         try {
             const url = config.url;
-            const response = await fetch (`${url}${ticketId}/`, {
+            const response = await fetch (`${url}${this.ticket.id}/`, {
                 method: 'DELETE'
             });
 
@@ -96,11 +98,25 @@ export default class ShowTicketModal {
                 this.container.dispatchEvent(deleteTicket);
 
                 this.container.remove();
-            }
-            
+            }       
         } catch(error) {
             console.log(error);
-        }
+        }   
+    }
+
+    onChangeStatus = () => {
+        this.statusDisplay.innerHTML = `Status: ${this.ticket.status}`;
+    }
+
+    onFormSubmit = (event) => {
+        event.preventDefault();
+
+        const newValue = this.form.status.value;
         
+        if (newValue === this.ticket.status) {
+            return;
+        }
+
+       this.ticket.onChangeStatus(this.ticket.status, newValue);
     }
 }

@@ -1,5 +1,6 @@
 import createElement from './createElement.js';
 import ShowTicketModal from './modalDescription.js';
+import config from '../config.js';
 
 export default class Ticket {
     constructor (ticketDetails) {
@@ -46,7 +47,41 @@ export default class Ticket {
         modalContainer.append(ticketDescriptionModal.elem);
     }
 
+    onChangeStatus = async (value, newValue) => {
+        try {
+            const newStatus = JSON.stringify({status: newValue});
+
+            const url = config.url;    
+            const response = await fetch(`${url}${this.id}/status/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: newStatus
+            });
+
+            if (response.status == 201) {
+                this.status = newValue;
+
+                const statusChange = new CustomEvent('status-change', {
+                    bubbles: true,
+                    detail: {
+                        statusBefore: value, 
+                        ticket: this
+                    }
+                });
+                this.container.dispatchEvent(statusChange);
+
+            }
+        } catch(error) {
+            console.log(error);
+        }
+    } 
     
+}
+
+
+/*
     onChangeColumn() {
         this.container.addEventListener('dragstart', () => false);
         this.container.addEventListener('mousedown', this.onTicketMouseDown);
@@ -81,7 +116,4 @@ export default class Ticket {
     ticketChangeStatus() {
         
     }
-    
-}
-
-
+*/
