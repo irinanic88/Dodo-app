@@ -1,6 +1,6 @@
 import Board from './script/board.js';
 import CreateTicketModal from './script/modalCreate.js';
-import boardTitles from './board-titles.js';
+import config from './config.js';
 export default class Main {
     constructor() {
         this.setElements();
@@ -13,7 +13,8 @@ export default class Main {
     }
 
     createBoard() {
-        let board = new Board(boardTitles());
+        let columnTitles = config.titles;
+        let board = new Board(columnTitles);
         this.board = board;
         this.boardSection.append(this.board.elem);
     }

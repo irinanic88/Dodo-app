@@ -1,5 +1,6 @@
 import createElement from './createElement.js';
 import Spinner from './spinner.js';
+import config from '../config.js';
 
 export default class CreateTicketModal {
     constructor() {
@@ -63,7 +64,8 @@ export default class CreateTicketModal {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/api/tickets/', {
+            const url = config.url;
+            const response = await fetch (`${url}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8'
