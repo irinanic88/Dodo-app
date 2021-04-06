@@ -1,0 +1,21 @@
+.column {
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    grid-template-areas:
+      "board-column-header"
+      "board-column-body";
+  }
+
+  .header { 
+    background-color: var(--blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--grey);  
+  }

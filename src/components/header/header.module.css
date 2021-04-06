@@ -1,0 +1,28 @@
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3rem 4rem;
+}
+
+.button {
+    margin-right: 5rem;
+    height: 5rem;
+    padding: 0 2rem ;
+    background-color: white;
+    border: 2px solid var(--grey);
+    border-radius: 3px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+button:hover {
+
+    border-color: var(--yellow);
+}
+
+button:focus {
+    outline: none;
+    border: 2px solid var(--dark-grey);
+}

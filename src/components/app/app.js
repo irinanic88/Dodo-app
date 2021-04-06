@@ -1,10 +1,13 @@
 import React, { PureComponent } from 'react';
+import Board from '../board';
+import Header from '../header';
 
 export default class App extends PureComponent {
   render() {
     return (
       <div>
-        <p>Hello from My scrum!</p>
+        <Header />
+        <Board boardInfo={this.props.boardInfo}/>
       </div>
     );
   }

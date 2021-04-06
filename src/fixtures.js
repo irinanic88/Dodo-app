@@ -1,5 +1,5 @@
 const boardInfo = {
-    columns: ['to do', 'in progress', 'on review', 'done'],
+    titles: ['to do', 'in progress', 'on review', 'done'],
     tickets: [
         {
         id: 101,
