@@ -1,0 +1,37 @@
+@import '~normalize.css/normalize.css';
+
+:root {
+    --light-grey: #e5e5e5;
+    --grey: #b4b4b4;
+    --dark-grey: #818181;
+    --blue:  #6487c8;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    background-color:var(--light-grey);
+    font-family: 'Roboto Condensed', 'Calibri', sans-serif;
+    font-size: 1.8rem;
+}
+
+h1, h2 {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+button {
+    text-decoration: none;
+    outline: none;
+}
+
+
