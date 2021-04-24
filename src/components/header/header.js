@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../button';
 import styles from './header.module.css';
-import CloseButton from '../button/closeButton';
+import Loader from '../loader';
 
 const Header = () => {
     return(
