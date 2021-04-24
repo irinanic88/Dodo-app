@@ -1,0 +1,25 @@
+.closeButton {
+    position: absolute;
+    top: 2%;
+    left: 97%;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    border: 2px solid var(--grey);
+    border-radius: 3px;
+}
+
+.closeButton:hover {
+
+    border-color: var(--yellow);
+}
+
+.closeButton:focus {
+    outline: none;
+    border: 2px solid var(--dark-grey);
+}
+
+.closeIcon:active {
+    fill:  var(--grey);
+}

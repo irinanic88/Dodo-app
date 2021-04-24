@@ -9,12 +9,16 @@
     font-weight: 700;
 }
 
-button:hover {
+.button:hover {
 
     border-color: var(--yellow);
 }
 
-button:focus {
+.button:focus {
     outline: none;
     border: 2px solid var(--dark-grey);
+}
+
+.button:active {
+    color: var(--grey);
 }
