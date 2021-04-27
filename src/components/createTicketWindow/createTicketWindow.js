@@ -1,17 +1,18 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import CloseButton from '../button/closeButton';
 import Button from '../button';
+import {closeCreateTicketModal} from '../../redux/actions';
 import cn from 'classnames';
-
 import styles from './createTicketWindow.module.css';
 
-const CreateTicketWindow = () => {
 
+const CreateTicketWindow = ({closeCreateTicketModal}) => {
     return (
         <div className={styles.modal}>
             <div className={styles.modalOverlay}></div>
             <div className={styles.modalInner}>
-                <CloseButton />
+                <CloseButton onClick={closeCreateTicketModal}/>
                 <form className={styles.createTicketForm}>
                     <div className={styles.formElement}>
                         <label className={styles.createTicketLabel}>Title:</label>
@@ -33,4 +34,8 @@ const CreateTicketWindow = () => {
     );
 };
 
-export default CreateTicketWindow;
+const mapDispatchToProps = (dispatch) => ({
+    closeCreateTicketModal: () => dispatch(closeCreateTicketModal),
+})
+
+export default connect(null, mapDispatchToProps) (CreateTicketWindow);

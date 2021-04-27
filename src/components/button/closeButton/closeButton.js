@@ -3,10 +3,10 @@ import { ReactComponent as CloseIcon } from '../../../icons/closeIcon.svg';
 
 import styles from './closeButton.module.css';
 
-const CloseButton = () => {
+const CloseButton = ({onClick}) => {
     return (
         <button className={styles.closeButton}>
-            <CloseIcon className={styles.closeIcon}/>
+            <CloseIcon className={styles.closeIcon} onClick={onClick}/>
         </button>
     );
 };

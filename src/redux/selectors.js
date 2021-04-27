@@ -1,0 +1,1 @@
+export const displayCreateTicketWindowSelector = (state) => state.modal.displayCreateTicketWindow; 
