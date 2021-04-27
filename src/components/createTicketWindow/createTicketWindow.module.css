@@ -1,0 +1,67 @@
+.modal {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: auto;
+    display: block;
+}
+  
+.modalOverlay {
+    height: 100%;
+    width: 100%;
+    background-color: #b4b4b4;
+    opacity: 0.8;
+}
+  
+.modalInner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 994px;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.createTicketForm {
+    margin: 4rem;
+    margin-bottom: 8rem;
+}
+
+.formElement {
+    width: 90%;
+    margin: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.descriptionInput {
+    height: 20rem;
+}
+
+.createTicketLabel {
+    margin-bottom: 1rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.createTicketInput {
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    border: 1px solid #b4b4b4; 
+}
+
+.createTicketInput:focus{
+    border: 1px solid #818181;
+}
+
+.submitButton {
+    position: absolute;
+    left: 45%;
+}
