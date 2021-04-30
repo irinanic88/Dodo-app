@@ -1,0 +1,19 @@
+.ticket {
+    margin: 1.5rem;
+}
+
+.ticketClassLine {
+    background-color: #bd7393;
+    height: 0.8rem;
+}
+
+.ticketInfo {
+    padding: 2rem;
+    background-color: #ffffff;
+}
+
+.ticketNumber {
+    color: #b4b4b4;
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+}

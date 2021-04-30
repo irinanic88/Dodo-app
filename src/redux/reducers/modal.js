@@ -1,4 +1,4 @@
-import {OPEN_CREATE_TICKET_MODAL, CLOSE_CREATE_TICKET_MODAL} from '../actionTypes';
+import {OPEN_CREATE_TICKET_MODAL, CLOSE_CREATE_TICKET_MODAL, CREATE_TICKET, SUCCESS} from '../actionTypes';
 
 const initialModalState = {
     displayCreateTicketWindow: false,
@@ -11,6 +11,8 @@ export default (state = initialModalState, action) => {
         case OPEN_CREATE_TICKET_MODAL:
             return {...state, displayCreateTicketWindow: true};
         case CLOSE_CREATE_TICKET_MODAL:
+            return {...state, displayCreateTicketWindow: false};
+        case CREATE_TICKET + SUCCESS:
             return {...state, displayCreateTicketWindow: false};
         default:
             return state;

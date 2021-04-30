@@ -1,2 +1,10 @@
 export const OPEN_CREATE_TICKET_MODAL = 'OPEN_CREATE_TICKET_MODAL';
 export const CLOSE_CREATE_TICKET_MODAL= 'CLOSE_CREATE_TICKET_MODAL';
+
+export const REQUEST = '_REQUEST';
+export const SUCCESS = '_SUCCESS';
+export const FAILURE = '_FAILURE';
+
+export const CREATE_TICKET = 'CREATE_TICKET';
+
+export const LOAD_TICKETS = 'LOAD_TICKETS';

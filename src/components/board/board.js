@@ -1,20 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Column from '../column';
+import {loadTickets} from '../../redux/actions';
 
 import styles from './board.module.css';
 
-const Board = ({boardInfo}) => {
+const Board = ({boardInfo, loadTickets}) => {
+    useEffect(() => loadTickets(), [loadTickets]);
+
     const {titles} = boardInfo;
 
     return(
             <div className={styles.board} data-id="board">
-                {titles.map((title, index) => (
-                    <Column key={index} title={title} />
+                {titles.map((title) => (
+                    <Column key={title} title={title} />
                 ))}
             </div>
     );
-}
+};
 
 Board.propTypes = {
     boardInfo: PropTypes.shape({
@@ -22,6 +26,11 @@ Board.propTypes = {
             PropTypes.string,
         ).isRequired,
     }).isRequired,
-}
+    loadTickets: PropTypes.func,
+};
 
-export default Board;
+const mapDispatchToProps = (dispatch) => ({
+    loadTickets: () => dispatch(loadTickets),
+});
+
+export default connect(null, mapDispatchToProps) (Board);
