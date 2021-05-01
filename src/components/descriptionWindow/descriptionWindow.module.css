@@ -1,0 +1,68 @@
+.modal {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: auto;
+    display: block;
+}
+  
+.modalOverlay {
+    height: 100%;
+    width: 100%;
+    background-color: #b4b4b4;
+    opacity: 0.8;
+}
+  
+.modalInner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 994px;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalHeader {
+    padding: 5rem 6rem 2rem 6rem;
+}
+
+.modalHeader h2{
+    margin-top: 0.5rem;
+    color: #6487c8;
+    text-align: left;
+}
+
+.ticketStatus {
+    margin-top: 0.5rem;
+}
+
+.ticketDescription {
+    padding: 0 2rem 2rem 2rem;
+    margin: 0 4rem 4rem 4rem;
+}
+
+.ticketNumber {
+    color: #b4b4b4;
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+}
+
+.modalDescriptionButtons {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 6rem 6rem 6rem;
+}
+
+.modalBescriptionButtons button {
+    margin: 0 2rem;
+}
+
+.changeStatus {
+    margin-right: 2rem;
+}
