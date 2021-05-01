@@ -5,12 +5,16 @@ import Button from '../button';
 import CloseButton from '../button/closeButton';
 import {ticketSelector} from '../../redux/selectors';
 import {closeDescriptionModal, deleteTicket} from '../../redux/actions';
+
 import styles from './descriptionWindow.module.css';
 
-const DescriptionWindow = ({ticketId, ticket, closeDescriptionModal, deleteTicketDispatcher}) => {
+const DescriptionWindow = ({allStatuses, ticketId, ticket, closeDescriptionModal, deleteTicketDispatcher}) => {
     const {status, id, title, description} = ticket;
+
     const {register, handleSubmit} = useForm();
     const onChangeStatus = () => {};
+
+
 
     return (
     <div className={styles.modal}>
@@ -30,12 +34,11 @@ const DescriptionWindow = ({ticketId, ticket, closeDescriptionModal, deleteTicke
             <div className={styles.modalDescriptionButtons}>
                 <form onSubmit={handleSubmit(onChangeStatus)} >
                     <label>Change status: </label>
-                    <select {...register('status')} className={styles.changeStatus}>
-                            <option value="to do">to do</option>
-                            <option value="in progress">in progress</option>
-                            <option value="on review">on review</option>
-                            <option value="done">done</option>
-                        </select>
+                    <select {...register('status', {value: status})} className={styles.changeStatus}>
+                        {allStatuses.map((item) =>
+                            <option key={item} {...register(item)}>{item}</option> 
+                        )}
+                    </select>
                     <Button name={'Submit new status'} onClick={() => {}}/>
                 </form>
                 <Button name={'Delete ticket'} onClick={deleteTicketDispatcher}/>

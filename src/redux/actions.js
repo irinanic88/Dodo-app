@@ -7,10 +7,11 @@ import {
     CREATE_TICKET,
     DELETE_TICKET, 
     } from './actionTypes';
+import {HOST} from '../constants';
 
 export const loadTickets = ({
     type: LOAD_TICKETS,
-    callAPI: 'http://localhost:8080/api/tickets',
+    callAPI: `${HOST}/tickets`,
     method: 'GET',
 });
 
@@ -25,13 +26,13 @@ export const closeDescriptionModal = ({type: CLOSE_DESCRIPTION_MODAL});
 
 export const createTicket = (ticketData) => ({
     type: CREATE_TICKET,
-    callAPI: 'http://localhost:8080/api/tickets',
+    callAPI: `${HOST}/tickets`,
     ticketData: JSON.stringify(ticketData),
     method: 'POST',
 });
 export const deleteTicket = ({ticketId}) => ({
     type: DELETE_TICKET,
-    callAPI: `http://localhost:8080/api/tickets/${ticketId}`,
+    callAPI: `${HOST}/tickets/${ticketId}`,
     ticketId: ticketId,
     method: 'DELETE',
 });

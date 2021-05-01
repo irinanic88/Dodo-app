@@ -6,10 +6,8 @@ import {loadTickets} from '../../redux/actions';
 
 import styles from './board.module.css';
 
-const Board = ({boardInfo, loadTickets}) => {
+const Board = ({titles, loadTickets}) => {
     useEffect(() => loadTickets(), [loadTickets]);
-
-    const {titles} = boardInfo;
 
     return(
             <div className={styles.board} data-id="board">
@@ -21,11 +19,9 @@ const Board = ({boardInfo, loadTickets}) => {
 };
 
 Board.propTypes = {
-    boardInfo: PropTypes.shape({
-        titles: PropTypes.arrayOf(
+    titles: PropTypes.arrayOf(
             PropTypes.string,
         ).isRequired,
-    }).isRequired,
     loadTickets: PropTypes.func,
 };
 

@@ -1,19 +1,19 @@
 import React from 'react';
 import Ticket from '../ticket';
-import {loadedTicketsSelector, ticketsForColumnSelector} from '../../redux/selectors';
+import { ticketsForColumnSelector } from '../../redux/selectors';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import styles from './column.module.css';
 
-const Column = ({title, loadedTickets, tickets}) => {
+const Column = ({title, tickets}) => {
     return(
         <div className={styles.column} data-id="column">
             <div className={styles.header}>
                 <h2>{title}</h2>
             </div>
             <div className={styles.body}>
-            {loadedTickets ? tickets.map((ticket) => 
+            {tickets.length > 0 ? tickets.map((ticket) => 
                <Ticket key={ticket.id} ticket={ticket} />
             ) : null}     
             </div>
@@ -27,7 +27,6 @@ Column.propTypes = {
 }
 
 const mapStateToProps = (state, props) => ({
-    loadedTickets: loadedTicketsSelector(state),
     tickets: ticketsForColumnSelector(state, props),
 });
 
