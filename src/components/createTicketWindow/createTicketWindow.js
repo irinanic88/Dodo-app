@@ -32,7 +32,7 @@ const CreateTicketWindow = ({closeCreateTicketModal, createTicketRequest}) => {
                         <select {...register('status')}>
                             <option value="to do">to do</option>
                             <option value="in progress">in progress</option>
-                            <option value="on review">in review</option>
+                            <option value="on review">on review</option>
                             <option value="done">done</option>
                         </select>
                     </div>

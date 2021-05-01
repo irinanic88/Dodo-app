@@ -1,12 +1,22 @@
-import {OPEN_CREATE_TICKET_MODAL, CLOSE_CREATE_TICKET_MODAL, CREATE_TICKET, SUCCESS} from '../actionTypes';
+import {
+    OPEN_CREATE_TICKET_MODAL, 
+    CLOSE_CREATE_TICKET_MODAL, 
+    OPEN_DESCRIPTION_MODAL,
+    CLOSE_DESCRIPTION_MODAL,
+    CREATE_TICKET, 
+    SUCCESS
+} from '../actionTypes';
 
 const initialModalState = {
     displayCreateTicketWindow: false,
-    displayDescriptionWindow: false,
+    displayDescriptionWindow: {
+        display: false,
+        ticketId: null,
+    },
 };
 
-export default (state = initialModalState, action) => {
-    const {type} = action;
+const modal = (state = initialModalState, action) => {
+    const {type, ticketId} = action;
     switch(type) {
         case OPEN_CREATE_TICKET_MODAL:
             return {...state, displayCreateTicketWindow: true};
@@ -14,7 +24,22 @@ export default (state = initialModalState, action) => {
             return {...state, displayCreateTicketWindow: false};
         case CREATE_TICKET + SUCCESS:
             return {...state, displayCreateTicketWindow: false};
+        case OPEN_DESCRIPTION_MODAL:
+            return {...state,
+            displayDescriptionWindow: {
+                display: true, 
+                ticketId: ticketId,
+            } 
+        };
+        case CLOSE_DESCRIPTION_MODAL:
+            return {...state,
+            displayDescriptionWindow: {
+                display: false, 
+            } 
+        };    
         default:
             return state;
     }       
 };
+
+export default modal;
