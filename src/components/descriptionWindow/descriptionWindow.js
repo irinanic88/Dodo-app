@@ -7,7 +7,7 @@ import {ticketSelector} from '../../redux/selectors';
 import {closeDescriptionModal, deleteTicket} from '../../redux/actions';
 import styles from './descriptionWindow.module.css';
 
-const DescriptionWindow = ({ticketId, ticket, closeDescriptionModal, deleteTicket}) => {
+const DescriptionWindow = ({ticketId, ticket, closeDescriptionModal, deleteTicketDispatcher}) => {
     const {status, id, title, description} = ticket;
     const {register, handleSubmit} = useForm();
     const onChangeStatus = () => {};
@@ -38,7 +38,7 @@ const DescriptionWindow = ({ticketId, ticket, closeDescriptionModal, deleteTicke
                         </select>
                     <Button name={'Submit new status'} onClick={() => {}}/>
                 </form>
-                <Button name={'Delete ticket'} onClick={deleteTicket}/>
+                <Button name={'Delete ticket'} onClick={deleteTicketDispatcher}/>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@ const mapStateToProps = (state, props) => ({
 });
 const mapDispatchToProps = (dispatch, props) => ({
     closeDescriptionModal: () => dispatch(closeDescriptionModal),
-    deleteTicket: () => dispatch(deleteTicket(props)),
+    deleteTicketDispatcher: () => dispatch(deleteTicket(props)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps) (DescriptionWindow);
