@@ -1,6 +1,6 @@
 import {REQUEST, SUCCESS, FAILURE} from '../actionTypes';
 
-const get = (store) => (next) => async (action) => {
+const fetchGet = (store) => (next) => async (action) => {
     if(!action.callAPI || action.method !== 'GET') {
         return next(action);
     }
@@ -17,4 +17,4 @@ const get = (store) => (next) => async (action) => {
 
 };
 
-export default get;
+export default fetchGet;

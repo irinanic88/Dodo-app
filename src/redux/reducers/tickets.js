@@ -1,4 +1,4 @@
-import {CREATE_TICKET, LOAD_TICKETS} from '../actionTypes';
+import {CREATE_TICKET, DELETE_TICKET, LOAD_TICKETS} from '../actionTypes';
 import {REQUEST, SUCCESS, FAILURE} from '../actionTypes';
 
 const initialState = {
@@ -9,7 +9,14 @@ const initialState = {
 };
 
 const tickets = (state = initialState, action) => {
-    const {type, newTicket, allTickets, error} = action;
+    const {
+        type, 
+        newTicket, 
+        allTickets, 
+        ticketId, 
+        error
+    } = action;
+
     switch(type) {
         case LOAD_TICKETS + REQUEST: {
             return {...state, 
@@ -34,15 +41,15 @@ const tickets = (state = initialState, action) => {
         }
         case CREATE_TICKET + REQUEST: {
             return {...state,
-            loading: true,
-            error: null,
+                loading: true,
+                error: null,
             };
         } 
         case CREATE_TICKET + SUCCESS: {
             return {...state, 
-            entities: {...state.entities, [newTicket.id]: newTicket},
-            loading: false,
-            loaded: true,
+                entities: {...state.entities, [newTicket.id]: newTicket},
+                loading: false,
+                loaded: true,
             };
         }
         case CREATE_TICKET + FAILURE: {
@@ -52,7 +59,29 @@ const tickets = (state = initialState, action) => {
                 error,
             };
         }
+        case DELETE_TICKET + REQUEST: {
+            return {...state,
+                loading: true,
+                error: null,
+                };
+        }
+        case DELETE_TICKET + SUCCESS: {
+            const newTicketIdsArray = Object.entries({...state.entities}).filter(([key]) => key !== ticketId.toString());
+            const newTickets = newTicketIdsArray.reduce((acc, [key, value]) => ({...acc, [key]: value}) ,{});
 
+            return {...state, 
+                entities: {...newTickets},
+                loading: false,
+                loaded: true,
+            };
+        }
+        case DELETE_TICKET + FAILURE: {
+            return {...state,
+                loading: false,
+                loaded: false,
+                error,
+            };
+        }
         default:
             return state;
     }
