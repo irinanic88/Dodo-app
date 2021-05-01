@@ -1,86 +1,28 @@
-import {CREATE_TICKET, DELETE_TICKET, LOAD_TICKETS} from '../actionTypes';
-import {REQUEST, SUCCESS, FAILURE} from '../actionTypes';
+import {
+    CREATE_TICKET, 
+    DELETE_TICKET, 
+    LOAD_TICKETS, 
+    SUCCESS, 
+} from '../actionTypes';
+import {arrToMap, deleteKey} from '../utils';
 
-const initialState = {
-    entities: {},
-    loading: false,
-    loaded: false,
-    error: null,
-};
-
-const tickets = (state = initialState, action) => {
+const tickets = (state = {}, action) => {
     const {
         type, 
         newTicket, 
         allTickets, 
         ticketId, 
-        error
     } = action;
 
     switch(type) {
-        case LOAD_TICKETS + REQUEST: {
-            return {...state, 
-                loading: true, 
-                error: null
-            };
-        }
         case LOAD_TICKETS + SUCCESS: {
-            const orderedTickets = allTickets.reduce((acc, ticket) => ({...acc, [ticket.id]: ticket}), {});
-            return {...state, 
-                entities: {...orderedTickets},
-                loading: false,
-                loaded: true,
-            };
+            return {...state, ...arrToMap(allTickets)};
         }
-        case LOAD_TICKETS + FAILURE: {
-            return {...state,
-                loading: false,
-                loaded: false,
-                error,
-            };
-        }
-        case CREATE_TICKET + REQUEST: {
-            return {...state,
-                loading: true,
-                error: null,
-            };
-        } 
         case CREATE_TICKET + SUCCESS: {
-            return {...state, 
-                entities: {...state.entities, [newTicket.id]: newTicket},
-                loading: false,
-                loaded: true,
-            };
-        }
-        case CREATE_TICKET + FAILURE: {
-            return {...state,
-                loading: false,
-                loaded: false,
-                error,
-            };
-        }
-        case DELETE_TICKET + REQUEST: {
-            return {...state,
-                loading: true,
-                error: null,
-                };
+            return {...state, [newTicket.id]: newTicket};
         }
         case DELETE_TICKET + SUCCESS: {
-            const newTicketIdsArray = Object.entries({...state.entities}).filter(([key]) => key !== ticketId.toString());
-            const newTickets = newTicketIdsArray.reduce((acc, [key, value]) => ({...acc, [key]: value}) ,{});
-
-            return {...state, 
-                entities: {...newTickets},
-                loading: false,
-                loaded: true,
-            };
-        }
-        case DELETE_TICKET + FAILURE: {
-            return {...state,
-                loading: false,
-                loaded: false,
-                error,
-            };
+            return {...deleteKey(state, ticketId)};
         }
         default:
             return state;

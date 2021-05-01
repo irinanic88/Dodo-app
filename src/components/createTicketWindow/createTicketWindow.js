@@ -8,7 +8,7 @@ import cn from 'classnames';
 import styles from './createTicketWindow.module.css';
 
 
-const CreateTicketWindow = ({closeCreateTicketModal, createTicketRequest}) => {
+const CreateTicketWindow = ({allStatuses, closeCreateTicketModal, createTicketRequest}) => {
     const {register, handleSubmit} = useForm();
 
     return (
@@ -30,10 +30,9 @@ const CreateTicketWindow = ({closeCreateTicketModal, createTicketRequest}) => {
                     <div className={styles.formElement}>
                         <label className={styles.createTicketLabel}>Status: </label>
                         <select {...register('status')}>
-                            <option value="to do">to do</option>
-                            <option value="in progress">in progress</option>
-                            <option value="on review">on review</option>
-                            <option value="done">done</option>
+                            {allStatuses.map((item) =>
+                                <option key={item} {...register(item)}>{item}</option> 
+                            )}
                         </select>
                     </div>
                     <div className={styles.submitButton}>

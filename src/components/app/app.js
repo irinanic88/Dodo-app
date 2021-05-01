@@ -9,17 +9,17 @@ import {
   displayCreateTicketWindowSelector, 
   displayDescriptionWindowSelector,
   ticketIdSelector, 
-  loadingTicketsSelector 
+  loadingSelector 
 } from '../../redux/selectors';
 
-const App = ({boardInfo, displayCreateTicketWindow, displayDescriptionWindow, loadingTickets, ticketId}) => {
+const App = ({titles, displayCreateTicketWindow, displayDescriptionWindow, loading, ticketId}) => {
     return (
       <div>
         <Header />
-        <Board boardInfo={boardInfo}/>
-        {displayCreateTicketWindow ? <CreateTicketWindow /> : null}
-        {displayDescriptionWindow ? <DescriptionWindow ticketId={ticketId}/> : null}
-        {loadingTickets ? <Loader /> : null}
+        <Board titles={titles}/>
+        {displayCreateTicketWindow ? <CreateTicketWindow allStatuses={titles} /> : null}
+        {displayDescriptionWindow ? <DescriptionWindow allStatuses={titles} ticketId={ticketId}/> : null}
+        {loading ? <Loader /> : null}
       </div>
     );
 };
@@ -28,7 +28,7 @@ const mapStateToProps = (state) => ({
   displayCreateTicketWindow: displayCreateTicketWindowSelector(state),
   displayDescriptionWindow: displayDescriptionWindowSelector(state),
   ticketId: ticketIdSelector(state),
-  loadingTickets: loadingTicketsSelector(state),
+  loading: loadingSelector(state),
 });
 
 export default connect(mapStateToProps) (App);

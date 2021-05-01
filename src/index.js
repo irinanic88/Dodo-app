@@ -6,11 +6,11 @@ import './index.css';
 
 import App from './components/app';
 
-import {boardInfo} from './fixtures';
+import {titles} from './titles';
 
 ReactDOM.render(
     <Provider store={store}>
-        <App boardInfo={boardInfo} />
+        <App titles={titles} />
     </Provider>,
     document.getElementById('root')
 );
