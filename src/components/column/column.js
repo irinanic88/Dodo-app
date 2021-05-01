@@ -13,9 +13,7 @@ const Column = ({title, tickets}) => {
                 <h2>{title}</h2>
             </div>
             <div className={styles.body}>
-            {tickets.length > 0 ? tickets.map((ticket) => 
-               <Ticket key={ticket.id} ticket={ticket} />
-            ) : null}     
+                {tickets.map((ticket) => <Ticket key={ticket.id} ticket={ticket} />)}     
             </div>
         </div> 
     );
