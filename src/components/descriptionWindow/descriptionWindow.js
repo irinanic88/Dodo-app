@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 import Button from '../button';
 import CloseButton from '../button/closeButton';
 import {ticketSelector} from '../../redux/selectors';
-import {closeDescriptionModal} from '../../redux/actions';
+import {closeDescriptionModal, deleteTicket} from '../../redux/actions';
 import styles from './descriptionWindow.module.css';
 
-const DescriptionWindow = ({ticketId, ticket, closeDescriptionModal}) => {
-    console.log(ticketId);
+const DescriptionWindow = ({ticketId, ticket, closeDescriptionModal, deleteTicketDispatcher}) => {
     const {status, id, title, description} = ticket;
     const {register, handleSubmit} = useForm();
     const onChangeStatus = () => {};
@@ -39,7 +38,7 @@ const DescriptionWindow = ({ticketId, ticket, closeDescriptionModal}) => {
                         </select>
                     <Button name={'Submit new status'} onClick={() => {}}/>
                 </form>
-                <Button name={'Delete ticket'} onClick={() => console.log('Delete')}/>
+                <Button name={'Delete ticket'} onClick={deleteTicketDispatcher}/>
             </div>
         </div>
     </div>
@@ -48,8 +47,9 @@ const DescriptionWindow = ({ticketId, ticket, closeDescriptionModal}) => {
 const mapStateToProps = (state, props) => ({
     ticket: ticketSelector(state, props),
 });
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, props) => ({
     closeDescriptionModal: () => dispatch(closeDescriptionModal),
+    deleteTicketDispatcher: () => dispatch(deleteTicket(props)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps) (DescriptionWindow);
