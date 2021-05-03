@@ -1,1 +1,1 @@
-export const titles = ['to do', 'in progress', 'on review', 'done'];
+export const titles = ['to do', 'in progress', 'in review', 'done'];

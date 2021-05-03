@@ -29,9 +29,9 @@ const CreateTicketWindow = ({allStatuses, closeCreateTicketModal, createTicketRe
                     </div>
                     <div className={styles.formElement}>
                         <label className={styles.createTicketLabel}>Status: </label>
-                        <select {...register('status')}>
+                        <select className={styles.selectStatus} {...register('status', {value: allStatuses[0]})}>
                             {allStatuses.map((item) =>
-                                <option key={item} {...register(item)}>{item}</option> 
+                                <option key={item}>{item}</option> 
                             )}
                         </select>
                     </div>

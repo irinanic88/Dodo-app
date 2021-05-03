@@ -1,5 +1,6 @@
 import {
     CREATE_TICKET, 
+    CHANGE_TICKET_STATUS,
     DELETE_TICKET, 
     LOAD_TICKETS, 
     SUCCESS, 
@@ -9,9 +10,10 @@ import {arrToMap, deleteKey} from '../utils';
 const tickets = (state = {}, action) => {
     const {
         type, 
-        newTicket, 
+        responseData, 
         allTickets, 
         ticketId, 
+        newStatus,
     } = action;
 
     switch(type) {
@@ -19,11 +21,18 @@ const tickets = (state = {}, action) => {
             return {...state, ...arrToMap(allTickets)};
         }
         case CREATE_TICKET + SUCCESS: {
-            return {...state, [newTicket.id]: newTicket};
+            return {...state, [responseData.id]: responseData};
+        }
+        case CHANGE_TICKET_STATUS + SUCCESS: {
+            return {...state, [ticketId]: {
+                ...state[ticketId],
+                status: newStatus,
+            }};
         }
         case DELETE_TICKET + SUCCESS: {
             return {...deleteKey(state, ticketId)};
         }
+
         default:
             return state;
     }

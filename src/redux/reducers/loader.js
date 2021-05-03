@@ -1,7 +1,4 @@
 import {
-    CREATE_TICKET, 
-    DELETE_TICKET, 
-    LOAD_TICKETS, 
     REQUEST, 
     SUCCESS, 
     FAILURE
@@ -9,34 +6,16 @@ import {
 
 
 const loader = (state = {loading: false}, action) => {
-    const {type} = action;
+    const {fetchLoadingState} = action;
 
-    switch(type) {
-        case LOAD_TICKETS + REQUEST: {
+    switch(fetchLoadingState) {
+        case REQUEST: {
             return {...state, loading: true};
         }
-        case LOAD_TICKETS + SUCCESS: {
+        case SUCCESS: {
             return {...state, loading: false};
         }
-        case LOAD_TICKETS + FAILURE: {
-            return {...state, loading: false};
-        }
-        case CREATE_TICKET + REQUEST: {
-            return {...state, loading: true};
-        } 
-        case CREATE_TICKET + SUCCESS: {
-            return {...state, loading: false};
-        }
-        case CREATE_TICKET + FAILURE: {
-            return {...state, loading: false};
-        }
-        case DELETE_TICKET + REQUEST: {
-            return {...state, loading: true};
-        }
-        case DELETE_TICKET + SUCCESS: {
-            return {...state, loading: false};
-        }
-        case DELETE_TICKET + FAILURE: {
+        case FAILURE: {
             return {...state, loading: false};
         }
         default:

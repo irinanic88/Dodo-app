@@ -61,6 +61,10 @@
     border: 1px solid #818181;
 }
 
+.selectStatus {
+    width: 20%;
+}
+
 .submitButton {
     position: absolute;
     left: 45%;

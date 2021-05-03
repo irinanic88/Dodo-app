@@ -5,21 +5,39 @@ const fetchPost = (store) => (next) => async (action) => {
         return next(action);
     }
 
-    const { callAPI, ticketData, type, method, ...rest } = action;
-    next({...rest, type: type + REQUEST});
+    const { callAPI, data, type, method, ...rest } = action;
+    next({
+        ...rest, 
+        type: type + REQUEST, 
+        fetchLoadingState: REQUEST
+    });
 
     try {
-        const response = await fetch(callAPI, {
+        const responseText = await fetch(callAPI, {
             method: method,
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
-            body: ticketData,
+            body: data,
+        }).then((res) => res.text());
+
+        const responseData = responseText.length > 0 ? await JSON.parse(responseText) : null;
+        next({
+            ...rest, 
+            type: type + SUCCESS, 
+            fetchLoadingState: SUCCESS, 
+            responseData,
         });
-        const newTicket = await response.json();
-        next({ ...rest, type: type + SUCCESS, newTicket });
+
+
+       
     } catch(error) {
-        throw next({...rest, type: type + FAILURE, error});
+        throw next({
+            ...rest, 
+            type: type + FAILURE, 
+            fetchLoadingState: FAILURE, 
+            error
+        });
     }
 };
 

@@ -11,4 +11,5 @@ export const SUCCESS = '_SUCCESS';
 export const FAILURE = '_FAILURE';
 
 export const CREATE_TICKET = 'CREATE_TICKET';
+export const CHANGE_TICKET_STATUS = 'CHANGE_TICKET_STATUS';
 export const DELETE_TICKET = 'DELETE_TICKET';
