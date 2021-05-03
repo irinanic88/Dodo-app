@@ -6,13 +6,26 @@ const fetchDelete = (store) => (next) => async (action) => {
     }
 
     const {type, callAPI, method, ...rest} = action;
-    next({...rest, type: type + REQUEST});
+    next({
+        ...rest, 
+        type: type + REQUEST, 
+        fetchLoadingState: REQUEST
+    });
 
     try {
         await fetch(callAPI, {method});
-        next({...rest, type: type + SUCCESS});
+        next({
+            ...rest, 
+            type: type + SUCCESS, 
+            fetchLoadingState: SUCCESS, 
+        });
     } catch(error) {
-        throw next({...rest, type: type + FAILURE, error});
+        throw next({
+            ...rest, 
+            type: type + FAILURE, 
+            fetchLoadingState: FAILURE, 
+            error
+        });
     }
 };
 

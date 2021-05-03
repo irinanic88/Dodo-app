@@ -4,17 +4,21 @@ import { connect } from 'react-redux';
 import Button from '../button';
 import CloseButton from '../button/closeButton';
 import {ticketSelector} from '../../redux/selectors';
-import {closeDescriptionModal, deleteTicket} from '../../redux/actions';
+import {closeDescriptionModal, сhangeStatus, deleteTicket} from '../../redux/actions';
 
 import styles from './descriptionWindow.module.css';
 
-const DescriptionWindow = ({allStatuses, ticketId, ticket, closeDescriptionModal, deleteTicketDispatcher}) => {
+const DescriptionWindow = ({
+    allStatuses, 
+    ticketId, 
+    ticket, 
+    closeDescriptionModal, 
+    сhangeStatusDispatcher, 
+    deleteTicketDispatcher
+}) => {
     const {status, id, title, description} = ticket;
-
     const {register, handleSubmit} = useForm();
-    const onChangeStatus = () => {};
-
-
+    const onFormSubmit = () => {};
 
     return (
     <div className={styles.modal}>
@@ -32,7 +36,7 @@ const DescriptionWindow = ({allStatuses, ticketId, ticket, closeDescriptionModal
             </div>
             <p className={styles.ticketDescription}>{description}</p>
             <div className={styles.modalDescriptionButtons}>
-                <form onSubmit={handleSubmit(onChangeStatus)} >
+                <form onSubmit={handleSubmit(сhangeStatusDispatcher)} >
                     <label>Change status: </label>
                     <select {...register('status', {value: status})} className={styles.changeStatus}>
                         {allStatuses.map((item) =>
@@ -52,6 +56,7 @@ const mapStateToProps = (state, props) => ({
 });
 const mapDispatchToProps = (dispatch, props) => ({
     closeDescriptionModal: () => dispatch(closeDescriptionModal),
+    сhangeStatusDispatcher: (options) => dispatch(сhangeStatus(props, options)),
     deleteTicketDispatcher: () => dispatch(deleteTicket(props)),
 });
 

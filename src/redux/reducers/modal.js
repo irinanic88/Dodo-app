@@ -4,6 +4,7 @@ import {
     OPEN_DESCRIPTION_MODAL,
     CLOSE_DESCRIPTION_MODAL,
     CREATE_TICKET, 
+    CHANGE_TICKET_STATUS,
     DELETE_TICKET,
     SUCCESS
 } from '../actionTypes';
@@ -37,7 +38,10 @@ const modal = (state = initialModalState, action) => {
             displayDescriptionWindow: {
                 display: false, 
             } 
-        };   
+        };
+        case CHANGE_TICKET_STATUS + SUCCESS: {
+            return {...state, displayDescriptionWindow: false}; 
+        }   
         case DELETE_TICKET + SUCCESS:
             return {...state, displayDescriptionWindow: false}; 
         default:

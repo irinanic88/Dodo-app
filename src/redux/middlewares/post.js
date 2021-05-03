@@ -5,8 +5,12 @@ const fetchPost = (store) => (next) => async (action) => {
         return next(action);
     }
 
-    const { callAPI, ticketData, type, method, ...rest } = action;
-    next({...rest, type: type + REQUEST});
+    const { callAPI, data, type, method, ...rest } = action;
+    next({
+        ...rest, 
+        type: type + REQUEST, 
+        fetchLoadingState: REQUEST
+    });
 
     try {
         const response = await fetch(callAPI, {
@@ -14,12 +18,26 @@ const fetchPost = (store) => (next) => async (action) => {
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
-            body: ticketData,
+            body: data,
+        }).then((res) => res.text());
+
+        const responseData = response.length > 0 ? await JSON.parse(response) : null;
+        next({
+            ...rest, 
+            type: type + SUCCESS, 
+            fetchLoadingState: SUCCESS, 
+            responseData,
         });
-        const newTicket = await response.json();
-        next({ ...rest, type: type + SUCCESS, newTicket });
+
+
+       
     } catch(error) {
-        throw next({...rest, type: type + FAILURE, error});
+        throw next({
+            ...rest, 
+            type: type + FAILURE, 
+            fetchLoadingState: FAILURE, 
+            error
+        });
     }
 };
 
