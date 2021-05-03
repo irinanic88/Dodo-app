@@ -13,7 +13,7 @@ const fetchPost = (store) => (next) => async (action) => {
     });
 
     try {
-        const response = await fetch(callAPI, {
+        const responseText = await fetch(callAPI, {
             method: method,
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
@@ -21,7 +21,7 @@ const fetchPost = (store) => (next) => async (action) => {
             body: data,
         }).then((res) => res.text());
 
-        const responseData = response.length > 0 ? await JSON.parse(response) : null;
+        const responseData = responseText.length > 0 ? await JSON.parse(responseText) : null;
         next({
             ...rest, 
             type: type + SUCCESS, 
