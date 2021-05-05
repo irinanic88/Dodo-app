@@ -34,14 +34,14 @@ export const createTicket = (ticketData) => ({
     method: 'POST',
 });
 
-export const сhangeStatus = ({ticketId}, options) => ({
+export const сhangeStatus = (ticketId, newStatus) => ({
     type: CHANGE_TICKET_STATUS,
     callAPI: `${HOST}/tickets/${ticketId}/status`,
     fetchLoadingState: null,
-    data: JSON.stringify({'status': options.status}),
+    data: JSON.stringify({'status': newStatus}),
     method: 'POST',
     ticketId: ticketId,
-    newStatus: options.status,
+    newStatus: newStatus,
 });
 
 export const deleteTicket = ({ticketId}) => ({

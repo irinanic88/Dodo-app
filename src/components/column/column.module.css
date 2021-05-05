@@ -19,3 +19,11 @@
     flex-direction: column;
     border: 1px solid var(--grey);  
   }
+
+  .overColumn {
+    background-color: var(--yellow);
+  }
+
+  .placeHolder {
+    background-color: var(--grey);
+  }

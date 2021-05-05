@@ -1,20 +1,27 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
+import {DragDropContext} from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 import Column from '../column';
-import {loadTickets} from '../../redux/actions';
+import {loadTickets, сhangeStatus} from '../../redux/actions';
 
 import styles from './board.module.css';
 
-const Board = ({titles, loadTickets}) => {
+const Board = ({titles, loadTickets, changeStatusDispatcher}) => {
     useEffect(() => loadTickets(), [loadTickets]);
+    const onDragEnd = (result) => {
+        const {draggableId, destination} = result;
+        return changeStatusDispatcher(draggableId, destination.droppableId);
+    };
 
     return(
+        <DragDropContext onDragEnd={onDragEnd}>
             <div className={styles.board} data-id="board">
                 {titles.map((title) => (
                     <Column key={title} title={title} />
                 ))}
             </div>
+        </DragDropContext>
     );
 };
 
@@ -27,6 +34,7 @@ Board.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
     loadTickets: () => dispatch(loadTickets),
+    changeStatusDispatcher: (ticketId, status) => dispatch(сhangeStatus(ticketId, status))
 });
 
 export default connect(null, mapDispatchToProps) (Board);

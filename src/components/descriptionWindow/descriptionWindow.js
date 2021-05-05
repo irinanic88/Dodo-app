@@ -18,7 +18,6 @@ const DescriptionWindow = ({
 }) => {
     const {status, id, title, description} = ticket;
     const {register, handleSubmit} = useForm();
-    const onFormSubmit = () => {};
 
     return (
     <div className={styles.modal}>
@@ -56,7 +55,7 @@ const mapStateToProps = (state, props) => ({
 });
 const mapDispatchToProps = (dispatch, props) => ({
     closeDescriptionModal: () => dispatch(closeDescriptionModal),
-    сhangeStatusDispatcher: (options) => dispatch(сhangeStatus(props, options)),
+    сhangeStatusDispatcher: (options) => dispatch(сhangeStatus(props.ticketId, options.status)),
     deleteTicketDispatcher: () => dispatch(deleteTicket(props)),
 });
 
