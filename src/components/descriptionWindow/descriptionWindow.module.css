@@ -9,60 +9,85 @@
     display: block;
 }
   
-.modalOverlay {
+.overlay {
     height: 100%;
     width: 100%;
-    background-color: #b4b4b4;
-    opacity: 0.8;
+    background-color: white;
+    opacity: 0.75;
 }
   
-.modalInner {
+.inner {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 994px;
-    width: 100%;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
+    width: 60%;
+    background-color: var(--background-fill);
+    border: solid 1px  rgb(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.12);
+    padding: 4rem 7rem;
 }
 
-.modalHeader {
-    padding: 5rem 6rem 2rem 6rem;
+.element {
+    margin: 2rem 0;
 }
 
-.modalHeader h2{
-    margin-top: 0.5rem;
-    color: #6487c8;
-    text-align: left;
+.number {
+    font-family: 'Nunito', 'Arial', sans-serif;
+    color: var(--light-grey-font);
 }
 
-.ticketStatus {
-    margin-top: 0.5rem;
-}
-
-.ticketDescription {
-    padding: 0 2rem 2rem 2rem;
-    margin: 0 4rem 4rem 4rem;
-}
-
-.ticketNumber {
-    color: #b4b4b4;
-    margin-bottom: 0.5rem;
+.title .statusLabel{
     font-size: 2rem;
+    font-weight: 700;
 }
 
-.modalDescriptionButtons {
+.description {
+    height: 20rem;
+    font-size: 1.6rem;
+    word-wrap: break-word;
+    overflow-y: auto;
+}
+
+.form {
     display: flex;
-    justify-content: flex-start;
-    margin: 0 6rem 6rem 6rem;
+    justify-content: left;
+    align-items: center;
 }
 
-.modalBescriptionButtons button {
-    margin: 0 2rem;
-}
-
-.changeStatus {
+.statusLabel {
+    font-size: 2rem;
+    font-weight: 700;
     margin-right: 2rem;
 }
+
+.statusInput {
+    padding: 1rem;
+    border: none;
+    margin-right: 2rem;
+}
+
+.statusInput:focus{
+    outline: none;
+    border: 1px solid var(--light-grey-font);
+}
+
+.submit {
+    height: 3rem;
+    padding: 0 3rem ;
+    background-color: white;
+    border: solid 1px rgba(0, 0, 0, 0.03);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+

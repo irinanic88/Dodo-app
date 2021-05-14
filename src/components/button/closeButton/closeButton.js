@@ -5,7 +5,7 @@ import styles from './closeButton.module.css';
 
 const CloseButton = ({onClick}) => {
     return (
-        <button className={styles.closeButton}>
+        <button className={styles.button}>
             <CloseIcon className={styles.closeIcon} onClick={onClick}/>
         </button>
     );

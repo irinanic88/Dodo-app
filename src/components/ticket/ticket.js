@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {Draggable} from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
+import cn from 'classnames';
 import {openDescriptionModal} from '../../redux/actions';
 
 import styles from './ticket.module.css';
 
 const Ticket = ({openDescriptionModal, ticket, index}) => {
-    const {id, title} = ticket;
+    const {id, title, status} = ticket;
+
     return (
         <Draggable draggableId={id.toString()} index={index}>
             {(provided) => (
@@ -16,11 +18,17 @@ const Ticket = ({openDescriptionModal, ticket, index}) => {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         >
-                    <div className={styles.ticketClassLine} />
-                        <div className={styles.ticketInfo}>              
-                            <p className={styles.ticketNumber}>{id}</p>          
-                            <p className={styles.ticketName}>{title}</p>
-                    </div>
+                        <div className={cn(styles.line, {
+                            [styles.first]: status === 'to do',
+                            [styles.second]: status === 'in progress',
+                            [styles.third]: status === 'in review',
+                            [styles.fourth]: status === 'done',
+                        })}
+                        />
+                        <div className={styles.info}>  
+                            <p className={styles.name}>{title}</p>            
+                            <p className={styles.number}>{id}</p>          
+                        </div>
                 </div>
             )}
         </Draggable>
@@ -32,3 +40,6 @@ const mapDispatchToProps = (dispatch, props) => ({
 });
 
 export default connect(null, mapDispatchToProps) (Ticket);
+
+
+//<img src={dots} alt="View details" className={styles.dots}/>

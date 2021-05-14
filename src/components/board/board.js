@@ -9,9 +9,10 @@ import styles from './board.module.css';
 
 const Board = ({titles, loadTickets, changeStatusDispatcher}) => {
     useEffect(() => loadTickets(), [loadTickets]);
+
     const onDragEnd = (result) => {
         const {draggableId, destination} = result;
-        return changeStatusDispatcher(draggableId, destination.droppableId);
+        return destination ? changeStatusDispatcher(draggableId, destination.droppableId) : null;
     };
 
     return(

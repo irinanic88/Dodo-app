@@ -1,25 +1,19 @@
-.closeButton {
+.button {
     position: absolute;
-    top: 2%;
-    left: 96%;
+    top: 1rem;
+    right: 1rem;
     padding: 0;
     height: 30px;
     width: 30px;
-    background-color: white;
+    background-color: inherit;
     border: 2px solid var(--grey);
     border-radius: 3px;
 }
 
-.closeButton:hover {
-
-    border-color: var(--yellow);
-}
-
-.closeButton:focus {
-    outline: none;
-    border: 2px solid var(--dark-grey);
+.button:hover {
+    fill: var(--sky-blue-button);
 }
 
 .closeIcon:active {
-    fill:  var(--grey);
+    fill: white;
 }
