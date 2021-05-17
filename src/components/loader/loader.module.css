@@ -10,6 +10,8 @@
 }
 
 .loaderIcon {
+    fill: var(--sky-blue-button);
+    width: 50px;
     position: absolute;
     left: 47.5%;
     top: 40%;
@@ -20,4 +22,3 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-  
