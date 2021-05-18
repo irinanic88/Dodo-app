@@ -29,14 +29,14 @@ const DescriptionWindow = ({
             <p className={cn(styles.element, styles.description)}>{description}</p>
             <div className={styles.options}>
                 <form className={cn(styles.element, styles.form)}
-                    onSubmit={handleSubmit(()=>{})} >
+                    onSubmit={handleSubmit(сhangeStatusDispatcher)} >
                     <label className={styles.statusLabel}>Change status: </label>
                     <select {...register('status', {value: status})} className={styles.statusInput}>
                             {allStatuses.map((item) =>
                             <option key={item} {...register(item)}>{item}</option> 
                         )}
                     </select>
-                    <button className={styles.submit} onClick={сhangeStatusDispatcher}>Submit</button>
+                    <button className={styles.submit} onClick={()=>{}}>Submit</button>
                 </form>
                 <Button name={'Delete ticket'} onClick={deleteTicketDispatcher}/>
             </div>
