@@ -1,16 +1,16 @@
 import React from 'react';
 import {useForm} from 'react-hook-form';
+import cn from 'classnames';
 import { connect } from 'react-redux';
 import Button from '../button';
-import CloseButton from '../button/closeButton';
 import {ticketSelector} from '../../redux/selectors';
 import {closeDescriptionModal, сhangeStatus, deleteTicket} from '../../redux/actions';
 
 import styles from './descriptionWindow.module.css';
+import CloseButton from '../button/closeButton/closeButton';
 
 const DescriptionWindow = ({
     allStatuses, 
-    ticketId, 
     ticket, 
     closeDescriptionModal, 
     сhangeStatusDispatcher, 
@@ -21,28 +21,22 @@ const DescriptionWindow = ({
 
     return (
     <div className={styles.modal}>
-        <div className={styles.modalOverlay} />
-        <div className={styles.modalInner}>
-            <div className={styles.modalHeader}>
-                <p className={styles.ticketNumber}>
-                   {id} 
-                </p>
-                <h2>
-                   {title} 
-                </h2>
-                <p className={styles.ticketStatus}>Status: {status}</p>
-                <CloseButton onClick={closeDescriptionModal}/>
-            </div>
-            <p className={styles.ticketDescription}>{description}</p>
-            <div className={styles.modalDescriptionButtons}>
-                <form onSubmit={handleSubmit(сhangeStatusDispatcher)} >
-                    <label>Change status: </label>
-                    <select {...register('status', {value: status})} className={styles.changeStatus}>
-                        {allStatuses.map((item) =>
+        <div className={styles.overlay} />
+        <div className={styles.inner}>
+            <CloseButton onClick={closeDescriptionModal} />
+            <h2 className={cn(styles.element, styles.title)}>{title}</h2>
+            <p className={cn(styles.element, styles.number)}>{id}</p>
+            <p className={cn(styles.element, styles.description)}>{description}</p>
+            <div className={styles.options}>
+                <form className={cn(styles.element, styles.form)}
+                    onSubmit={handleSubmit(сhangeStatusDispatcher)} >
+                    <label className={styles.statusLabel}>Change status: </label>
+                    <select {...register('status', {value: status})} className={styles.statusInput}>
+                            {allStatuses.map((item) =>
                             <option key={item} {...register(item)}>{item}</option> 
                         )}
                     </select>
-                    <Button name={'Submit new status'} onClick={() => {}}/>
+                    <button className={styles.submit} onClick={()=>{}}>Submit</button>
                 </form>
                 <Button name={'Delete ticket'} onClick={deleteTicketDispatcher}/>
             </div>

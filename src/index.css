@@ -1,15 +1,19 @@
 @import '~normalize.css/normalize.css';
 
 :root {
-    --light-grey: #e5e5e5;
-    --grey: #b4b4b4;
-    --dark-grey: #818181;
-    --blue:  #6487c8;
-    --yellow: #FFCD72;
-
+    --background-fill: #eefbff;
+    --dark-grey-font: #2a2a2a;
+    --light-grey-font: #858585;
+    --sky-blue-button: #abe4fb;
+    --first-column-yellow: #faea5c;
+    --second-column-yellow: #f5d147;
+    --third-column-yellow: #deb435;
+    --fourth-column-yellow: #de810b;
 }
 
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -20,19 +24,27 @@ html {
 }
 
 body {
-    background-color:var(--light-grey);
-    font-family: 'Roboto Condensed', 'Calibri', sans-serif;
-    font-size: 1.8rem;
+    background-color: var(--background-fill);
+    color: var(--dark-grey-font);
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: 1.6rem;
 }
 
-h1, h2 {
-    text-transform: uppercase;
-    font-weight: 700;
+h2, button, label {
+    text-transform: capitalize;
+    font-family: 'Nunito', 'Arial', sans-serif;
+}
+
+input, textarea, select {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: 1.6rem;
 }
 
 button {
     text-decoration: none;
     outline: none;
 }
+
+
 
 

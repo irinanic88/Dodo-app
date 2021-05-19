@@ -10,7 +10,6 @@ const Header = ({openCreateTicketModal}) => {
      
     return(
         <div className={styles.header}>
-            <h1>My scrum board</h1>
             <Button name={'New ticket'} onClick={openCreateTicketModal}/>
         </div>
     );
