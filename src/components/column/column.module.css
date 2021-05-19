@@ -1,11 +1,9 @@
   .column {
+    height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    background-color: white;
-
-    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.15);
   }
 
   .header { 

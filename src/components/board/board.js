@@ -7,7 +7,8 @@ import {loadTickets, сhangeStatus} from '../../redux/actions';
 
 import styles from './board.module.css';
 
-const Board = ({titles, loadTickets, changeStatusDispatcher}) => {
+export let Board;
+Board = ({titles, loadTickets, changeStatusDispatcher}) => {
     useEffect(() => loadTickets(), [loadTickets]);
 
     const onDragEnd = (result) => {
@@ -15,11 +16,13 @@ const Board = ({titles, loadTickets, changeStatusDispatcher}) => {
         return destination ? changeStatusDispatcher(draggableId, destination.droppableId) : null;
     };
 
-    return(
+    return (
         <DragDropContext onDragEnd={onDragEnd}>
             <div className={styles.board} data-id="board">
                 {titles.map((title) => (
-                    <Column key={title} title={title} />
+                    <div className={styles.column} data-id="column" key={title}>
+                        <Column title={title}/>
+                    </div>
                 ))}
             </div>
         </DragDropContext>
