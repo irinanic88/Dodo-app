@@ -20,7 +20,7 @@ const DescriptionWindow = ({
     const {register, handleSubmit} = useForm();
 
     return (
-    <div className={styles.modal}>
+    <div className={styles.modal} data-id="descriptionWindow">
         <div className={styles.overlay} />
         <div className={styles.inner}>
             <CloseButton onClick={closeDescriptionModal} />

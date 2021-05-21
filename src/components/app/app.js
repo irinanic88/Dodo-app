@@ -12,9 +12,10 @@ import {
   loadingSelector 
 } from '../../redux/selectors';
 
-const App = ({titles, displayCreateTicketWindow, displayDescriptionWindow, loading, ticketId}) => {
+export let App;
+App = ({titles, displayCreateTicketWindow, displayDescriptionWindow, loading, ticketId}) => {
     return (
-      <div>
+      <div data-id="app">
         <Header />
         <Board titles={titles}/>
         {displayCreateTicketWindow ? <CreateTicketWindow allStatuses={titles} /> : null}

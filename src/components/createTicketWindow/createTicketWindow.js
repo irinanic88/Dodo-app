@@ -12,7 +12,7 @@ const CreateTicketWindow = ({allStatuses, closeCreateTicketModal, createTicketRe
     const {register, handleSubmit} = useForm();
 
     return (
-        <div className={styles.modal}>
+        <div className={styles.modal} data-id="createTicketWindow">
             <div className={styles.overlay}></div>
             <div className={styles.inner}>
                 <CloseButton onClick={closeCreateTicketModal} />
