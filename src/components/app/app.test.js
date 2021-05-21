@@ -3,10 +3,6 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import App from './app';
 import { Provider } from "react-redux";
 import configureMockStore from 'redux-mock-store';
-import {
-    displayCreateTicketWindowSelector,
-    displayDescriptionWindowSelector
-} from "../../redux/selectors";
 
 Enzyme.configure({adapter: new Adapter()});
 
