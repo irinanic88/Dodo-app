@@ -20,7 +20,7 @@ Board = ({titles, loadTickets, changeStatusDispatcher}) => {
         <DragDropContext onDragEnd={onDragEnd}>
             <div className={styles.board} data-id="board">
                 {titles.map((title) => (
-                    <div className={styles.column} data-id="column" key={title}>
+                    <div className={styles.column} data-id="column-wrapper" key={title}>
                         <Column title={title}/>
                     </div>
                 ))}
@@ -34,6 +34,7 @@ Board.propTypes = {
             PropTypes.string,
         ).isRequired,
     loadTickets: PropTypes.func,
+    changeStatusDispatcher: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch) => ({
