@@ -4,21 +4,23 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    background-color: white;
+    border-radius: 5px;
+    border: solid 2px var(--light-grey-font);
   }
 
-  .header { 
+  .header {
     margin-top: 2rem;
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: var(--light-grey-font);
+    font-size: 1.6rem;
+    color: var(--dark-grey-font);
     }
 
   .headerBottomLine {
     margin: 1.5rem 0;
-    background-color: var(--light-grey-font);
+    background-color: var(--dark-grey-font);
     justify-content: flex-end;
     width: 60%;
-    height: 0.17rem;
+    height: 1.5px;
   }
 
   .body {
@@ -29,13 +31,5 @@
   }
 
   .overColumn {
-    background-color: var(--sky-blue-button);
-  }
-
-  .overColumn .header {
-    color: var(--dark-grey-font);
-  }
-
-  .overColumn .headerBottomLine {
-    background-color: var(--dark-grey-font);
+    border: solid 2px var(--dark-grey-font);
   }
