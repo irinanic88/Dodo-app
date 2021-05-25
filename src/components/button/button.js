@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import styles from './button.module.css';
 
-const Button = ({name, onClick}) => {
+export const Button = ({name, onClick}) => {
     return (
-        <button className={styles.button} onClick={onClick}>{name}</button>
+        <button data-id="button" className={styles.button} onClick={onClick}>{name}</button>
     );
 
 };

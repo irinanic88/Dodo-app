@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Droppable} from 'react-beautiful-dnd';
 import cn from 'classnames';
 import Ticket from '../ticket';
@@ -8,32 +8,34 @@ import PropTypes from 'prop-types';
 
 import styles from './column.module.css';
 
-const Column = ({tickets, title}) => {
-        return (
-            <Droppable droppableId={title}>
-                {(provided, snapshot) => {
-                    const isDraggingOver = snapshot.isDraggingOver;
-                    return (
-                        <div className={cn(styles.column, {[styles.overColumn]: isDraggingOver})}
-                             ref={provided.innerRef}
-                             {...provided.droppableProps}
-                        >
-                            <div className={styles.header}>
-                                <h2>{title}</h2>
-                            </div>
-                            <div className={styles.headerBottomLine}></div>
-                            <div className={styles.body}>
-                                {tickets.map((ticket, index) => <Ticket key={ticket.id}
-                                                                        ticket={ticket}
-                                                                        index={index}/>)}
-                                {provided.placeholder}
-                            </div>
+export let Column;
+Column = ({tickets, title}) => {
+    return (
+        <Droppable droppableId={title}>
+            {(provided, snapshot) => {
+                const isDraggingOver = snapshot.isDraggingOver;
+                return (
+                    <div className={cn(styles.column, {[styles.overColumn]: isDraggingOver})}
+                         data-id="column"
+                         ref={provided.innerRef}
+                         {...provided.droppableProps}
+                    >
+                        <div className={styles.header}>
+                            <h2>{title}</h2>
                         </div>
-                        );
-                    }
-                }
-            </Droppable>
-        );
+                        <div className={styles.headerBottomLine}></div>
+                        <div className={styles.body}>
+                            {tickets.map((ticket, index) => <Ticket key={ticket.id}
+                                                                    ticket={ticket}
+                                                                    index={index}/>)}
+                            {provided.placeholder}
+                        </div>
+                    </div>
+                );
+            }
+            }
+        </Droppable>
+    );
 };
 
 Column.propTypes = {
