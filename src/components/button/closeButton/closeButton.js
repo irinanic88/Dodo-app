@@ -4,12 +4,11 @@ import { ReactComponent as CloseCross } from '../../../icons/closeCross.svg';
 
 import styles from './closeButton.module.css';
 
-const CloseButton = ({onClick}) => {
+export const CloseButton = ({onClick}) => {
     return (
         <button className={styles.button} onClick={onClick}>
             <CloseCross className={styles.closeCross}/>
             <CloseRound className={styles.closeRound}/>
-
         </button>
     );
 };

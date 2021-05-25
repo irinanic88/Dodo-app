@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import {Draggable} from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
 import cn from 'classnames';
@@ -6,7 +6,8 @@ import {openDescriptionModal} from '../../redux/actions';
 
 import styles from './ticket.module.css';
 
-const Ticket = ({openDescriptionModal, ticket, index}) => {
+export let Ticket;
+Ticket = ({openDescriptionModal, ticket, index}) => {
     const {id, title, status} = ticket;
 
     return (
@@ -37,6 +38,3 @@ const mapDispatchToProps = (dispatch, props) => ({
 });
 
 export default connect(null, mapDispatchToProps) (Ticket);
-
-
-//<img src={dots} alt="View details" className={styles.dots}/>

@@ -10,7 +10,9 @@ import {
 } from '../actionTypes';
 
 const initialModalState = {
-    displayCreateTicketWindow: false,
+    displayCreateTicketWindow: {
+        display: false,
+    },
     displayDescriptionWindow: {
         display: false,
         ticketId: null,
@@ -21,9 +23,18 @@ const modal = (state = initialModalState, action) => {
     const {type, ticketId} = action;
     switch(type) {
         case OPEN_CREATE_TICKET_MODAL:
-            return {...state, displayCreateTicketWindow: true};
+            return {...state,
+                displayCreateTicketWindow: {
+                    display: true,
+                }
+            };
         case CLOSE_CREATE_TICKET_MODAL:
-            return {...state, displayCreateTicketWindow: false};
+            return {
+                ...state,
+                displayCreateTicketWindow: {
+                    display: false,
+                }
+            };
         case CREATE_TICKET + SUCCESS:
             return {...state, displayCreateTicketWindow: false};
         case OPEN_DESCRIPTION_MODAL:
