@@ -11,26 +11,23 @@ const Ticket = ({openDescriptionModal, ticket, index}) => {
 
     return (
         <Draggable draggableId={id.toString()} index={index}>
-            {(provided) => (
-                <div onClick={openDescriptionModal} 
-                        className={styles.ticket}
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        >
-                        <div className={cn(styles.line, {
-                            [styles.first]: status === 'to do',
-                            [styles.second]: status === 'in progress',
-                            [styles.third]: status === 'in review',
-                            [styles.fourth]: status === 'done',
-                        })}
-                        />
-                        <div className={styles.info}>  
-                            <p className={styles.name}>{title}</p>            
-                            <p className={styles.number}>{id}</p>          
+            {(provided, snapshot) => {
+                const isDragging = snapshot.isDragging;
+                return (
+                    <div onClick={openDescriptionModal}
+                         className={cn(styles.ticket, {[styles.drag]: isDragging})}
+                         ref={provided.innerRef}
+                         {...provided.draggableProps}
+                         {...provided.dragHandleProps}
+                    >
+                        <div className={styles.info}>
+                            <p className={styles.name}>{title}</p>
+                            <p className={styles.number}>{id}</p>
                         </div>
-                </div>
-            )}
+                    </div>
+                    )
+                }
+            }
         </Draggable>
     );
 };

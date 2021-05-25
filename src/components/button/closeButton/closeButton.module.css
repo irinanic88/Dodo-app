@@ -1,19 +1,27 @@
 .button {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
     padding: 0;
+    background-color: inherit;
+    border: none;
+}
+
+.closeCross {
+    position: absolute;
+    top: 10px;
+    right: 10px;
     height: 30px;
     width: 30px;
-    background-color: inherit;
-    border: 2px solid var(--grey);
-    border-radius: 3px;
+    fill: var(--dark-grey-font);
 }
 
-.button:hover {
-    fill: var(--sky-blue-button);
+.closeRound {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 30px;
+    width: 30px;
+    fill: var(--light-grey-font);
 }
 
-.closeIcon:active {
-    fill: white;
+.closeRound:hover {
+    fill: var(--dark-grey-font);
 }
