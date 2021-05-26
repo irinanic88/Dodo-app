@@ -61,6 +61,10 @@
     color: var(--light-grey-font);
 }
 
+::placeholder {
+    color: #D0D0D0;
+}
+
 .titleInput {
     width: 90%;
 }
