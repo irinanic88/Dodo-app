@@ -4,13 +4,16 @@ import {Provider} from 'react-redux';
 import store from './redux/store';
 import './index.css';
 
-import App from './components/app';
-
+import OpenCreateBoard from '../src/components/openCreateBoard';
+import  BoardPage from '../src/components/boardPage';
 import {titles} from './titles';
 
 ReactDOM.render(
     <Provider store={store}>
-        <App titles={titles} />
+        <OpenCreateBoard />
+
     </Provider>,
     document.getElementById('root')
 );
+
+//        <BoardPage titles={titles} />
