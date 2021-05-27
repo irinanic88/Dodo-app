@@ -3,14 +3,14 @@ import {useForm} from 'react-hook-form';
 import cn from 'classnames';
 import { connect } from 'react-redux';
 import Button from '../button';
-import {ticketSelector} from '../../redux/selectors';
+import {statusesSelector, ticketSelector} from '../../redux/selectors';
 import {closeDescriptionModal, сhangeStatus, deleteTicket} from '../../redux/actions';
 
 import styles from './descriptionWindow.module.css';
 import CloseButton from '../button/closeButton/closeButton';
 
 const DescriptionWindow = ({
-    allStatuses, 
+    statuses,
     ticket, 
     closeDescriptionModal, 
     сhangeStatusDispatcher, 
@@ -32,7 +32,7 @@ const DescriptionWindow = ({
                     onSubmit={handleSubmit(сhangeStatusDispatcher)} >
                     <label className={styles.statusLabel}>Change status: </label>
                     <select {...register('status', {value: status})} className={styles.statusInput}>
-                            {allStatuses.map((item) =>
+                            {statuses.map((item) =>
                             <option key={item} {...register(item)}>{item}</option> 
                         )}
                     </select>
@@ -45,11 +45,12 @@ const DescriptionWindow = ({
     );
 };
 const mapStateToProps = (state, props) => ({
+    statuses: statusesSelector(state),
     ticket: ticketSelector(state, props),
 });
 const mapDispatchToProps = (dispatch, props) => ({
     closeDescriptionModal: () => dispatch(closeDescriptionModal),
-    сhangeStatusDispatcher: (options) => dispatch(сhangeStatus(props.ticketId, options.status)),
+    changeStatusDispatcher: (options) => dispatch(сhangeStatus(props.ticketId, options.status)),
     deleteTicketDispatcher: () => dispatch(deleteTicket(props)),
 });
 

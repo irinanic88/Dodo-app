@@ -1,4 +1,5 @@
-import { 
+import {
+    LOAD_STATUSES,
     LOAD_TICKETS,
     OPEN_CREATE_TICKET_MODAL, 
     CLOSE_CREATE_TICKET_MODAL,
@@ -9,6 +10,11 @@ import {
     DELETE_TICKET, 
     } from './actionTypes';
 import {HOST} from '../constants';
+
+export const loadStatuses = (statuses) => ({
+    type: LOAD_STATUSES,
+    statuses: statuses,
+});
 
 export const loadTickets = ({
     type: LOAD_TICKETS,

@@ -11,7 +11,6 @@ export const Header = ({openCreateTicketModal}) => {
      
     return(
         <div className={styles.header} data-id="header">
-            <Logo />
             <Button name={'New ticket'} onClick={openCreateTicketModal}/>
         </div>
     );

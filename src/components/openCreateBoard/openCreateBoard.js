@@ -3,7 +3,6 @@ import styles from './openCreateBoard.module.css';
 import cn from 'classnames';
 import Button from "../button/button";
 
-
 const OpenCreateBoard = () => {
     return (
       <div>
