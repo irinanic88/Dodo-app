@@ -1,7 +1,8 @@
 export const loadingSelector = (state) => state.loader.loading;
 
 export const ticketsForColumnSelector =  (state, {title}) => Object.values(state.tickets)
-                                                    .filter((ticket) => ticket!== null && ticket.status === title);
+                                                    .filter((ticket) => ticket!== null && ticket.status === title)
+                                                    .map((ticket) => ticket.id);
 
 export const displayCreateTicketWindowSelector = (state) => state.modal.displayCreateTicketWindow.display;
 export const displayDescriptionWindowSelector = (state) => state.modal.displayDescriptionWindow.display;

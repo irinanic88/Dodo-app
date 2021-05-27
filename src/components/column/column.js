@@ -10,6 +10,7 @@ import styles from './column.module.css';
 
 export let Column;
 Column = ({tickets, title}) => {
+    console.log(tickets);
     return (
         <Droppable droppableId={title}>
             {(provided, snapshot) => {
@@ -25,9 +26,13 @@ Column = ({tickets, title}) => {
                         </div>
                         <div className={styles.headerBottomLine}></div>
                         <div className={styles.body}>
-                            {tickets.map((ticket, index) => <Ticket key={ticket.id}
-                                                                    ticket={ticket}
-                                                                    index={index}/>)}
+                            {tickets.map((ticketId, index) => {
+                                console.log(ticketId);
+                                return(
+                                <Ticket key={ticketId}
+                                        ticketId={ticketId}
+                                        index={index}/>)
+                            })}
                             {provided.placeholder}
                         </div>
                     </div>
