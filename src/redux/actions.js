@@ -20,9 +20,9 @@ export const loadTickets = ({
 export const openCreateTicketModal = ({type: OPEN_CREATE_TICKET_MODAL});
 export const closeCreateTicketModal = ({type: CLOSE_CREATE_TICKET_MODAL});
 
-export const openDescriptionModal = ({ticket}) => ({
+export const openDescriptionModal = ({ticketId}) => ({
     type: OPEN_DESCRIPTION_MODAL, 
-    ticketId: ticket.id
+    ticketId: ticketId,
 });
 export const closeDescriptionModal = ({type: CLOSE_DESCRIPTION_MODAL});
 
