@@ -10,10 +10,11 @@ import {titles} from './titles';
 
 ReactDOM.render(
     <Provider store={store}>
-        <OpenCreateBoard />
-
+        <BoardPage titles={titles} />
     </Provider>,
     document.getElementById('root')
 );
 
-//        <BoardPage titles={titles} />
+
+
+//        <OpenCreateBoard />

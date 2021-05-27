@@ -42,6 +42,7 @@ button {
     outline: none;
 }
 
-
-
+::placeholder {
+    color: #D0D0D0;
+}
 

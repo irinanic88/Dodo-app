@@ -9,7 +9,7 @@
     background-color: white;
     border-radius: 5px;
     border: solid 2px var(--light-grey-font);
-    padding: 6rem  4rem;
+    padding: 4rem 4rem 6rem 4rem;
 }
 
 .form {
