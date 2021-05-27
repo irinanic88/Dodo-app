@@ -3,12 +3,15 @@ import {Draggable} from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
 import cn from 'classnames';
 import {openDescriptionModal} from '../../redux/actions';
+import {ticketSelector} from '../../redux/selectors';
 
 import styles from './ticket.module.css';
+import {ticketIdSelector} from "../../redux/selectors";
 
 export let Ticket;
-Ticket = ({openDescriptionModal, ticket, index}) => {
-    const {id, title, status} = ticket;
+Ticket = ({openDescriptionModal, ticketId, index, ticket}) => {
+    console.log(ticketId);
+    const {id, title} = ticket;
 
     return (
         <Draggable draggableId={id.toString()} index={index}>
@@ -33,8 +36,12 @@ Ticket = ({openDescriptionModal, ticket, index}) => {
     );
 };
 
+const mapStateToProps = (state, props) => ({
+    ticket: ticketSelector(state, props),
+});
+
 const mapDispatchToProps = (dispatch, props) => ({
     openDescriptionModal: () => dispatch(openDescriptionModal(props)),
 });
 
-export default connect(null, mapDispatchToProps) (Ticket);
+export default connect(mapStateToProps, mapDispatchToProps) (Ticket);
