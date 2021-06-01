@@ -26,6 +26,7 @@ export const checkBoardId = (boardId) => ({
     callAPI: `${HOST}/board/${boardId}`,
     fetchLoadingState: null,
     method: 'GET',
+    data: boardId,
 });
 
 export const loadStatuses = (statuses) => ({
