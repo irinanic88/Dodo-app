@@ -3,12 +3,13 @@ import {connect} from 'react-redux';
 import {DragDropContext} from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 import Column from '../column';
+import {statusesSelector} from '../../redux/selectors';
 import {loadTickets, сhangeStatus} from '../../redux/actions';
 
 import styles from './board.module.css';
 
 export let Board;
-Board = ({titles, loadTickets, changeStatusDispatcher}) => {
+Board = ({statuses, loadTickets, changeStatusDispatcher}) => {
     useEffect(() => loadTickets(), [loadTickets]);
 
     const onDragEnd = (result) => {
@@ -19,9 +20,9 @@ Board = ({titles, loadTickets, changeStatusDispatcher}) => {
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <div className={styles.board} data-id="board">
-                {titles.map((title) => (
-                    <div className={styles.column} data-id="column-wrapper" key={title}>
-                        <Column title={title}/>
+                {statuses.map((status) => (
+                    <div className={styles.column} data-id="column-wrapper" key={status}>
+                        <Column status={status}/>
                     </div>
                 ))}
             </div>
@@ -30,16 +31,19 @@ Board = ({titles, loadTickets, changeStatusDispatcher}) => {
 };
 
 Board.propTypes = {
-    titles: PropTypes.arrayOf(
+    statuses: PropTypes.arrayOf(
             PropTypes.string,
         ).isRequired,
     loadTickets: PropTypes.func,
     changeStatusDispatcher: PropTypes.func,
 };
+const mapStateToProps = (state) => ({
+   statuses: statusesSelector(state),
+});
 
 const mapDispatchToProps = (dispatch) => ({
     loadTickets: () => dispatch(loadTickets),
     changeStatusDispatcher: (ticketId, status) => dispatch(сhangeStatus(ticketId, status))
 });
 
-export default connect(null, mapDispatchToProps) (Board);
+export default connect(mapStateToProps, mapDispatchToProps) (Board);

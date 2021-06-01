@@ -9,10 +9,9 @@ import PropTypes from 'prop-types';
 import styles from './column.module.css';
 
 export let Column;
-Column = ({tickets, title}) => {
-    console.log(tickets);
+Column = ({tickets, status}) => {
     return (
-        <Droppable droppableId={title}>
+        <Droppable droppableId={status}>
             {(provided, snapshot) => {
                 const isDraggingOver = snapshot.isDraggingOver;
                 return (
@@ -22,17 +21,15 @@ Column = ({tickets, title}) => {
                          {...provided.droppableProps}
                     >
                         <div className={styles.header}>
-                            <h2>{title}</h2>
+                            <h2>{status}</h2>
                         </div>
                         <div className={styles.headerBottomLine}></div>
                         <div className={styles.body}>
-                            {tickets.map((ticketId, index) => {
-                                console.log(ticketId);
-                                return(
+                            {tickets.map((ticketId, index) =>
                                 <Ticket key={ticketId}
                                         ticketId={ticketId}
                                         index={index}/>)
-                            })}
+                            }
                             {provided.placeholder}
                         </div>
                     </div>
@@ -45,7 +42,7 @@ Column = ({tickets, title}) => {
 
 Column.propTypes = {
     title: PropTypes.string,
-    tickets: PropTypes.arrayOf(PropTypes.object).isRequired,
+    tickets: PropTypes.arrayOf(PropTypes.number).isRequired,
 }
 
 const mapStateToProps = (state, props) => ({

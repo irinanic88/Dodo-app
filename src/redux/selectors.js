@@ -1,7 +1,8 @@
+export const statusesSelector = (state) => state.statuses;
 export const loadingSelector = (state) => state.loader.loading;
 
-export const ticketsForColumnSelector =  (state, {title}) => Object.values(state.tickets)
-                                                    .filter((ticket) => ticket!== null && ticket.status === title)
+export const ticketsForColumnSelector =  (state, {status}) => Object.values(state.tickets)
+                                                    .filter((ticket) => ticket!== null && ticket.status === status)
                                                     .map((ticket) => ticket.id);
 
 export const displayCreateTicketWindowSelector = (state) => state.modal.displayCreateTicketWindow.display;

@@ -6,9 +6,10 @@ import CloseButton from '../button/closeButton/closeButton';
 import {closeCreateTicketModal, createTicket} from '../../redux/actions';
 import cn from 'classnames';
 import styles from './createTicketWindow.module.css';
+import {statusesSelector} from "../../redux/selectors";
 
 
-const CreateTicketWindow = ({allStatuses, closeCreateTicketModal, createTicketRequest}) => {
+const CreateTicketWindow = ({statuses, closeCreateTicketModal, createTicketRequest}) => {
     const {register, handleSubmit} = useForm();
 
     return (
@@ -32,8 +33,8 @@ const CreateTicketWindow = ({allStatuses, closeCreateTicketModal, createTicketRe
                     <div className={styles.formElement}>
                         <label className={styles.label}>Status: </label>
                         <select className={cn(styles.statusInput, styles.input)} 
-                                {...register('status', {value: allStatuses[0]})}>
-                            {allStatuses.map((item) =>
+                                {...register('status', {value: statuses[0]})}>
+                            {statuses.map((item) =>
                                 <option className={styles.option} key={item}>{item}</option> 
                             )}
                         </select>
@@ -48,9 +49,13 @@ const CreateTicketWindow = ({allStatuses, closeCreateTicketModal, createTicketRe
     );
 };
 
+const mapStateToProps = (state) => ({
+    statuses: statusesSelector(state),
+});
+
 const mapDispatchToProps = (dispatch) => ({
     closeCreateTicketModal: () => dispatch(closeCreateTicketModal),
     createTicketRequest: (ticketData) => dispatch(createTicket(ticketData)),
 })
 
-export default connect(null, mapDispatchToProps) (CreateTicketWindow);
+export default connect(mapStateToProps, mapDispatchToProps) (CreateTicketWindow);

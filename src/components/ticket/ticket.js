@@ -10,7 +10,6 @@ import {ticketIdSelector} from "../../redux/selectors";
 
 export let Ticket;
 Ticket = ({openDescriptionModal, ticketId, index, ticket}) => {
-    console.log(ticketId);
     const {id, title} = ticket;
 
     return (
