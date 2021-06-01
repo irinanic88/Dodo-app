@@ -6,10 +6,11 @@ import {openCreateTicketModal} from '../../redux/actions';
 
 import styles from './header.module.css';
 
-export const Header = ({openCreateTicketModal}) => {
+export const Header = ({boardId, openCreateTicketModal}) => {
      
     return(
         <div className={styles.header} data-id="header">
+            <h2>Board: {boardId}</h2>
             <Button name={'New ticket'} onClick={openCreateTicketModal}/>
         </div>
     );

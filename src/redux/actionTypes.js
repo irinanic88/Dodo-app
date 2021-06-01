@@ -1,3 +1,5 @@
+export const CREATE_BOARD = 'CREATE_BOARD';
+
 export const LOAD_STATUSES = 'LOAD_STATUSES';
 export const LOAD_TICKETS = 'LOAD_TICKETS';
 

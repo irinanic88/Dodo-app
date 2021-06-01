@@ -1,4 +1,5 @@
 import {
+    CREATE_BOARD,
     LOAD_STATUSES,
     LOAD_TICKETS,
     OPEN_CREATE_TICKET_MODAL, 
@@ -11,14 +12,22 @@ import {
     } from './actionTypes';
 import {HOST} from '../constants';
 
+export const createNewBoard = ({
+    type: CREATE_BOARD,
+    callAPI: `${HOST}/board`,
+    fetchLoadingState: null,
+    method: 'POST',
+    data: null,
+});
+
 export const loadStatuses = (statuses) => ({
     type: LOAD_STATUSES,
     statuses: statuses,
 });
 
-export const loadTickets = ({
+export const loadTickets = (boardId) => ({
     type: LOAD_TICKETS,
-    callAPI: `${HOST}/tickets`,
+    callAPI: `${HOST}/board/${boardId}/tickets`,
     fetchLoadingState: null,
     method: 'GET',
 });
