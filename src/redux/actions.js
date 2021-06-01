@@ -1,5 +1,6 @@
 import {
     CREATE_BOARD,
+    CHECK_BOARD_ID,
     LOAD_STATUSES,
     LOAD_TICKETS,
     OPEN_CREATE_TICKET_MODAL, 
@@ -18,6 +19,13 @@ export const createNewBoard = ({
     fetchLoadingState: null,
     method: 'POST',
     data: null,
+});
+
+export const checkBoardId = (boardId) => ({
+    type: CHECK_BOARD_ID,
+    callAPI: `${HOST}/board/${boardId}`,
+    fetchLoadingState: null,
+    method: 'GET',
 });
 
 export const loadStatuses = (statuses) => ({

@@ -11,7 +11,7 @@ import BoardPage from "../boardPage";
 
 const App = ({statuses, loadStatusesDispatch, boardId}) => {
     useEffect(() => loadStatusesDispatch(statuses), [statuses]);
-
+console.log(boardId);
     return (
         <div>
             <Logo className={styles.logo}/>
