@@ -9,7 +9,7 @@ import styles from './createTicketWindow.module.css';
 import {statusesSelector} from "../../redux/selectors";
 
 
-const CreateTicketWindow = ({statuses, closeCreateTicketModal, createTicketRequest}) => {
+const CreateTicketWindow = ({boardId, statuses, closeCreateTicketModal, createTicketRequest}) => {
     const {register, handleSubmit} = useForm();
 
     return (
@@ -53,9 +53,9 @@ const mapStateToProps = (state) => ({
     statuses: statusesSelector(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, props) => ({
     closeCreateTicketModal: () => dispatch(closeCreateTicketModal),
-    createTicketRequest: (ticketData) => dispatch(createTicket(ticketData)),
+    createTicketRequest: (ticketData) => dispatch(createTicket(ticketData, props.boardId)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps) (CreateTicketWindow);

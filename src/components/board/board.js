@@ -4,13 +4,13 @@ import {DragDropContext} from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 import Column from '../column';
 import {statusesSelector} from '../../redux/selectors';
-import {loadTickets, сhangeStatus} from '../../redux/actions';
+import {loadTickets, changeStatus} from '../../redux/actions';
 
 import styles from './board.module.css';
 
 export let Board;
-Board = ({statuses, loadTickets, changeStatusDispatcher}) => {
-    useEffect(() => loadTickets(), [loadTickets]);
+Board = ({boardId, statuses, loadTickets, changeStatusDispatcher}) => {
+    useEffect(() => loadTickets(boardId), [loadTickets, boardId]);
 
     const onDragEnd = (result) => {
         const {draggableId, destination} = result;
@@ -31,19 +31,24 @@ Board = ({statuses, loadTickets, changeStatusDispatcher}) => {
 };
 
 Board.propTypes = {
+    boardId: PropTypes.string.isRequired,
     statuses: PropTypes.arrayOf(
             PropTypes.string,
         ).isRequired,
     loadTickets: PropTypes.func,
     changeStatusDispatcher: PropTypes.func,
 };
+
 const mapStateToProps = (state) => ({
    statuses: statusesSelector(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    loadTickets: () => dispatch(loadTickets),
-    changeStatusDispatcher: (ticketId, status) => dispatch(сhangeStatus(ticketId, status))
-});
+const mapDispatchToProps = (dispatch, props) => {
+    return ({
+        loadTickets: (boardId) => dispatch(loadTickets(boardId)),
+        changeStatusDispatcher: (ticketId, status) => dispatch(changeStatus(ticketId, props.boardId, status))
+    });
+};
+
 
 export default connect(mapStateToProps, mapDispatchToProps) (Board);
