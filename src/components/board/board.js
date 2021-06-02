@@ -4,16 +4,13 @@ import {DragDropContext} from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 import Column from '../column';
 import {statusesSelector} from '../../redux/selectors';
-import {loadTickets, сhangeStatus} from '../../redux/actions';
+import {loadTickets, changeStatus} from '../../redux/actions';
 
 import styles from './board.module.css';
 
 export let Board;
 Board = ({boardId, statuses, loadTickets, changeStatusDispatcher}) => {
     useEffect(() => loadTickets(boardId), [loadTickets, boardId]);
-
-
-    console.log(boardId);
 
     const onDragEnd = (result) => {
         const {draggableId, destination} = result;
@@ -46,10 +43,10 @@ const mapStateToProps = (state) => ({
    statuses: statusesSelector(state),
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
     return ({
         loadTickets: (boardId) => dispatch(loadTickets(boardId)),
-        changeStatusDispatcher: (ticketId, status) => dispatch(сhangeStatus(ticketId, status))
+        changeStatusDispatcher: (ticketId, status) => dispatch(changeStatus(ticketId, props.boardId, status))
     });
 };
 

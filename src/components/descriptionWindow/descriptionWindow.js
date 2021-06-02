@@ -4,20 +4,26 @@ import cn from 'classnames';
 import { connect } from 'react-redux';
 import Button from '../button';
 import {statusesSelector, ticketSelector} from '../../redux/selectors';
-import {closeDescriptionModal, сhangeStatus, deleteTicket} from '../../redux/actions';
+import {closeDescriptionModal, changeStatus, deleteTicket} from '../../redux/actions';
 
 import styles from './descriptionWindow.module.css';
 import CloseButton from '../button/closeButton/closeButton';
 
 const DescriptionWindow = ({
     statuses,
+    boardId,
     ticket, 
     closeDescriptionModal, 
-    сhangeStatusDispatcher, 
+    changeStatusDispatcher,
     deleteTicketDispatcher
 }) => {
     const {status, id, title, description} = ticket;
-    const {register, handleSubmit} = useForm();
+    const {register, getValues} = useForm();
+    const handleChangeStatus = (event) => {
+        event.preventDefault();
+        const newStatus = getValues('status');
+        return changeStatusDispatcher(newStatus);
+    };
 
     return (
     <div className={styles.modal} data-id="descriptionWindow">
@@ -28,15 +34,14 @@ const DescriptionWindow = ({
             <p className={cn(styles.element, styles.number)}>{id}</p>
             <p className={cn(styles.element, styles.description)}>{description}</p>
             <div className={styles.options}>
-                <form className={cn(styles.element, styles.form)}
-                    onSubmit={handleSubmit(сhangeStatusDispatcher)} >
+                <form className={cn(styles.element, styles.form)}>
                     <label className={styles.statusLabel}>Change status: </label>
                     <select {...register('status', {value: status})} className={styles.statusInput}>
                             {statuses.map((item) =>
                             <option key={item} {...register(item)}>{item}</option> 
                         )}
                     </select>
-                    <button className={styles.submit} onClick={()=>{}}>Submit</button>
+                    <button className={styles.submit} onClick={handleChangeStatus}>Submit</button>
                 </form>
                 <Button name={'Delete ticket'} onClick={deleteTicketDispatcher}/>
             </div>
@@ -50,7 +55,7 @@ const mapStateToProps = (state, props) => ({
 });
 const mapDispatchToProps = (dispatch, props) => ({
     closeDescriptionModal: () => dispatch(closeDescriptionModal),
-    changeStatusDispatcher: (options) => dispatch(сhangeStatus(props.ticketId, options.status)),
+    changeStatusDispatcher: (newStatus) => dispatch(changeStatus(props.ticketId, props.boardId, newStatus)),
     deleteTicketDispatcher: () => dispatch(deleteTicket(props)),
 });
 

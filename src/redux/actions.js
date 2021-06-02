@@ -50,27 +50,27 @@ export const openDescriptionModal = ({ticketId}) => ({
 });
 export const closeDescriptionModal = ({type: CLOSE_DESCRIPTION_MODAL});
 
-export const createTicket = (ticketData) => ({
+export const createTicket = (ticketData, boardId) => ({
     type: CREATE_TICKET,
-    callAPI: `${HOST}/tickets`,
+    callAPI: `${HOST}/board/${boardId}/tickets`,
     fetchLoadingState: null,
     data: JSON.stringify(ticketData),
     method: 'POST',
 });
 
-export const сhangeStatus = (ticketId, newStatus) => ({
-    type: CHANGE_TICKET_STATUS,
-    callAPI: `${HOST}/tickets/${ticketId}/status`,
-    fetchLoadingState: null,
-    data: JSON.stringify({'status': newStatus}),
-    method: 'POST',
-    ticketId: ticketId,
-    newStatus: newStatus,
-});
+export const changeStatus = (ticketId, boardId, newStatus) => ({
+        type: CHANGE_TICKET_STATUS,
+        callAPI: `${HOST}/board/${boardId}/tickets/${ticketId}/status`,
+        fetchLoadingState: null,
+        data: JSON.stringify({'status': newStatus}),
+        method: 'POST',
+        ticketId: ticketId,
+        newStatus: newStatus,
+    });
 
-export const deleteTicket = ({ticketId}) => ({
+export const deleteTicket = ({ticketId, boardId}) => ({
     type: DELETE_TICKET,
-    callAPI: `${HOST}/tickets/${ticketId}`,
+    callAPI: `${HOST}/board/${boardId}/tickets/${ticketId}`,
     fetchLoadingState: null,
     ticketId: ticketId,
     method: 'DELETE',
