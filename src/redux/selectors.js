@@ -1,4 +1,7 @@
-export const boardIdSelector = (state) => state.board.boardId;
+export const boardInfoSelector = (state, boardId) => state.board[boardId];
+
+export const newBoardIdSelector = (state) => state.board.newId;
+
 export const statusesSelector = (state) => state.statuses;
 export const loadingSelector = (state) => state.loader.loading;
 

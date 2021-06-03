@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ReactComponent as CloseRound } from '../../loader/icons/closeRound.svg';
 import { ReactComponent as CloseCross } from '../../loader/icons/closeCross.svg';
 

@@ -17,12 +17,10 @@ const fetchGet = (store) => (next) => async (action) => {
                 if (response.status !== 404) {
                     return response.json();
                 } else {
-                    alert("Wrong Id");
-                    throw new Error(response);
+                    throw new Error();
                 }
             }
         );
-
         next({
             ...rest, 
             type: type + SUCCESS, 
@@ -30,13 +28,14 @@ const fetchGet = (store) => (next) => async (action) => {
             data,
             allTickets
         });
+
     } catch(error) {
-        console.log(error);
         throw next({
-            ...rest, 
+            ...rest,
+            data,
             type: type + FAILURE, 
             fetchLoadingState: FAILURE, 
-            error
+            error,
         });
     }
 

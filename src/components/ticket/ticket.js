@@ -6,7 +6,6 @@ import {openDescriptionModal} from '../../redux/actions';
 import {ticketSelector} from '../../redux/selectors';
 
 import styles from './ticket.module.css';
-import {ticketIdSelector} from "../../redux/selectors";
 
 export let Ticket;
 Ticket = ({openDescriptionModal, ticketId, index, ticket}) => {
