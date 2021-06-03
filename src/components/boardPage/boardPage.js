@@ -37,7 +37,7 @@ BoardPage = ({
         return null;
     }
     if (boardInfo === null ) {
-        history.push('/board');
+        history.push('/');
     }
 
         return (
