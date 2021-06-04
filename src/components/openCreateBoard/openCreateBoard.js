@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './openCreateBoard.module.css';
 import cn from 'classnames';
 import {useForm} from "react-hook-form";
 import {connect} from "react-redux";
 import {createNewBoard} from '../../redux/actions';
 import {newBoardIdSelector} from "../../redux/selectors";
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
+import {HOST} from '../../constants';
 
 import Button from "../button/button";
 
@@ -16,7 +17,9 @@ const OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
     const openBoard = (event) => {
         event.preventDefault();
         const boardId = getValues('boardId');
-        history.push(`/board/${boardId}`);
+        if (boardId) {
+            history.push(`/board/${boardId}`);
+        }
     }
 
     return (
@@ -24,13 +27,25 @@ const OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
           <div className={styles.inner}>
               <form className={styles.form}>
                   <label className={cn(styles.element, styles.text)}>Introduce your board ID:</label>
-                  <input className={cn(styles.element, styles.input)} placeholder={'ex: ' +
-                  'qwerty123'} {...register('boardId')}/>
+                  <input className={cn(styles.element, styles.input)}
+                         placeholder={'ex: ' + 'qwerty123'}
+                         {...register('boardId')}
+                  />
                   <Button className={styles.element} name={'Open'} onClick={openBoard}/>
               </form>
-              <p className={cn(styles.element, styles.text)}>Or generate a new board:</p>
-              <Button className={styles.element} name={'Create'} onClick={createNewBoardDispatch}/>
-              {newBoardId ? <p>Your board`s ID is: {newBoardId}</p> : null}
+              {
+                  newBoardId ?
+                      <div>
+                          <p className={cn(styles.element, styles.text)}>Go to your board:</p>
+                          <Link to={`/board/${newBoardId}`} className={cn(styles.element, styles.newBoardLink)}>
+                              {`${HOST}/board/${newBoardId}`}
+                          </Link>
+                      </div>
+                  : <div className={styles.create}>
+                          <p className={cn(styles.element, styles.text)}>Or generate a new board:</p>
+                          <Button className={styles.element} name={'Create'} onClick={createNewBoardDispatch}/>
+                    </div>
+              }
           </div>
       </div>
     );
