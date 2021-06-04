@@ -7,11 +7,17 @@ import {createTicket} from '../../redux/actions';
 import cn from 'classnames';
 import styles from './createTicketWindow.module.css';
 import {statusesSelector} from "../../redux/selectors";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
 
 const CreateTicketWindow = ({boardId, statuses, createTicketRequest}) => {
     const {register, handleSubmit} = useForm();
+    const history = useHistory();
+
+    const createTicket = (formData) => {
+        createTicketRequest(formData);
+        history.push(`/board/${boardId}`);
+    }
 
     return (
         <div className={styles.modal} data-id="createTicketWindow">
@@ -20,7 +26,7 @@ const CreateTicketWindow = ({boardId, statuses, createTicketRequest}) => {
                 <Link to={`/board/${boardId}`}>
                     <CloseButton/>
                 </Link>
-                <form className={styles.form} onSubmit={handleSubmit(createTicketRequest)}>
+                <form className={styles.form} onSubmit={handleSubmit(createTicket)}>
                     <div className={styles.formElement}>
                         <label className={styles.label}>Title:</label>
                         <input {...register('title', {required: true, maxLength: 50})} type="text" size="50" 
