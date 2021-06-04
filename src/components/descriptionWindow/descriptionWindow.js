@@ -1,24 +1,34 @@
 import React from 'react';
-import {useForm} from 'react-hook-form';
-import cn from 'classnames';
 import { connect } from 'react-redux';
+import {useForm} from 'react-hook-form';
+
 import Button from '../button';
+import CloseButton from '../button/closeButton/closeButton';
+import { Link } from 'react-router-dom';
+
 import {statusesSelector, ticketSelector} from '../../redux/selectors';
-import {closeDescriptionModal, changeStatus, deleteTicket} from '../../redux/actions';
+import {changeStatus, deleteTicket} from '../../redux/actions';
 
 import styles from './descriptionWindow.module.css';
-import CloseButton from '../button/closeButton/closeButton';
+import cn from 'classnames';
+
 
 const DescriptionWindow = ({
     statuses,
+    ticketId,
     boardId,
-    ticket, 
-    closeDescriptionModal, 
+    ticket,
     changeStatusDispatcher,
     deleteTicketDispatcher
 }) => {
-    const {status, id, title, description} = ticket;
     const {register, getValues} = useForm();
+
+    if (!ticket) {
+        return null;
+    }
+
+    const {status, id, title, description} = ticket;
+
     const handleChangeStatus = (event) => {
         event.preventDefault();
         const newStatus = getValues('status');
@@ -29,7 +39,9 @@ const DescriptionWindow = ({
     <div className={styles.modal} data-id="descriptionWindow">
         <div className={styles.overlay} />
         <div className={styles.inner}>
-            <CloseButton onClick={closeDescriptionModal} />
+            <Link to={`/board/${boardId}`}>
+                <CloseButton/>
+            </Link>
             <h2 className={cn(styles.element, styles.title)}>{title}</h2>
             <p className={cn(styles.element, styles.number)}>{id}</p>
             <p className={cn(styles.element, styles.description)}>{description}</p>
@@ -49,12 +61,13 @@ const DescriptionWindow = ({
     </div>
     );
 };
+
 const mapStateToProps = (state, props) => ({
     statuses: statusesSelector(state),
-    ticket: ticketSelector(state, props),
+    ticket: ticketSelector(state, props.ticketId),
 });
+
 const mapDispatchToProps = (dispatch, props) => ({
-    closeDescriptionModal: () => dispatch(closeDescriptionModal),
     changeStatusDispatcher: (newStatus) => dispatch(changeStatus(props.ticketId, props.boardId, newStatus)),
     deleteTicketDispatcher: () => dispatch(deleteTicket(props)),
 });

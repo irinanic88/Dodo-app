@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import styles from './column.module.css';
 
 export let Column;
-Column = ({tickets, status}) => {
+Column = ({tickets, status, boardId}) => {
     return (
         <Droppable droppableId={status}>
             {(provided, snapshot) => {
@@ -28,6 +28,7 @@ Column = ({tickets, status}) => {
                             {tickets.map((ticketId, index) =>
                                 <Ticket key={ticketId}
                                         ticketId={ticketId}
+                                        boardId={boardId}
                                         index={index}/>)
                             }
                             {provided.placeholder}

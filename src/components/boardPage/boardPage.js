@@ -1,34 +1,32 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { connect } from 'react-redux';
+
+import { useHistory, Link } from 'react-router-dom';
 import Board from '../board';
 import Loader from '../loader';
 import CreateTicketWindow from '../createTicketWindow';
-import DescriptionWindow from '../descriptionWindow';
+import Button from "../button/button";
+
 import {
-    displayCreateTicketWindowSelector,
-    displayDescriptionWindowSelector,
     ticketIdSelector,
     loadingSelector,
     boardInfoSelector
 } from '../../redux/selectors';
+import {checkBoardId} from "../../redux/actions";
+
 import styles from './boardPage.module.css';
-import Button from "../button/button";
-import {checkBoardId, openCreateTicketModal} from "../../redux/actions";
-import {useHistory} from 'react-router-dom';
+import DescriptionWindow from "../descriptionWindow";
 
 export let BoardPage;
-BoardPage = ({
-                 match,
+BoardPage = ({match,
+                 createTicket,
                  boardInfo,
-                 displayCreateTicketWindow,
-                 displayDescriptionWindow,
                  checkBoardIdDispatch,
                  loading,
-                 openCreateTicketModal,
-                 ticketId
 }) => {
 
-    const requestedBoardId = match.params.id;
+    const requestedTicketId = match.params.ticketId;
+    const requestedBoardId = match.params.boardId;
     const history = useHistory();
 
     useEffect(() => checkBoardIdDispatch(requestedBoardId), [checkBoardIdDispatch, requestedBoardId]);
@@ -44,28 +42,27 @@ BoardPage = ({
             <div data-id="app">
                 <div className={styles.header} data-id="header">
                     <h2>Board: {requestedBoardId}</h2>
-                    <Button name={'New ticket'} onClick={openCreateTicketModal}/>
+                    <Link to={`/board/${requestedBoardId}/tickets/create`}>
+                        <Button name={'New ticket'} onClick={() => {}}/>
+                    </Link>
                 </div>
                 <Board boardId={requestedBoardId}/>
-                {displayCreateTicketWindow ? <CreateTicketWindow boardId={requestedBoardId}/> : null}
-                {displayDescriptionWindow ? <DescriptionWindow boardId={requestedBoardId} ticketId={ticketId}/> : null}
+                {requestedTicketId ? <DescriptionWindow boardId={requestedBoardId} ticketId={requestedTicketId} /> : null}
+                {createTicket ? <CreateTicketWindow boardId={requestedBoardId} /> : null}
+
                 {loading ? <Loader /> : null}
             </div>
         );
-
 };
 
 const mapStateToProps = (state, props) => ({
-    boardInfo: boardInfoSelector(state, props.match.params.id),
-  displayCreateTicketWindow: displayCreateTicketWindowSelector(state),
-  displayDescriptionWindow: displayDescriptionWindowSelector(state),
+  boardInfo: boardInfoSelector(state, props.match.params.boardId),
   ticketId: ticketIdSelector(state),
   loading: loadingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
     checkBoardIdDispatch: (boardId) => dispatch(checkBoardId(boardId)),
-    openCreateTicketModal: () => dispatch(openCreateTicketModal),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps) (BoardPage);

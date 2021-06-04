@@ -10,8 +10,7 @@ export const ticketsForColumnSelector =  (state, {status}) => Object.values(stat
                                                     .map((ticket) => ticket.id);
 
 export const displayCreateTicketWindowSelector = (state) => state.modal.displayCreateTicketWindow.display;
-export const displayDescriptionWindowSelector = (state) => state.modal.displayDescriptionWindow.display;
 
 export const ticketIdSelector =  (state) => state.modal.displayDescriptionWindow.ticketId;
 
-export const ticketSelector = (state, {ticketId}) => state.tickets[ticketId];
+export const ticketSelector = (state, ticketId) => state.tickets[ticketId];
