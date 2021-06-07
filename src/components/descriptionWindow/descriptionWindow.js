@@ -55,8 +55,8 @@ const DescriptionWindow = ({
                     </select>
                     <button className={styles.submit} onClick={handleChangeStatus}>Submit</button>
                 </form>
-                <Button name={'Delete ticket'} onClick={deleteTicketDispatcher}/>
             </div>
+            <Button name={'Delete ticket'} onClick={deleteTicketDispatcher}/>
         </div>
     </div>
     );

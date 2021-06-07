@@ -10,12 +10,14 @@ import styles from './column.module.css';
 
 export let Column;
 Column = ({tickets, status, boardId}) => {
+
     return (
         <Droppable droppableId={status}>
             {(provided, snapshot) => {
                 const isDraggingOver = snapshot.isDraggingOver;
                 return (
-                    <div className={cn(styles.column, {[styles.overColumn]: isDraggingOver})}
+                    <div
+                        className={cn(styles.column, {[styles.overColumn]: isDraggingOver})}
                          data-id="column"
                          ref={provided.innerRef}
                          {...provided.droppableProps}

@@ -1,5 +1,15 @@
 .logo {
     position: absolute;
     top: 2rem;
-    left: 2rem;
+    left: 50%;
+    margin-left: -50px;
+}
+
+@media (min-width: 768px) {
+    .logo {
+        position: absolute;
+        margin-left: 0;
+        top: 2rem;
+        left: 2rem;
+    }
 }
