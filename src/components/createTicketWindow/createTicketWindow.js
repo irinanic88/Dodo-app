@@ -29,7 +29,7 @@ const CreateTicketWindow = ({boardId, statuses, createTicketRequest}) => {
                 <form className={styles.form} onSubmit={handleSubmit(createTicket)}>
                     <div className={styles.formElement}>
                         <label className={styles.label}>Title:</label>
-                        <input {...register('title', {required: true, maxLength: 50})} type="text" size="50" 
+                        <input {...register('title')} required maxLength={50} type="text" size="50"
                         className={cn(styles.title, styles.input)} />
                     </div>
                     <div className={cn(styles.formElement, styles.description)}>

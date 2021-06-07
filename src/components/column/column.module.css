@@ -6,7 +6,12 @@
     flex-direction: column;
     background-color: white;
     border-radius: 5px;
-    border: solid 2px var(--light-grey-font);
+    box-shadow: 0 0 0 1.5px var(--light-grey-font);
+    margin-bottom: 1rem;
+  }
+
+  .smallScreen {
+      background-color: rebeccapurple;
   }
 
   .header {
@@ -24,12 +29,13 @@
   }
 
   .body {
-    display: flex;
-    flex-direction: column;
-    width: 85%;
-    margin-top: 2rem; 
+      display: flex;
+      flex-direction: column;
+      width: 85%;
+      margin-top: 2rem;
   }
 
   .overColumn {
-    border: solid 2px var(--dark-grey-font);
+    box-shadow: 0 0 0 1.5px var(--dark-grey-font);
   }
+
