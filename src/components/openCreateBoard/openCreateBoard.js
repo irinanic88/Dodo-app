@@ -3,37 +3,59 @@ import styles from './openCreateBoard.module.css';
 import cn from 'classnames';
 import {useForm} from "react-hook-form";
 import {connect} from "react-redux";
-import {createNewBoard, checkBoardId} from '../../redux/actions';
+import {createNewBoard} from '../../redux/actions';
+import {newBoardIdSelector} from "../../redux/selectors";
+import {useHistory, Link} from 'react-router-dom';
+import {HOST} from '../../constants';
 
 import Button from "../button/button";
 
-const OpenCreateBoard = ({createNewBoardDispatch, checkBoardIdDispatch}) => {
+const OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
     const { register, getValues } = useForm();
+    const history = useHistory();
+
     const openBoard = (event) => {
         event.preventDefault();
         const boardId = getValues('boardId');
-        checkBoardIdDispatch(boardId);
-
+        if (boardId) {
+            history.push(`/board/${boardId}`);
+        }
     }
+
     return (
       <div>
           <div className={styles.inner}>
               <form className={styles.form}>
                   <label className={cn(styles.element, styles.text)}>Introduce your board ID:</label>
-                  <input className={cn(styles.element, styles.input)} placeholder={'ex: ' +
-                  '0123456789'} {...register('boardId')}/>
+                  <input className={cn(styles.element, styles.input)}
+                         placeholder={`ex: Qwerty123`}
+                         {...register('boardId')}
+                  />
                   <Button className={styles.element} name={'Open'} onClick={openBoard}/>
               </form>
-              <p className={cn(styles.element, styles.text)}>Or generate a new board:</p>
-              <Button className={styles.element} name={'Create'} onClick={createNewBoardDispatch}/>
+              {
+                  newBoardId ?
+                      <div>
+                          <p className={cn(styles.element, styles.text)}>Go to your board:</p>
+                          <Link to={`/board/${newBoardId}`} className={cn(styles.element, styles.newBoardLink)}>
+                              {`${HOST}/board/${newBoardId}`}
+                          </Link>
+                      </div>
+                  : <div className={styles.create}>
+                          <p className={cn(styles.element, styles.text)}>Or generate a new board:</p>
+                          <Button className={styles.element} name={'Create'} onClick={createNewBoardDispatch}/>
+                    </div>
+              }
           </div>
       </div>
     );
 };
-
-const mapDispatchToProps = (dispatch) => ({
-    checkBoardIdDispatch: (boardId) => dispatch(checkBoardId(boardId)),
-   createNewBoardDispatch: () => dispatch(createNewBoard),
+const mapStateToProps = (state) => ({
+    newBoardId: newBoardIdSelector(state),
 });
 
-export default connect(null, mapDispatchToProps) (OpenCreateBoard);
+const mapDispatchToProps = (dispatch) => ({
+    createNewBoardDispatch: () => dispatch(createNewBoard),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps) (OpenCreateBoard);

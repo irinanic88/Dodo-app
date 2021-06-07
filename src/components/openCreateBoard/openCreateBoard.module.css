@@ -1,11 +1,10 @@
-
-
 .inner {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 30%;
+    height: 45rem;
+    width: 42rem;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -38,4 +37,15 @@
     outline: none;
     border: solid 2px var(--dark-grey-font);
     color: var(--light-grey-font);
+}
+
+.create {
+    display: flex;
+    flex-direction: column;
+}
+
+.newBoardLink {
+    font-weight: 400;
+    color: var(--light-grey-font);
+    text-decoration: underline;
 }

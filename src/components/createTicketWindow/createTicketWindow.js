@@ -3,21 +3,30 @@ import {useForm} from 'react-hook-form';
 import {connect} from 'react-redux';
 import Button from '../button';
 import CloseButton from '../button/closeButton/closeButton';
-import {closeCreateTicketModal, createTicket} from '../../redux/actions';
+import {createTicket} from '../../redux/actions';
 import cn from 'classnames';
 import styles from './createTicketWindow.module.css';
 import {statusesSelector} from "../../redux/selectors";
+import {Link, useHistory} from "react-router-dom";
 
 
-const CreateTicketWindow = ({boardId, statuses, closeCreateTicketModal, createTicketRequest}) => {
+const CreateTicketWindow = ({boardId, statuses, createTicketRequest}) => {
     const {register, handleSubmit} = useForm();
+    const history = useHistory();
+
+    const createTicket = (formData) => {
+        createTicketRequest(formData);
+        history.push(`/board/${boardId}`);
+    }
 
     return (
         <div className={styles.modal} data-id="createTicketWindow">
             <div className={styles.overlay}></div>
             <div className={styles.inner}>
-                <CloseButton onClick={closeCreateTicketModal} />
-                <form className={styles.form} onSubmit={handleSubmit(createTicketRequest)}>
+                <Link to={`/board/${boardId}`}>
+                    <CloseButton/>
+                </Link>
+                <form className={styles.form} onSubmit={handleSubmit(createTicket)}>
                     <div className={styles.formElement}>
                         <label className={styles.label}>Title:</label>
                         <input {...register('title', {required: true, maxLength: 50})} type="text" size="50" 
@@ -54,7 +63,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-    closeCreateTicketModal: () => dispatch(closeCreateTicketModal),
     createTicketRequest: (ticketData) => dispatch(createTicket(ticketData, props.boardId)),
 })
 

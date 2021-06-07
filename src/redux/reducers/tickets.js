@@ -9,19 +9,18 @@ import {arrToMap, deleteKey} from '../utils';
 
 const tickets = (state = {}, action) => {
     const {
-        type, 
-        responseData, 
-        allTickets, 
+        type,
+        data,
         ticketId, 
         newStatus,
     } = action;
 
     switch(type) {
         case LOAD_TICKETS + SUCCESS: {
-            return {...state, ...arrToMap(allTickets)};
+            return {...state, ...arrToMap(data)};
         }
         case CREATE_TICKET + SUCCESS: {
-            return {...state, [responseData.id]: responseData};
+            return {...state, [data.id]: data};
         }
         case CHANGE_TICKET_STATUS + SUCCESS: {
             return {...state, [ticketId]: {
