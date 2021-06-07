@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 
 import { useHistory, Link } from 'react-router-dom';
@@ -8,7 +8,6 @@ import CreateTicketWindow from '../createTicketWindow';
 import Button from "../button/button";
 
 import {
-    ticketIdSelector,
     loadingSelector,
     boardInfoSelector
 } from '../../redux/selectors';
@@ -57,7 +56,6 @@ BoardPage = ({match,
 
 const mapStateToProps = (state, props) => ({
   boardInfo: boardInfoSelector(state, props.match.params.boardId),
-  ticketId: ticketIdSelector(state),
   loading: loadingSelector(state),
 });
 

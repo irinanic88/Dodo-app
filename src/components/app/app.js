@@ -9,7 +9,6 @@ import {Route, Switch, Link} from 'react-router-dom';
 import {ReactComponent as Logo} from '../../icons/logo.svg';
 import OpenCreateBoard from "../openCreateBoard";
 import BoardPage from "../boardPage";
-import DescriptionWindow from "../descriptionWindow";
 
 const App = ({statuses, loadStatusesDispatch}) => {
     useEffect(() => loadStatusesDispatch(statuses), [loadStatusesDispatch, statuses]);

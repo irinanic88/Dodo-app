@@ -9,8 +9,4 @@ export const ticketsForColumnSelector =  (state, {status}) => Object.values(stat
                                                     .filter((ticket) => ticket!== null && ticket.status === status)
                                                     .map((ticket) => ticket.id);
 
-export const displayCreateTicketWindowSelector = (state) => state.modal.displayCreateTicketWindow.display;
-
-export const ticketIdSelector =  (state) => state.modal.displayDescriptionWindow.ticketId;
-
 export const ticketSelector = (state, ticketId) => state.tickets[ticketId];

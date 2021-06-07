@@ -7,23 +7,22 @@ import {
 const board = (state = {}, action) => {
     const {
         type,
-        responseData,
+        boardId,
         data,
         error,
     } = action;
 
     switch(type) {
         case CREATE_BOARD + SUCCESS: {
-            return {...state, newId: responseData.uuid};
+            return {...state, newId: data.uuid};
         }
         case CHECK_BOARD_ID + SUCCESS: {
-            return {...state, [data]: data};
+            return {...state, [boardId]: boardId};
         }
         case CHECK_BOARD_ID + FAILURE: {
             alert("Wrong Id");
-            console.log(data);
             console.log(error);
-            return {...state, [data]: null};
+            return {...state, [boardId]: null};
         }
 
         default:

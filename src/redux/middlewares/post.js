@@ -5,7 +5,7 @@ const fetchPost = (store) => (next) => async (action) => {
         return next(action);
     }
 
-    const { callAPI, data, type, method, ...rest } = action;
+    const { callAPI, fetchData, type, method, ...rest } = action;
     next({
         ...rest, 
         type: type + REQUEST, 
@@ -18,19 +18,17 @@ const fetchPost = (store) => (next) => async (action) => {
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
-            body: data,
+            body: fetchData,
         }).then((res) => res.text());
 
-        const responseData = responseText.length > 0 ? await JSON.parse(responseText) : null;
+        const data = responseText.length > 0 ? await JSON.parse(responseText) : null;
         next({
             ...rest, 
             type: type + SUCCESS, 
             fetchLoadingState: SUCCESS, 
-            responseData,
+            data,
         });
 
-
-       
     } catch(error) {
         throw next({
             ...rest, 
