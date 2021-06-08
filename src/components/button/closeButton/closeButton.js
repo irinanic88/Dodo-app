@@ -1,8 +1,10 @@
 import React from 'react';
-import { ReactComponent as CloseRound } from '../../loader/icons/closeRound.svg';
-import { ReactComponent as CloseCross } from '../../loader/icons/closeCross.svg';
+import PropTypes from 'prop-types';
 
 import styles from './closeButton.module.css';
+
+import { ReactComponent as CloseRound } from '../../loader/icons/closeRound.svg';
+import { ReactComponent as CloseCross } from '../../loader/icons/closeCross.svg';
 
 export const CloseButton = ({onClick}) => {
     return (
@@ -12,5 +14,9 @@ export const CloseButton = ({onClick}) => {
         </button>
     );
 };
+
+CloseButton.propTypes = {
+    onClick: PropTypes.func.isRequired,
+}
 
 export default CloseButton;

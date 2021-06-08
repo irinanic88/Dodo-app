@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { useHistory, Link } from 'react-router-dom';
 import Board from '../board';
@@ -54,6 +55,19 @@ BoardPage = ({match,
         );
 };
 
+BoardPage.propTypes = {
+    match: PropTypes.shape({
+            params: PropTypes.shape({
+                ticketId: PropTypes.string,
+                boardId: PropTypes.string,
+            }),
+        }),
+    createTicket: PropTypes.bool,
+    boardInfo: PropTypes.string,
+    checkBoardIdDispatch: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
+}
+
 const mapStateToProps = (state, props) => ({
   boardInfo: boardInfoSelector(state, props.match.params.boardId),
   loading: loadingSelector(state),
@@ -64,4 +78,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps) (BoardPage);
-

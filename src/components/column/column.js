@@ -1,12 +1,14 @@
 import React from 'react';
-import {Droppable} from 'react-beautiful-dnd';
-import cn from 'classnames';
-import Ticket from '../ticket';
-import {ticketsForColumnSelector} from '../../redux/selectors';
 import {connect} from 'react-redux';
+import {Droppable} from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 
 import styles from './column.module.css';
+import cn from 'classnames';
+
+import Ticket from '../ticket';
+
+import {ticketsForColumnSelector} from '../../redux/selectors';
 
 export let Column;
 Column = ({tickets, status, boardId}) => {
@@ -44,8 +46,9 @@ Column = ({tickets, status, boardId}) => {
 };
 
 Column.propTypes = {
-    title: PropTypes.string,
+    status: PropTypes.string,
     tickets: PropTypes.arrayOf(PropTypes.number).isRequired,
+    boardId: PropTypes.string,
 }
 
 const mapStateToProps = (state, props) => ({

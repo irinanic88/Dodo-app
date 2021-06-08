@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
+import PropTypes from 'prop-types';
 
 import {loadStatuses} from '../../redux/actions';
 
@@ -29,6 +30,11 @@ const App = ({statuses, loadStatusesDispatch}) => {
             </Switch>
         </div>
     );
+}
+
+App.propTypes = {
+    statuses: PropTypes.arrayOf(PropTypes.string).isRequired,
+    loadStatusesDispatch: PropTypes.func.isRequired,
 }
 
 const mapDispatchToProps = (dispatch) => ({

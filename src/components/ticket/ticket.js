@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import {Draggable} from 'react-beautiful-dnd';
-import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import {ticketSelector} from '../../redux/selectors';
 
 import cn from 'classnames';
 import styles from './ticket.module.css';
+
+import {Link} from 'react-router-dom';
 
 export let Ticket;
 Ticket = ({ticketId, boardId, index, ticket}) => {
@@ -42,8 +43,20 @@ Ticket = ({ticketId, boardId, index, ticket}) => {
     );
 };
 
+Ticket.propTypes = {
+    ticketId: PropTypes.number,
+    boardId: PropTypes.string,
+    index: PropTypes.number.isRequired,
+    ticket: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+    }),
+}
+
 const mapStateToProps = (state, props) => ({
     ticket: ticketSelector(state, props),
 });
 
 export default connect(mapStateToProps) (Ticket);
+
+//see ticketId == number,

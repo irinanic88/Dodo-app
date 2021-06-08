@@ -1,14 +1,17 @@
 import React from 'react';
+import {connect} from "react-redux";
+import PropTypes from 'prop-types';
+
 import styles from './openCreateBoard.module.css';
 import cn from 'classnames';
-import {useForm} from "react-hook-form";
-import {connect} from "react-redux";
+
 import {createNewBoard} from '../../redux/actions';
 import {newBoardIdSelector} from "../../redux/selectors";
+
 import {useHistory, Link} from 'react-router-dom';
 import {HOST} from '../../constants';
-
 import Button from "../button/button";
+import {useForm} from "react-hook-form";
 
 const OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
     const { register, getValues } = useForm();
@@ -50,6 +53,12 @@ const OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
       </div>
     );
 };
+
+OpenCreateBoard.propTypes = {
+    newBoardId: PropTypes.string,
+    createNewBoardDispatch: PropTypes.func.isRequired,
+}
+
 const mapStateToProps = (state) => ({
     newBoardId: newBoardIdSelector(state),
 });
