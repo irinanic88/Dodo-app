@@ -12,6 +12,9 @@ import styles from './ticket.module.css';
 export let Ticket;
 Ticket = ({ticketId, boardId, index, ticket}) => {
 
+    if (ticket === undefined) {
+        return null;
+    }
     const {id, title} = ticket;
 
     return (
@@ -40,7 +43,7 @@ Ticket = ({ticketId, boardId, index, ticket}) => {
 };
 
 const mapStateToProps = (state, props) => ({
-    ticket: ticketSelector(state, props.ticketId),
+    ticket: ticketSelector(state, props),
 });
 
 export default connect(mapStateToProps) (Ticket);

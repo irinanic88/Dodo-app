@@ -63,7 +63,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-    createTicketRequest: (ticketData) => dispatch(createTicket(ticketData, props.boardId)),
+    createTicketRequest: (ticketData) => dispatch(createTicket(ticketData, props)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps) (CreateTicketWindow);

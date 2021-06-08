@@ -21,6 +21,7 @@ const DescriptionWindow = ({
     changeStatusDispatcher,
     deleteTicketDispatcher
 }) => {
+
     const {register, getValues} = useForm();
 
     if (!ticket) {
@@ -64,7 +65,7 @@ const DescriptionWindow = ({
 
 const mapStateToProps = (state, props) => ({
     statuses: statusesSelector(state),
-    ticket: ticketSelector(state, props.ticketId),
+    ticket: ticketSelector(state, props),
 });
 
 const mapDispatchToProps = (dispatch, props) => ({

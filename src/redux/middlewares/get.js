@@ -5,7 +5,7 @@ const fetchGet = (store) => (next) => async (action) => {
         return next(action);
     }
 
-    const {callAPI, type, fetchLoadingState, fetchData, ...rest} = action;
+    const {callAPI, type, fetchLoadingState, ...rest} = action;
     next({
         ...rest, 
         type: type + REQUEST, 
