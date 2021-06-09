@@ -1,14 +1,17 @@
 import React from 'react';
-import {useForm} from 'react-hook-form';
 import {connect} from 'react-redux';
-import Button from '../button';
-import CloseButton from '../button/closeButton/closeButton';
-import {createTicket} from '../../redux/actions';
+import PropTypes from 'prop-types';
+
 import cn from 'classnames';
 import styles from './createTicketWindow.module.css';
-import {statusesSelector} from "../../redux/selectors";
-import {Link, useHistory} from "react-router-dom";
 
+import {useForm} from 'react-hook-form';
+import {Link, useHistory} from "react-router-dom";
+import Button from '../button';
+import CloseButton from '../button/closeButton/closeButton';
+
+import {createTicket} from '../../redux/actions';
+import {statusesSelector} from "../../redux/selectors";
 
 const CreateTicketWindow = ({boardId, statuses, createTicketRequest}) => {
     const {register, handleSubmit} = useForm();
@@ -58,12 +61,18 @@ const CreateTicketWindow = ({boardId, statuses, createTicketRequest}) => {
     );
 };
 
+CreateTicketWindow.propTypes = {
+    boardId: PropTypes.string.isRequired,
+    statuses: PropTypes.arrayOf(PropTypes.string).isRequired,
+    createTicketRequest: PropTypes.func.isRequired,
+}
+
 const mapStateToProps = (state) => ({
     statuses: statusesSelector(state),
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-    createTicketRequest: (ticketData) => dispatch(createTicket(ticketData, props.boardId)),
+    createTicketRequest: (ticketData) => dispatch(createTicket(ticketData, props)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps) (CreateTicketWindow);

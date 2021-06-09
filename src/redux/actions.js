@@ -22,7 +22,7 @@ export const checkBoardId = (boardId) => ({
     callAPI: `${HOST}/board/${boardId}`,
     fetchLoadingState: null,
     method: 'GET',
-    boardId: boardId,
+    boardId,
 });
 
 export const loadStatuses = (statuses) => ({
@@ -35,14 +35,16 @@ export const loadTickets = (boardId) => ({
     callAPI: `${HOST}/board/${boardId}/tickets`,
     fetchLoadingState: null,
     method: 'GET',
+    boardId,
 });
 
-export const createTicket = (ticketData, boardId) => ({
+export const createTicket = (ticketData, {boardId}) => ({
     type: CREATE_TICKET,
     callAPI: `${HOST}/board/${boardId}/tickets`,
     fetchLoadingState: null,
     method: 'POST',
     fetchData: JSON.stringify(ticketData),
+    boardId,
 });
 
 export const changeStatus = (ticketId, boardId, newStatus) => ({
@@ -51,8 +53,9 @@ export const changeStatus = (ticketId, boardId, newStatus) => ({
         fetchLoadingState: null,
         method: 'POST',
         fetchData: JSON.stringify({'status': newStatus}),
-        ticketId: ticketId,
-        newStatus: newStatus,
+        ticketId,
+        newStatus,
+        boardId,
     });
 
 export const deleteTicket = ({ticketId, boardId}) => ({
@@ -60,7 +63,8 @@ export const deleteTicket = ({ticketId, boardId}) => ({
     callAPI: `${HOST}/board/${boardId}/tickets/${ticketId}`,
     fetchLoadingState: null,
     method: 'DELETE',
-    ticketId: ticketId,
+    ticketId,
+    boardId,
 });
 
 

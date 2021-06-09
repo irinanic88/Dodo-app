@@ -2,11 +2,13 @@ import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {DragDropContext} from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
-import Column from '../column';
-import {statusesSelector} from '../../redux/selectors';
-import {loadTickets, changeStatus} from '../../redux/actions';
 
 import styles from './board.module.css';
+
+import Column from '../column';
+
+import {statusesSelector} from '../../redux/selectors';
+import {loadTickets, changeStatus} from '../../redux/actions';
 
 export let Board;
 Board = ({boardId, statuses, loadTicketsDispatch, changeStatusDispatcher}) => {
@@ -35,8 +37,8 @@ Board.propTypes = {
     statuses: PropTypes.arrayOf(
             PropTypes.string,
         ).isRequired,
-    loadTickets: PropTypes.func,
-    changeStatusDispatcher: PropTypes.func,
+    loadTicketsDispatch: PropTypes.func.isRequired,
+    changeStatusDispatcher: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

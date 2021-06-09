@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {useForm} from 'react-hook-form';
+import PropTypes from 'prop-types';
 
+import {useForm} from 'react-hook-form';
 import Button from '../button';
 import CloseButton from '../button/closeButton/closeButton';
 import { Link } from 'react-router-dom';
@@ -21,6 +22,7 @@ const DescriptionWindow = ({
     changeStatusDispatcher,
     deleteTicketDispatcher
 }) => {
+
     const {register, getValues} = useForm();
 
     if (!ticket) {
@@ -62,9 +64,23 @@ const DescriptionWindow = ({
     );
 };
 
+DescriptionWindow.propTypes = {
+    statuses: PropTypes.arrayOf(PropTypes.string).isRequired,
+    ticketId: PropTypes.string.isRequired,
+    boardId: PropTypes.string.isRequired,
+    ticket: PropTypes.shape({
+        status: PropTypes.string,
+        id: PropTypes.string,
+        title: PropTypes.string,
+        description: PropTypes.string,
+    }),
+    changeStatusDispatcher: PropTypes.func.isRequired,
+    deleteTicketDispatcher: PropTypes.func.isRequired,
+}
+
 const mapStateToProps = (state, props) => ({
     statuses: statusesSelector(state),
-    ticket: ticketSelector(state, props.ticketId),
+    ticket: ticketSelector(state, props),
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
