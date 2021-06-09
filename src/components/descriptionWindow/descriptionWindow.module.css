@@ -54,7 +54,6 @@
 
 .statusInput {
     padding: 1rem;
-    border: none;
     margin-right: 2rem;
     border: solid 2px var(--light-grey-font);
 }
@@ -62,7 +61,7 @@
 .statusInput:focus {
     outline: none;
     border: solid 2px var(--dark-grey-font);
-    color: var(--light-grey-font);
+    color: var(--dark-grey-font);
 }
 
 .submit {
