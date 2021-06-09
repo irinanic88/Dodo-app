@@ -70,7 +70,7 @@ DescriptionWindow.propTypes = {
     boardId: PropTypes.string.isRequired,
     ticket: PropTypes.shape({
         status: PropTypes.string,
-        id: PropTypes.string,
+        id: PropTypes.number,
         title: PropTypes.string,
         description: PropTypes.string,
     }),
