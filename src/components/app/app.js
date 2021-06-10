@@ -1,8 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 
-import {loadStatuses} from '../../redux/actions';
 import {loadingSelector} from '../../redux/selectors';
 
 import styles from './app.module.css';
@@ -13,8 +12,7 @@ import OpenCreateBoard from "../openCreateBoard";
 import BoardPage from "../boardPage";
 import Loader from '../loader';
 
-const App = ({statuses, loadStatusesDispatch, loading}) => {
-    useEffect(() => loadStatusesDispatch(statuses), [loadStatusesDispatch, statuses]);
+const App = ({loading}) => {
 
     return (
         <div>
@@ -35,15 +33,10 @@ const App = ({statuses, loadStatusesDispatch, loading}) => {
 }
 
 App.propTypes = {
-    statuses: PropTypes.arrayOf(PropTypes.string).isRequired,
-    loadStatusesDispatch: PropTypes.func.isRequired,
+    loading: PropTypes.bool,
 }
 const mapStateToProps = (state) => ({
     loading: loadingSelector(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-   loadStatusesDispatch: (statuses) => (dispatch(loadStatuses(statuses))),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)  (App);
+export default connect(mapStateToProps)  (App);

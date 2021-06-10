@@ -25,9 +25,10 @@ export const checkBoardId = (boardId) => ({
     boardId,
 });
 
-export const loadStatuses = (statuses) => ({
+export const loadStatuses = (columns, boardId) => ({
     type: LOAD_STATUSES,
-    statuses: statuses,
+    columns,
+    boardId,
 });
 
 export const loadTickets = (boardId) => ({

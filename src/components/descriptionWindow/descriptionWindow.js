@@ -7,7 +7,7 @@ import Button from '../button';
 import CloseButton from '../button/closeButton/closeButton';
 import { Link } from 'react-router-dom';
 
-import {statusesSelector, ticketSelector} from '../../redux/selectors';
+import {columnsSelector, ticketSelector} from '../../redux/selectors';
 import {changeStatus, deleteTicket} from '../../redux/actions';
 
 import styles from './descriptionWindow.module.css';
@@ -15,7 +15,7 @@ import cn from 'classnames';
 
 
 const DescriptionWindow = ({
-    statuses,
+    columns,
     ticketId,
     boardId,
     ticket,
@@ -51,7 +51,7 @@ const DescriptionWindow = ({
                 <form className={cn(styles.element, styles.form)}>
                     <label className={styles.statusLabel}>Change status: </label>
                     <select {...register('status', {value: status})} className={styles.statusInput}>
-                            {statuses.map((item) =>
+                            {columns.map((item) =>
                             <option key={item} {...register(item)}>{item}</option> 
                         )}
                     </select>
@@ -65,7 +65,7 @@ const DescriptionWindow = ({
 };
 
 DescriptionWindow.propTypes = {
-    statuses: PropTypes.arrayOf(PropTypes.string).isRequired,
+    columns: PropTypes.arrayOf(PropTypes.string).isRequired,
     ticketId: PropTypes.string.isRequired,
     boardId: PropTypes.string.isRequired,
     ticket: PropTypes.shape({
@@ -79,7 +79,7 @@ DescriptionWindow.propTypes = {
 }
 
 const mapStateToProps = (state, props) => ({
-    statuses: statusesSelector(state),
+    columns: columnsSelector(state),
     ticket: ticketSelector(state, props),
 });
 

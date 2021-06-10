@@ -4,14 +4,10 @@ import PropTypes from 'prop-types';
 
 import { useHistory, Link } from 'react-router-dom';
 import Board from '../board';
-import Loader from '../loader';
 import CreateTicketWindow from '../createTicketWindow';
 import Button from "../button/button";
 
-import {
-    loadingSelector,
-    boardInfoSelector
-} from '../../redux/selectors';
+import {boardInfoSelector} from '../../redux/selectors';
 import {checkBoardId} from "../../redux/actions";
 
 import styles from './boardPage.module.css';
@@ -22,7 +18,6 @@ BoardPage = ({match,
                  createTicket,
                  boardInfo,
                  checkBoardIdDispatch,
-                 loading,
 }) => {
 
     const requestedTicketId = match.params.ticketId;
@@ -49,8 +44,6 @@ BoardPage = ({match,
                 <Board boardId={requestedBoardId}/>
                 {requestedTicketId ? <DescriptionWindow boardId={requestedBoardId} ticketId={requestedTicketId} /> : null}
                 {createTicket ? <CreateTicketWindow boardId={requestedBoardId} /> : null}
-
-                {loading ? <Loader /> : null}
             </div>
         );
 };
@@ -65,12 +58,10 @@ BoardPage.propTypes = {
     createTicket: PropTypes.bool,
     boardInfo: PropTypes.string,
     checkBoardIdDispatch: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired,
 }
 
 const mapStateToProps = (state, props) => ({
   boardInfo: boardInfoSelector(state, props.match.params.boardId),
-  loading: loadingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
