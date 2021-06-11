@@ -1,10 +1,10 @@
-import {LOAD_STATUSES} from '../actionTypes';
+import {LOAD_COLUMN_TITLES} from '../actionTypes';
 
 const columns = (state = [], action) => {
-    const {type, columns} = action;
+    const {type, columnTitles} = action;
     switch (type) {
-        case LOAD_STATUSES:
-            return [...state, ...columns];
+        case LOAD_COLUMN_TITLES:
+            return [...state, ...columnTitles];
         default:
             return state;
     }

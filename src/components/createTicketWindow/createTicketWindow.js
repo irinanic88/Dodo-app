@@ -15,7 +15,7 @@ import {columnsSelector} from "../../redux/selectors";
 
 const CreateTicketWindow = ({
                                 boardId,
-                                columns,
+                                statuses,
                                 createTicketRequest
 }) => {
     const {register, handleSubmit} = useForm();
@@ -28,7 +28,7 @@ const CreateTicketWindow = ({
 
     return (
         <div className={styles.modal} data-id="createTicketWindow">
-            <div className={styles.overlay}></div>
+            <div className={styles.overlay}/>
             <div className={styles.inner}>
                 <Link to={`/board/${boardId}`}>
                     <CloseButton/>
@@ -49,9 +49,9 @@ const CreateTicketWindow = ({
                     <div className={styles.formElement}>
                         <label className={styles.label}>Status: </label>
                         <select className={cn(styles.statusInput, styles.input)} 
-                                {...register('status', {value: columns[0]})}>
-                            {columns.map((item) =>
-                                <option className={styles.option} key={item}>{item}</option> 
+                                {...register('status', {value: statuses[0]})}>
+                            {statuses.map((item) =>
+                                <option key={item}>{item}</option>
                             )}
                         </select>
                     </div>
@@ -67,12 +67,12 @@ const CreateTicketWindow = ({
 
 CreateTicketWindow.propTypes = {
     boardId: PropTypes.string.isRequired,
-    columns: PropTypes.arrayOf(PropTypes.string).isRequired,
+    statuses: PropTypes.arrayOf(PropTypes.string).isRequired,
     createTicketRequest: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => ({
-    columns: columnsSelector(state),
+    statuses: columnsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch, props) => ({

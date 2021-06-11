@@ -1,7 +1,7 @@
 import {
     CREATE_BOARD,
     CHECK_BOARD_ID,
-    LOAD_STATUSES,
+    LOAD_COLUMN_TITLES,
     LOAD_TICKETS,
     CREATE_TICKET,
     CHANGE_TICKET_STATUS,
@@ -25,9 +25,9 @@ export const checkBoardId = (boardId) => ({
     boardId,
 });
 
-export const loadStatuses = (columns, boardId) => ({
-    type: LOAD_STATUSES,
-    columns,
+export const loadColumnTitles = (columnTitles, boardId) => ({
+    type: LOAD_COLUMN_TITLES,
+    columnTitles,
     boardId,
 });
 

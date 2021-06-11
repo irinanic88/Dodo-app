@@ -1,7 +1,7 @@
 export const CREATE_BOARD = 'CREATE_BOARD';
 export const CHECK_BOARD_ID = 'CHECK_BOARD_ID';
 
-export const LOAD_STATUSES = 'LOAD_STATUSES';
+export const LOAD_COLUMN_TITLES = 'LOAD_COLUMN_TITLES';
 export const LOAD_TICKETS = 'LOAD_TICKETS';
 
 export const REQUEST = '_REQUEST';

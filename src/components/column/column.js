@@ -11,10 +11,10 @@ import Ticket from '../ticket';
 import {ticketsForColumnSelector} from '../../redux/selectors';
 
 export let Column;
-Column = ({tickets, column, boardId}) => {
+Column = ({tickets, columnTitle, boardId}) => {
 
     return (
-        <Droppable droppableId={column}>
+        <Droppable droppableId={columnTitle}>
             {(provided, snapshot) => {
                 const isDraggingOver = snapshot.isDraggingOver;
                 return (
@@ -25,7 +25,7 @@ Column = ({tickets, column, boardId}) => {
                          {...provided.droppableProps}
                     >
                         <div className={styles.header}>
-                            <h2>{column}</h2>
+                            <h2>{columnTitle}</h2>
                         </div>
                         <div className={styles.headerBottomLine}/>
                         <div className={styles.body}>

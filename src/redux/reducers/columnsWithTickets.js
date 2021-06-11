@@ -1,6 +1,6 @@
 import {
     LOAD_TICKETS,
-    LOAD_STATUSES,
+    LOAD_COLUMN_TITLES,
     SUCCESS,
     FAILURE,
     REQUEST,
@@ -11,7 +11,7 @@ import {stringifyId, stringifyAll, columnsToMap, ticketsToColumns} from "../util
 const columnsWithTickets = (state={}, action) => {
     const {
         type,
-        columns,
+        columnTitles,
         boardId,
         data,
         ticketId,
@@ -20,8 +20,8 @@ const columnsWithTickets = (state={}, action) => {
         destinationIndex,
     } = action;
     switch (type) {
-        case LOAD_STATUSES: {
-            return {...state, ...columnsToMap(columns, boardId)};
+        case LOAD_COLUMN_TITLES: {
+            return {...state, ...columnsToMap(columnTitles, boardId)};
         }
         case LOAD_TICKETS + SUCCESS: {
             const loadedTickets = stringifyAll(data);
