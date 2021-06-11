@@ -39,11 +39,9 @@ const tickets = (state = {}, action) => {
                 }};
         }
         case DELETE_TICKET + SUCCESS: {
-
             return {...state, [boardId]:{
                 ...deleteKey(state[boardId], ticketId)
             }}
-
         }
 
         default:

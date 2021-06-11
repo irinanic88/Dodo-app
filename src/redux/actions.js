@@ -49,16 +49,16 @@ export const createTicket = (ticketData, {boardId}) => ({
 });
 
 export const changeStatus = (ticketId, source, destination, boardId) => ({
-        type: CHANGE_TICKET_STATUS,
-        callAPI: `${HOST}/board/${boardId}/tickets/${ticketId}/status`,
-        fetchLoadingState: null,
-        method: 'POST',
-        fetchData: JSON.stringify({'status': destination.droppableId}),
-        ticketId,
-        source,
-        destination,
-        boardId,
-    });
+    type: CHANGE_TICKET_STATUS,
+    callAPI: `${HOST}/board/${boardId}/tickets/${ticketId}/status`,
+    fetchLoadingState: null,
+    method: 'POST',
+    fetchData: JSON.stringify({'status': destination.droppableId}),
+    ticketId,
+    source,
+    destination,
+    boardId,
+});
 
 export const deleteTicket = ({ticketId, boardId}) => ({
     type: DELETE_TICKET,

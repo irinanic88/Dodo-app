@@ -74,11 +74,12 @@ const columnsWithTickets = (state={}, action) => {
             };
         }
         case DELETE_TICKET + SUCCESS: {
-
-            return {...state};
-
+            const deleteTicketFromColumn = (columns) => {
+                const newColumns = columns.map(column => ({...column, tickets: column.tickets.filter(item=>item !== ticketId)}));
+                return newColumns.reduce((acc, item) => ({...acc, [item.title]: item}), {})
+            }
+                return deleteTicketFromColumn(Object.values(state));
         }
-
         default:
             return state;
     }
