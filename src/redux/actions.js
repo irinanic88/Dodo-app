@@ -48,14 +48,15 @@ export const createTicket = (ticketData, {boardId}) => ({
     boardId,
 });
 
-export const changeStatus = (ticketId, boardId, newStatus) => ({
+export const changeStatus = (ticketId, source, destination, boardId) => ({
         type: CHANGE_TICKET_STATUS,
         callAPI: `${HOST}/board/${boardId}/tickets/${ticketId}/status`,
         fetchLoadingState: null,
         method: 'POST',
-        fetchData: JSON.stringify({'status': newStatus}),
+        fetchData: JSON.stringify({'status': destination.droppableId}),
         ticketId,
-        newStatus,
+        source,
+        destination,
         boardId,
     });
 

@@ -47,7 +47,7 @@ Column = ({tickets, column, boardId}) => {
 
 Column.propTypes = {
     status: PropTypes.string,
-    tickets: PropTypes.arrayOf(PropTypes.number).isRequired,
+    tickets: PropTypes.arrayOf(PropTypes.string).isRequired,
     boardId: PropTypes.string,
 }
 

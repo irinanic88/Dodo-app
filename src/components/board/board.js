@@ -26,10 +26,17 @@ Board = ({
     useEffect(() => loadTicketsDispatch(), [loadTicketsDispatch]);
 
     const onDragEnd = (result) => {
-        const {draggableId, destination} = result;
+        const {draggableId, destination, source} = result;
 
+        if(!destination) {
+            return;
+        }
 
-        return destination ? changeStatusDispatch(draggableId, destination.droppableId) : null;
+        if(source.droppableId === destination.droppableId && source.index === destination.index) {
+            return;
+        }
+
+       return changeStatusDispatch(draggableId, source, destination);
     };
 
     return (
@@ -57,7 +64,7 @@ Board.propTypes = {
 const mapDispatchToProps = (dispatch, props) => ({
         loadStatusesDispatch: (columns) => (dispatch(loadStatuses(columns, props.boardId))),
         loadTicketsDispatch: () => dispatch(loadTickets(props.boardId)),
-        changeStatusDispatch: (ticketId, status) => dispatch(changeStatus(ticketId, props.boardId, status))
+        changeStatusDispatch: (ticketId, source, destination) => dispatch(changeStatus(ticketId, source, destination,props.boardId))
     });
 
 export default connect(null, mapDispatchToProps) (Board);

@@ -44,11 +44,11 @@ Ticket = ({ticketId, boardId, index, ticket}) => {
 };
 
 Ticket.propTypes = {
-    ticketId: PropTypes.number,
+    ticketId: PropTypes.string,
     boardId: PropTypes.string,
     index: PropTypes.number.isRequired,
     ticket: PropTypes.shape({
-        id: PropTypes.number,
+        id: PropTypes.string,
         title: PropTypes.string,
     }),
 }

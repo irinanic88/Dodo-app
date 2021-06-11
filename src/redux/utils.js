@@ -1,8 +1,8 @@
-export const arrToMap = (arr) => 
+export const arrToMap = (arr) =>
     arr.reduce((acc, item) => ({...acc, [item.id]: item}), {});
 
 export const deleteKey = (obj, id) => {
-    return Object.entries(obj).filter(([key]) => key !== id.toString())
+    return Object.entries(obj).filter(([key]) => key !== id)
                 .reduce((acc, [key, value]) => ({...acc, [key]: value}) ,{});
 };
 
@@ -25,3 +25,5 @@ export const ticketsToColumns = (columns, tickets) => {
         }), {})
     )
 };
+export const stringifyId = (ticket) => ({...ticket, id: ticket.id.toString()});
+export const stringifyAll = (tickets) => tickets.map(ticket => stringifyId(ticket));

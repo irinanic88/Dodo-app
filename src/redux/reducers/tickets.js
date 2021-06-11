@@ -5,7 +5,7 @@ import {
     LOAD_TICKETS, 
     SUCCESS, 
 } from '../actionTypes';
-import {arrToMap, deleteKey} from '../utils';
+import {stringifyId, stringifyAll,arrToMap, deleteKey} from '../utils';
 
 const tickets = (state = {}, action) => {
     const {
@@ -13,17 +13,19 @@ const tickets = (state = {}, action) => {
         data,
         ticketId,
         boardId,
-        newStatus,
+        destination
     } = action;
 
     switch(type) {
         case LOAD_TICKETS + SUCCESS: {
-            return {...state, [boardId]: { ...arrToMap(data)}};
+            const loadedTickets = stringifyAll(data);
+            return {...state, [boardId]: { ...arrToMap(loadedTickets)}};
         }
         case CREATE_TICKET + SUCCESS: {
+            const newTicketData = stringifyId(data);
             return {
                 ...state, [boardId]: {
-                    ...state[boardId], [data.id]: data
+                    ...state[boardId], [newTicketData.id]: newTicketData
                 }
             }
         }
@@ -32,7 +34,7 @@ const tickets = (state = {}, action) => {
             return {...state, [boardId]: {
                 ...state[boardId], [ticketId]: {
                         ...state[boardId][ticketId],
-                        status: newStatus,
+                        status: destination.droppableId,
                     }
                 }};
         }
