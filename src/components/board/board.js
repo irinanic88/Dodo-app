@@ -36,7 +36,7 @@ Board = ({
             return;
         }
 
-       return changeStatusDispatch(draggableId, source, destination);
+       return changeStatusDispatch(draggableId, source.droppableId, destination.droppableId, destination.index);
     };
 
     return (
@@ -64,7 +64,8 @@ Board.propTypes = {
 const mapDispatchToProps = (dispatch, props) => ({
         loadStatusesDispatch: (columns) => (dispatch(loadStatuses(columns, props.boardId))),
         loadTicketsDispatch: () => dispatch(loadTickets(props.boardId)),
-        changeStatusDispatch: (ticketId, source, destination) => dispatch(changeStatus(ticketId, source, destination,props.boardId))
+        changeStatusDispatch: (ticketId, sourceColumnTitle, destinationColumnTitle, destinationIndex) =>
+            dispatch(changeStatus(ticketId, sourceColumnTitle, destinationColumnTitle, destinationIndex, props.boardId))
     });
 
 export default connect(null, mapDispatchToProps) (Board);

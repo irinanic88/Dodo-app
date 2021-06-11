@@ -33,8 +33,8 @@ const DescriptionWindow = ({
 
     const handleChangeStatus = (event) => {
         event.preventDefault();
-        const newStatus = getValues('status');
-        return changeStatusDispatcher(newStatus);
+        const destinationColumnTitle = getValues('status');
+        return changeStatusDispatcher(ticketId, ticket.status, destinationColumnTitle, 0, boardId);
     };
 
     return (
@@ -84,7 +84,8 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-    changeStatusDispatcher: (newStatus) => dispatch(changeStatus(props.ticketId, props.boardId, newStatus)),
+    changeStatusDispatcher: (ticketId, sourceColumnTitle, destinationColumnTitle, destinationIndex, boardId) =>
+        dispatch(changeStatus(ticketId, sourceColumnTitle, destinationColumnTitle, destinationIndex, boardId)),
     deleteTicketDispatcher: () => dispatch(deleteTicket(props)),
 });
 

@@ -13,7 +13,7 @@ const tickets = (state = {}, action) => {
         data,
         ticketId,
         boardId,
-        destination
+        destinationColumnTitle,
     } = action;
 
     switch(type) {
@@ -34,7 +34,7 @@ const tickets = (state = {}, action) => {
             return {...state, [boardId]: {
                 ...state[boardId], [ticketId]: {
                         ...state[boardId][ticketId],
-                        status: destination.droppableId,
+                        status: destinationColumnTitle,
                     }
                 }};
         }

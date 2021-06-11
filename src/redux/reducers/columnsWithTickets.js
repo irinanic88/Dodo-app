@@ -15,8 +15,9 @@ const columnsWithTickets = (state={}, action) => {
         boardId,
         data,
         ticketId,
-        source,
-        destination
+        sourceColumnTitle,
+        destinationColumnTitle,
+        destinationIndex,
     } = action;
     switch (type) {
         case LOAD_STATUSES: {
@@ -37,20 +38,16 @@ const columnsWithTickets = (state={}, action) => {
             }
         }
         case CHANGE_TICKET_STATUS + REQUEST: {
-            const start = source.droppableId;
-            const finish = destination.droppableId;
-
-            const finishTicketsArray = state[finish].tickets.filter(item => item !== ticketId);
-            const destinationIndex = destination.index;
+            const finishTicketsArray = state[destinationColumnTitle].tickets.filter(item => item !== ticketId);
 
             return {
                 ...state,
-                [start]: {
-                    ...state[start],
-                    tickets: state[start].tickets.filter(item => item !== ticketId)
+                [sourceColumnTitle]: {
+                    ...state[sourceColumnTitle],
+                    tickets: state[sourceColumnTitle].tickets.filter(item => item !== ticketId)
                 },
-                [finish]: {
-                    ...state[finish],
+                [destinationColumnTitle]: {
+                    ...state[destinationColumnTitle],
                     tickets: [...finishTicketsArray.slice(0, destinationIndex),
                                 ticketId,
                                 ...finishTicketsArray.slice(destinationIndex,finishTicketsArray.length)]
@@ -58,18 +55,15 @@ const columnsWithTickets = (state={}, action) => {
             };
         }
         case CHANGE_TICKET_STATUS + FAILURE: {
-                const start = source.droppableId;
-                const finish = destination.droppableId;
-
             return {
                 ...state,
-                [start]: {
-                    ...state[start],
-                    tickets: [...state[start].tickets, ticketId]
+                [sourceColumnTitle]: {
+                    ...state[sourceColumnTitle],
+                    tickets: [...state[sourceColumnTitle].tickets, ticketId]
                 },
-                [finish]: {
-                    ...state[finish],
-                    tickets: state[finish].tickets.filter(item => item !== ticketId)
+                [destinationColumnTitle]: {
+                    ...state[destinationColumnTitle],
+                    tickets: state[destinationColumnTitle].tickets.filter(item => item !== ticketId)
                 }
             };
         }
