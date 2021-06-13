@@ -9,7 +9,6 @@ import {createNewBoard} from '../../redux/actions';
 import {newBoardIdSelector} from "../../redux/selectors";
 
 import {useHistory, Link} from 'react-router-dom';
-import {HOST} from '../../constants';
 import Button from "../button/button";
 import {useForm} from "react-hook-form";
 
@@ -41,7 +40,7 @@ const OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
                       <div>
                           <p className={cn(styles.element, styles.text)}>Go to your board:</p>
                           <Link to={`/board/${newBoardId}`} className={cn(styles.element, styles.newBoardLink)}>
-                              {`${HOST}/board/${newBoardId}`}
+                              {window.location.origin}/board/{newBoardId}
                           </Link>
                       </div>
                   : <div className={styles.create}>
