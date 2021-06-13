@@ -3,11 +3,13 @@ import {combineReducers} from 'redux';
 import board from './board';
 import tickets from './tickets';
 import loader from './loader';
-import  statuses from './statuses';
+import  columns from './columns';
+import columnsWithTickets from "./columnsWithTickets";
 
 export default combineReducers({
     board,
-    statuses,
+    columns,
     tickets,
+    columnsWithTickets,
     loader,
 });

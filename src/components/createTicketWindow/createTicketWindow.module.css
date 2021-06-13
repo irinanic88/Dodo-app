@@ -47,7 +47,7 @@
 .input:focus{
     outline: none;
     border: solid 2px var(--dark-grey-font);
-    color: var(--light-grey-font);
+    color: var(--dark-grey-font);
 }
 
 .title {

@@ -1,7 +1,7 @@
 import {
     CREATE_BOARD,
     CHECK_BOARD_ID,
-    LOAD_STATUSES,
+    LOAD_COLUMN_TITLES,
     LOAD_TICKETS,
     CREATE_TICKET,
     CHANGE_TICKET_STATUS,
@@ -25,9 +25,10 @@ export const checkBoardId = (boardId) => ({
     boardId,
 });
 
-export const loadStatuses = (statuses) => ({
-    type: LOAD_STATUSES,
-    statuses: statuses,
+export const loadColumnTitles = (columnTitles, boardId) => ({
+    type: LOAD_COLUMN_TITLES,
+    columnTitles,
+    boardId,
 });
 
 export const loadTickets = (boardId) => ({
@@ -47,16 +48,24 @@ export const createTicket = (ticketData, {boardId}) => ({
     boardId,
 });
 
-export const changeStatus = (ticketId, boardId, newStatus) => ({
-        type: CHANGE_TICKET_STATUS,
-        callAPI: `${HOST}/board/${boardId}/tickets/${ticketId}/status`,
-        fetchLoadingState: null,
-        method: 'POST',
-        fetchData: JSON.stringify({'status': newStatus}),
-        ticketId,
-        newStatus,
-        boardId,
-    });
+export const changeStatus = (
+    ticketId,
+    sourceColumnTitle,
+    destinationColumnTitle,
+    destinationIndex,
+    boardId
+) => ({
+    type: CHANGE_TICKET_STATUS,
+    callAPI: `${HOST}/board/${boardId}/tickets/${ticketId}/status`,
+    fetchLoadingState: null,
+    method: 'POST',
+    fetchData: JSON.stringify({'status': destinationColumnTitle}),
+    ticketId,
+    sourceColumnTitle,
+    destinationColumnTitle,
+    destinationIndex,
+    boardId,
+});
 
 export const deleteTicket = ({ticketId, boardId}) => ({
     type: DELETE_TICKET,

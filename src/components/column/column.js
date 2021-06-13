@@ -11,10 +11,10 @@ import Ticket from '../ticket';
 import {ticketsForColumnSelector} from '../../redux/selectors';
 
 export let Column;
-Column = ({tickets, status, boardId}) => {
+Column = ({tickets, columnTitle, boardId}) => {
 
     return (
-        <Droppable droppableId={status}>
+        <Droppable droppableId={columnTitle}>
             {(provided, snapshot) => {
                 const isDraggingOver = snapshot.isDraggingOver;
                 return (
@@ -25,9 +25,9 @@ Column = ({tickets, status, boardId}) => {
                          {...provided.droppableProps}
                     >
                         <div className={styles.header}>
-                            <h2>{status}</h2>
+                            <h2>{columnTitle}</h2>
                         </div>
-                        <div className={styles.headerBottomLine}></div>
+                        <div className={styles.headerBottomLine}/>
                         <div className={styles.body}>
                             {tickets.map((ticketId, index) =>
                                 <Ticket key={ticketId}
@@ -47,7 +47,7 @@ Column = ({tickets, status, boardId}) => {
 
 Column.propTypes = {
     status: PropTypes.string,
-    tickets: PropTypes.arrayOf(PropTypes.number).isRequired,
+    tickets: PropTypes.arrayOf(PropTypes.string).isRequired,
     boardId: PropTypes.string,
 }
 

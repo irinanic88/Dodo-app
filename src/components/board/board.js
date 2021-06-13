@@ -6,25 +6,45 @@ import PropTypes from 'prop-types';
 import styles from './board.module.css';
 
 import Column from '../column';
+import {columnTitles} from '../../columns';
 
-import {statusesSelector} from '../../redux/selectors';
-import {loadTickets, changeStatus} from '../../redux/actions';
+import {
+    loadColumnTitles,
+    loadTickets,
+    changeStatus
+} from '../../redux/actions';
 
 export let Board;
-Board = ({boardId, statuses, loadTicketsDispatch, changeStatusDispatcher}) => {
-    useEffect(() => loadTicketsDispatch(boardId), [loadTicketsDispatch, boardId]);
+Board = ({
+             boardId,
+             loadTicketsDispatch,
+             loadColumnTitlesDispatch,
+             changeStatusDispatch
+}) => {
+
+    useEffect(() => loadColumnTitlesDispatch(columnTitles), [loadColumnTitlesDispatch]);
+    useEffect(() => loadTicketsDispatch(), [loadTicketsDispatch]);
 
     const onDragEnd = (result) => {
-        const {draggableId, destination} = result;
-        return destination ? changeStatusDispatcher(draggableId, destination.droppableId) : null;
+        const {draggableId, destination, source} = result;
+
+        if(!destination) {
+            return;
+        }
+
+        if(source.droppableId === destination.droppableId && source.index === destination.index) {
+            return;
+        }
+
+       return changeStatusDispatch(draggableId, source.droppableId, destination.droppableId, destination.index);
     };
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <div className={styles.board} data-id="board">
-                {statuses.map((status) => (
-                    <div className={styles.column} data-id="column-wrapper" key={status}>
-                        <Column boardId={boardId} status={status}/>
+                {columnTitles.map((column) => (
+                    <div className={styles.column} data-id="column-wrapper" key={column}>
+                        <Column boardId={boardId} columnTitle={column}/>
                     </div>
                 ))}
             </div>
@@ -34,20 +54,18 @@ Board = ({boardId, statuses, loadTicketsDispatch, changeStatusDispatcher}) => {
 
 Board.propTypes = {
     boardId: PropTypes.string.isRequired,
-    statuses: PropTypes.arrayOf(
+    columnTitles: PropTypes.arrayOf(
             PropTypes.string,
-        ).isRequired,
+        ),
     loadTicketsDispatch: PropTypes.func.isRequired,
-    changeStatusDispatcher: PropTypes.func.isRequired,
+    changeStatusDispatcher: PropTypes.func,
 };
 
-const mapStateToProps = (state) => ({
-   statuses: statusesSelector(state),
-});
-
 const mapDispatchToProps = (dispatch, props) => ({
-        loadTicketsDispatch: (boardId) => dispatch(loadTickets(boardId)),
-        changeStatusDispatcher: (ticketId, status) => dispatch(changeStatus(ticketId, props.boardId, status))
+        loadColumnTitlesDispatch: (columnTitles) => (dispatch(loadColumnTitles(columnTitles, props.boardId))),
+        loadTicketsDispatch: () => dispatch(loadTickets(props.boardId)),
+        changeStatusDispatch: (ticketId, sourceColumnTitle, destinationColumnTitle, destinationIndex) =>
+            dispatch(changeStatus(ticketId, sourceColumnTitle, destinationColumnTitle, destinationIndex, props.boardId))
     });
 
-export default connect(mapStateToProps, mapDispatchToProps) (Board);
+export default connect(null, mapDispatchToProps) (Board);

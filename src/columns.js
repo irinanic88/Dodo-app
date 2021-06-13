@@ -1,0 +1,1 @@
+export const columnTitles = ['to do', 'in progress', 'in review', 'done'];

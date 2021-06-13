@@ -11,9 +11,13 @@ import Button from '../button';
 import CloseButton from '../button/closeButton/closeButton';
 
 import {createTicket} from '../../redux/actions';
-import {statusesSelector} from "../../redux/selectors";
+import {columnsSelector} from "../../redux/selectors";
 
-const CreateTicketWindow = ({boardId, statuses, createTicketRequest}) => {
+const CreateTicketWindow = ({
+                                boardId,
+                                statuses,
+                                createTicketRequest
+}) => {
     const {register, handleSubmit} = useForm();
     const history = useHistory();
 
@@ -24,7 +28,7 @@ const CreateTicketWindow = ({boardId, statuses, createTicketRequest}) => {
 
     return (
         <div className={styles.modal} data-id="createTicketWindow">
-            <div className={styles.overlay}></div>
+            <div className={styles.overlay}/>
             <div className={styles.inner}>
                 <Link to={`/board/${boardId}`}>
                     <CloseButton/>
@@ -47,7 +51,7 @@ const CreateTicketWindow = ({boardId, statuses, createTicketRequest}) => {
                         <select className={cn(styles.statusInput, styles.input)} 
                                 {...register('status', {value: statuses[0]})}>
                             {statuses.map((item) =>
-                                <option className={styles.option} key={item}>{item}</option> 
+                                <option key={item}>{item}</option>
                             )}
                         </select>
                     </div>
@@ -68,7 +72,7 @@ CreateTicketWindow.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-    statuses: statusesSelector(state),
+    statuses: columnsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
