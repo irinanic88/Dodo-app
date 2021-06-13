@@ -4,7 +4,7 @@ const columns = (state = [], action) => {
     const {type, columnTitles} = action;
     switch (type) {
         case LOAD_COLUMN_TITLES:
-            return [...state, ...columnTitles];
+            return [...columnTitles];
         default:
             return state;
     }
