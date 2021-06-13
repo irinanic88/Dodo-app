@@ -9,12 +9,22 @@
     display: block;
 }
 
+.overlay {
+    height: 100%;
+    width: 100%;
+    background-color: var(--background-fill);
+    opacity: 0.75;
+}
+
 .inner {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
-    height: 100%;
+    height: auto;
     background-color: white;
-    padding: 4rem 7rem;
+    padding: 3rem;
 }
 
 .element {
@@ -34,16 +44,21 @@
 }
 
 .description {
-    height: 20rem;
+    height: 10rem;
     font-size: 1.6rem;
     word-wrap: break-word;
     overflow-y: auto;
 }
 
 .form {
+    margin: 0 auto;
     display: flex;
-    justify-content: left;
+    flex-direction: column;
     align-items: center;
+}
+
+.formElement {
+    margin-bottom: 1rem;
 }
 
 .statusLabel {
@@ -66,20 +81,23 @@
 
 .submit {
     height: 3rem;
-    padding: 0 3rem ;
-    background-color: white;
-    border: solid 2px var(--light-grey-font);
+    background-color: var(--light-grey-font);
+    color: white;
+    border: none;
     border-radius: 30px;
     font-size: 1.6rem;
     font-weight: 700;
+    width: 80%;
 }
 
 .submit:hover{
+    color: var(--dark-grey-font);
+    background-color: white;
     border: solid 2px var(--dark-grey-font);
 }
 
 .submit:focus{
-    border: solid 2px var(--dark-grey-font);
+    color: var(--dark-grey-font);
 }
 
 .submit:active{
@@ -93,25 +111,24 @@
     align-items: center;
 }
 
-@media (min-width: 768px) {
-    .overlay {
-        height: 100%;
-        width: 100%;
-        background-color: var(--background-fill);
-        opacity: 0.75;
-    }
+.delete {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
 
+@media (min-width: 768px) {
     .inner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         width: 60%;
-        height: auto;
-        background-color: white;
+        padding: 4rem;
         border: solid 2px var(--light-grey-font);
         border-radius: 5px;
     }
-}
 
+    .form {
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+    }
+}
 

@@ -49,16 +49,18 @@ const DescriptionWindow = ({
             <p className={cn(styles.element, styles.description)}>{description}</p>
             <div className={styles.options}>
                 <form className={cn(styles.element, styles.form)}>
-                    <label className={styles.statusLabel}>Change status: </label>
-                    <select {...register('status', {value: status})} className={styles.statusInput}>
+                    <label className={cn(styles.statusLabel, styles.formElement)}>Change status: </label>
+                    <select {...register('status', {value: status})} className={cn(styles.statusInput, styles.formElement)}>
                             {columns.map((item) =>
                             <option key={item} {...register(item)}>{item}</option> 
                         )}
                     </select>
-                    <button className={styles.submit} onClick={handleChangeStatus}>Submit</button>
+                    <button className={cn(styles.submit, styles.formElement)} onClick={handleChangeStatus}>Submit</button>
                 </form>
             </div>
-            <Button name={'Delete ticket'} onClick={deleteTicketDispatcher}/>
+            <div className={styles.delete}>
+                <Button name={'Delete ticket'} onClick={deleteTicketDispatcher}/>
+            </div>
         </div>
     </div>
     );
