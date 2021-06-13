@@ -9,17 +9,22 @@
     display: block;
 }
 
-.inner {
-    position: absolute;
-    width: 100%;
+.overlay {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
+    width: 100%;
+    background-color: var(--background-fill);
+    opacity: 0.75;
 }
 
-.form {
-    margin: 4rem 7rem;
+.inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+    background-color: white;
+    padding: 3rem;
 }
 
 .formElement {
@@ -72,25 +77,12 @@
 }
 
 @media (min-width: 768px) {
-    .overlay {
-        height: 100%;
-        width: 100%;
-        background-color: var(--background-fill);
-        opacity: 0.75;
-    }
-
     .inner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        height: auto;
         width: 60%;
-        display: flex;
-        border-radius: 5px;
+        padding: 4rem;
         border: solid 2px var(--light-grey-font);
+        border-radius: 5px;
     }
-
 }
 
 
