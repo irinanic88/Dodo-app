@@ -28,8 +28,9 @@ BoardPage = ({match,
     useEffect(() => {
         if ( requestedTicketId || createTicket ) {
            return document.body.style.overflow = 'hidden';
+        } else {
+            return document.body.style.overflow = 'auto';
         }
-        return null;
     }, [requestedTicketId, createTicket]);
 
     if (boardInfo === undefined) {
