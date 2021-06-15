@@ -30,7 +30,6 @@ const OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
               <form className={styles.form}>
                   <label className={cn(styles.element, styles.text)}>Introduce your board ID:</label>
                   <input className={cn(styles.element, styles.input)}
-                         placeholder={`ex: Qwerty123`}
                          {...register('boardId')}
                   />
                   <Button className={styles.element} name={'Open'} onClick={openBoard}/>
