@@ -25,6 +25,13 @@ BoardPage = ({match,
     const history = useHistory();
 
     useEffect(() => checkBoardIdDispatch(requestedBoardId), [checkBoardIdDispatch, requestedBoardId]);
+    useEffect(() => {
+        if ( requestedTicketId || createTicket ) {
+           return document.body.style.overflow = 'hidden';
+        } else {
+            return document.body.style.overflow = 'auto';
+        }
+    }, [requestedTicketId, createTicket]);
 
     if (boardInfo === undefined) {
         return null;
@@ -34,7 +41,7 @@ BoardPage = ({match,
     }
 
         return (
-            <div data-id="app">
+            <div>
                 <div className={styles.header} data-id="header">
                     <h2 className={styles.boardNumber}>Board: {requestedBoardId}</h2>
                     <Link to={`/board/${requestedBoardId}/tickets/create`}>
