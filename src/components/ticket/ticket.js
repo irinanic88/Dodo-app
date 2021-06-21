@@ -17,13 +17,14 @@ Ticket = ({openDescriptionModal, ticket, index}) => {
                 return (
                     <div onClick={openDescriptionModal}
                          className={cn(styles.ticket, {[styles.drag]: isDragging})}
+                         data-id="ticket"
                          ref={provided.innerRef}
                          {...provided.draggableProps}
                          {...provided.dragHandleProps}
                     >
                         <div className={styles.info}>
-                            <p className={styles.name}>{title}</p>
-                            <p className={styles.number}>{id}</p>
+                            <p className={styles.name} data-id="title">{title}</p>
+                            <p className={styles.number} data-id="number">{id}</p>
                         </div>
                     </div>
                     )

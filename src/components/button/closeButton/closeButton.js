@@ -6,7 +6,7 @@ import styles from './closeButton.module.css';
 
 export const CloseButton = ({onClick}) => {
     return (
-        <button className={styles.button} onClick={onClick}>
+        <button className={styles.button} onClick={onClick} data-id="closeButton">
             <CloseCross className={styles.closeCross}/>
             <CloseRound className={styles.closeRound}/>
         </button>

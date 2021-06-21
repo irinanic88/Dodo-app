@@ -26,7 +26,6 @@ const store = (displayCreateTicketWindow, displayDescriptionWindow, loading) => 
     });
 }
 
-
 describe('App', () => {
     it('should render', () => {
        const wrapper = mount(
