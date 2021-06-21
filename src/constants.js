@@ -1,1 +1,1 @@
-export const HOST = 'https://api.dodo-app.net/api';
+export const HOST = 'http://localhost:8080/api';
