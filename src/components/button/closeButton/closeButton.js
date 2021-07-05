@@ -7,7 +7,7 @@ import { ReactComponent as CloseCross } from '../../../icons/closeCross.svg';
 
 export const CloseButton = () => {
     return (
-        <button className={styles.button}>
+        <button className={styles.button} data-id="closeButton">
             <CloseCross className={styles.closeCross}/>
             <CloseRound className={styles.closeRound}/>
         </button>

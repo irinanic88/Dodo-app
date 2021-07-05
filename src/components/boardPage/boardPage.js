@@ -41,7 +41,7 @@ BoardPage = ({match,
     }
 
         return (
-            <div>
+            <div data-id="board-page">
                 <div className={styles.header} data-id="header">
                     <h2 className={styles.boardNumber}>Board: {requestedBoardId}</h2>
                     <Link to={`/board/${requestedBoardId}/tickets/create`}>
