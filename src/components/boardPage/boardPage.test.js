@@ -3,7 +3,7 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { Provider } from "react-redux";
 import configureMockStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
-import BoardPage from "./boardPage";
+import {BoardPage} from "./boardPage";
 import React from "react";
 
 Enzyme.configure({adapter: new Adapter()});
@@ -14,11 +14,6 @@ const simulateMatch = {params: {
         ticketId: '1',
         }
     };
-const simulateMatchWithoutTicketId = {params: {
-        boardId: '123456789',
-    }
-};
-const mockFunction = jest.fn();
 const mockStore = configureMockStore();
 const store = (loading) => {
     return mockStore({
@@ -63,7 +58,7 @@ const store = (loading) => {
         }
     });
 }
-
+const checkBoardIdDispatchMock = jest.fn();
 
 describe('BoardPage', () => {
     it('should render', () => {
@@ -72,6 +67,7 @@ describe('BoardPage', () => {
                <Provider store={store(false)}>
                    <BoardPage boardInfo={simulateBoardInfo}
                               match={simulateMatch}
+                              checkBoardIdDispatch={checkBoardIdDispatchMock}
                    />
                </Provider>
            </MemoryRouter>
@@ -79,4 +75,17 @@ describe('BoardPage', () => {
        expect(wrapper.find('[data-id="board-page"]').length).toBe(1);
     });
 
+    it('should run checkBoardIdDispatch when renders', () => {
+        const wrapper = mount(
+            <MemoryRouter>
+                <Provider store={store(false)}>
+                    <BoardPage boardInfo={simulateBoardInfo}
+                               match={simulateMatch}
+                               checkBoardIdDispatch={checkBoardIdDispatchMock}
+                    />
+                </Provider>
+            </MemoryRouter>
+        );
+        expect(checkBoardIdDispatchMock.mock.calls.length).toBe(1);
+    })
 });
