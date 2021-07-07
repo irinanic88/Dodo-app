@@ -18,5 +18,9 @@
     color: var(--light-grey-font);
 }
 
+.button:disabled{
+    border: solid 1px var(--light-grey-font);
+}
+
 
   

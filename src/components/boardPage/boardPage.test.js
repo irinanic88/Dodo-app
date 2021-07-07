@@ -15,11 +15,7 @@ const simulateMatch = {params: {
         }
     };
 const mockStore = configureMockStore();
-const store = (loading) => {
-    return mockStore({
-        loader: {
-            loading: loading,
-        },
+const store = mockStore({
         tickets: { '123456789': {
                 '1': {
                     status: 'to do',
@@ -57,14 +53,14 @@ const store = (loading) => {
             '123456789': '123456789'
         }
     });
-}
+
 const checkBoardIdDispatchMock = jest.fn();
 
 describe('BoardPage', () => {
     it('should render', () => {
        const wrapper = mount(
            <MemoryRouter>
-               <Provider store={store(false)}>
+               <Provider store={store}>
                    <BoardPage boardInfo={simulateBoardInfo}
                               match={simulateMatch}
                               checkBoardIdDispatch={checkBoardIdDispatchMock}
@@ -78,7 +74,7 @@ describe('BoardPage', () => {
     it('should run checkBoardIdDispatch when renders', () => {
         const wrapper = mount(
             <MemoryRouter>
-                <Provider store={store(false)}>
+                <Provider store={store}>
                     <BoardPage boardInfo={simulateBoardInfo}
                                match={simulateMatch}
                                checkBoardIdDispatch={checkBoardIdDispatchMock}
