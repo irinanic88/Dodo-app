@@ -9,7 +9,7 @@ import { CreateTicketWindow } from './createTicketWindow';
 Enzyme.configure({ adapter: new Adapter() });
 
 const simulateBoardId = '123456789';
-const simulateStatuses = ['to do', 'in progress', 'in review', 'done'];
+const simulateStatuses = ['one', 'two', 'three'];
 const createTicketRequestMock = jest.fn();
 
 
@@ -47,6 +47,21 @@ describe('CreateTicketWindow', () => {
         );
         wrapper.find('input').simulate('change', { target: {value: '1'}});
         expect(wrapper.find('[data-id="button"]').props().disabled).toEqual(false);
+    });
+
+    it('constructs select options from given array', () => {
+        const wrapper = mount(
+            <MemoryRouter>
+                <CreateTicketWindow boardId={simulateBoardId}
+                                    statuses={simulateStatuses}
+                                    createTicketRequest={createTicketRequestMock}/>
+            </MemoryRouter>
+        );
+        expect(wrapper.find('option')).toHaveLength(3);
+        expect(wrapper.findWhere(node => {
+            return node.type() === 'option' && node.text() === 'one'
+        })).toHaveLength(1);
+
     });
 
 });
