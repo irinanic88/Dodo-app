@@ -1,4 +1,7 @@
-import Enzyme, { mount, shallow } from 'enzyme';
+
+import React from "react";
+import Enzyme, { mount } from 'enzyme';
+
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { Provider } from "react-redux";
 import configureMockStore from 'redux-mock-store';

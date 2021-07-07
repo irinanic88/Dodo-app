@@ -12,7 +12,8 @@ import {useHistory, Link} from 'react-router-dom';
 import Button from "../button/button";
 import {useForm} from "react-hook-form";
 
-const OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
+export let OpenCreateBoard;
+OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
     const { register, getValues } = useForm();
     const history = useHistory();
 
@@ -25,7 +26,7 @@ const OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
     }
 
     return (
-      <div>
+      <div data-id="open-create-board">
           <div className={styles.inner}>
               <form className={styles.form}>
                   <label className={cn(styles.element, styles.text)}>Introduce your board ID:</label>
@@ -36,15 +37,20 @@ const OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
               </form>
               {
                   newBoardId ?
-                      <div>
+                      <div data-id="new-board-link">
                           <p className={cn(styles.element, styles.text)}>Go to your board:</p>
-                          <Link to={`/board/${newBoardId}`} className={cn(styles.element, styles.newBoardLink)}>
+                          <Link to={`/board/${newBoardId}`}
+                                className={cn(styles.element, styles.newBoardLink)}
+                          >
                               {window.location.origin}/board/{newBoardId}
                           </Link>
                       </div>
-                  : <div className={styles.create}>
+                  : <div className={styles.create} data-id="create-new-board">
                           <p className={cn(styles.element, styles.text)}>Or generate a new board:</p>
-                          <Button className={styles.element} name={'Create'} onClick={createNewBoardDispatch}/>
+                          <Button className={styles.element}
+                                  name={'Create'}
+                                  onClick={createNewBoardDispatch}
+                          />
                     </div>
               }
           </div>
