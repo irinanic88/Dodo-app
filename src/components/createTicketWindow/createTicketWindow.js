@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -13,7 +13,8 @@ import CloseButton from '../button/closeButton/closeButton';
 import {createTicket} from '../../redux/actions';
 import {columnsSelector} from "../../redux/selectors";
 
-const CreateTicketWindow = ({
+export let CreateTicketWindow;
+CreateTicketWindow = ({
                                 boardId,
                                 statuses,
                                 createTicketRequest
@@ -26,8 +27,10 @@ const CreateTicketWindow = ({
         history.push(`/board/${boardId}`);
     }
 
+    const [inputValue, setInputValue] = useState('');
+
     return (
-        <div className={styles.modal} data-id="createTicketWindow">
+        <div className={styles.modal} data-id="create-ticket-window">
             <div className={styles.overlay}/>
             <div className={styles.inner}>
                 <Link to={`/board/${boardId}`}>
@@ -37,18 +40,19 @@ const CreateTicketWindow = ({
                     <div className={styles.formElement}>
                         <label className={styles.label}>Title:</label>
                         <input {...register('title')} required maxLength={50} type="text" size="50"
+                               onChange={(event => setInputValue(event.target.value))}
                         className={cn(styles.title, styles.input)} />
                     </div>
                     <div className={cn(styles.formElement, styles.description)}>
                         <label className={styles.label}>Description:</label>
-                        <textarea {...register('description', {required: true})} 
+                        <textarea {...register('description')}
                             type="text" id="create-description" size="2000" 
                             className={cn(styles.input, styles.descriptionInput)}>
                         </textarea>
                     </div>
                     <div className={styles.formElement}>
                         <label className={styles.label}>Status: </label>
-                        <select className={cn(styles.statusInput, styles.input)} 
+                         <select className={cn(styles.statusInput, styles.input)}
                                 {...register('status', {value: statuses[0]})}>
                             {statuses.map((item) =>
                                 <option key={item}>{item}</option>
@@ -56,7 +60,9 @@ const CreateTicketWindow = ({
                         </select>
                     </div>
                     <div className={styles.buttons}>
-                        <Button name={'Create'} onClick={() => {}}/>
+                        <Button name={'Create'}
+                                onClick={() => {}}
+                                isDisabled={inputValue === ''}/>
                     </div>
 
                 </form>
