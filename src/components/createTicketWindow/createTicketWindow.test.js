@@ -61,7 +61,6 @@ describe('CreateTicketWindow', () => {
         expect(wrapper.findWhere(node => {
             return node.type() === 'option' && node.text() === 'one'
         })).toHaveLength(1);
-
     });
 
 });

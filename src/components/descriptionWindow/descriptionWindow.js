@@ -13,8 +13,8 @@ import {changeStatus, deleteTicket} from '../../redux/actions';
 import styles from './descriptionWindow.module.css';
 import cn from 'classnames';
 
-
-const DescriptionWindow = ({
+export let DescriptionWindow;
+DescriptionWindow = ({
     columns,
     ticketId,
     boardId,
@@ -38,7 +38,7 @@ const DescriptionWindow = ({
     };
 
     return (
-    <div className={styles.modal} data-id="descriptionWindow">
+    <div className={styles.modal} data-id="description-window">
         <div className={styles.overlay} />
         <div className={styles.inner}>
             <Link to={`/board/${boardId}`}>
@@ -50,7 +50,7 @@ const DescriptionWindow = ({
             <div className={styles.options}>
                 <form className={cn(styles.element, styles.form)}>
                     <label className={cn(styles.statusLabel, styles.formElement)}>Change status: </label>
-                    <select {...register('status', {value: status})} className={cn(styles.statusInput, styles.formElement)}>
+                    <select {...register('status')} value={status} className={cn(styles.statusInput, styles.formElement)}>
                             {columns.map((item) =>
                             <option key={item} {...register(item)}>{item}</option> 
                         )}
