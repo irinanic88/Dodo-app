@@ -15,43 +15,52 @@ import {useForm} from "react-hook-form";
 export let OpenCreateBoard;
 OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
     const { register, getValues } = useForm();
+
     const history = useHistory();
 
     const openBoard = (event) => {
         event.preventDefault();
+
         const boardId = getValues('boardId');
+
         if (boardId) {
             history.push(`/board/${boardId}`);
         }
     }
 
+    const submitCreateNewBoard = (event) => {
+        event.preventDefault();
+        createNewBoardDispatch();
+    }
+
     return (
-      <div data-id="open-create-board">
-          <div className={styles.inner}>
+      <div className={styles.container} data-id="open-create-board">
+          <div className={cn(styles.inner, styles.container__inner)}>
               <form className={styles.form}>
-                  <label className={cn(styles.element, styles.text)}>Introduce your board ID:</label>
-                  <input className={cn(styles.element, styles.input)}
+                  <label className={cn(styles.form__label, styles.form__items)}>Introduce your board ID:</label>
+                  <input className={cn(styles.form__input, styles.form__items)}
                          {...register('boardId')}
                   />
-                  <Button className={styles.element} name={'Open'} onClick={openBoard}/>
+                  <Button className={styles.form__items} name={'Open'} onClick={openBoard}/>
               </form>
               {
                   newBoardId ?
-                      <div data-id="new-board-link">
-                          <p className={cn(styles.element, styles.text)}>Go to your board:</p>
+                      <form className={styles.form} data-id="new-board-link">
+                          <label className={cn(styles.form__label, styles.form__items)}>Click here to open your board:</label>
                           <Link to={`/board/${newBoardId}`}
-                                className={cn(styles.element, styles.newBoardLink)}
+                                className={cn(styles.form__link, styles.form__items)}
                           >
                               {window.location.origin}/board/{newBoardId}
                           </Link>
-                      </div>
-                  : <div className={styles.create} data-id="create-new-board">
-                          <p className={cn(styles.element, styles.text)}>Or generate a new board:</p>
-                          <Button className={styles.element}
+                      </form>
+                  :
+                      <form className={styles.form} data-id="create-new-board">
+                          <label className={cn(styles.form__label, styles.form__items)}>Or generate a new board:</label>
+                          <Button className={styles.form__items}
                                   name={'Create'}
-                                  onClick={createNewBoardDispatch}
+                                  onClick={submitCreateNewBoard}
                           />
-                    </div>
+                    </form>
               }
           </div>
       </div>

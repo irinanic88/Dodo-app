@@ -1,10 +1,12 @@
 @import '~normalize.css/normalize.css';
 
 :root {
-    --background-fill: #e3f1fe;
-    --dark-grey-font: #2a2a2a;
-    --light-grey-font: #a1a1a1;
-    --sky-blue-button: #bbdeff;
+    --light-blue: #e3f1fe;
+    --dark-grey: #2a2a2a;
+    --light-grey: #a1a1a1;
+    --sky-blue: #bbdeff;
+    --borders: var(--light-grey);
+    --borders-active: var(--dark-grey);
 }
 
 *,
@@ -20,8 +22,8 @@ html {
 }
 
 body {
-    background-color: var(--background-fill);
-    color: var(--dark-grey-font);
+    background-color: var(--light-blue);
+    color: var(--dark-grey);
     font-family: 'Open Sans', 'Arial', sans-serif;
     font-size: 1.6rem;
 }
