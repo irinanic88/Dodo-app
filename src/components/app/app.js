@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import {loadingSelector} from '../../redux/selectors';
 
 import styles from './app.module.css';
+import cn from "classnames";
 
 import {Route, Switch, Link} from 'react-router-dom';
 import {ReactComponent as Logo} from '../../icons/logo.svg';
@@ -13,11 +14,10 @@ import BoardPage from "../boardPage";
 import Loader from '../loader';
 
 const App = ({loading}) => {
-
     return (
-        <div>
+        <div className={styles.header}>
             <Link to='/'>
-                <Logo className={styles.logo}/>
+                <Logo className={cn(styles.logo, styles.header__logo)}/>
             </Link>
             {loading ? <Loader /> : null}
             <Switch>

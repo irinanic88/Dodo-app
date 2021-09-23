@@ -1,4 +1,4 @@
-.logo {
+.header__logo {
     position: absolute;
     top: 2rem;
     left: 50%;
@@ -7,7 +7,7 @@
 }
 
 @media (min-width: 768px) {
-    .logo {
+    .header__logo {
         position: absolute;
         margin-left: 0;
         top: 3rem;
