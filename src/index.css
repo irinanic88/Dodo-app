@@ -2,11 +2,15 @@
 
 :root {
     --light-blue: #e3f1fe;
+    --light-blue-2: #A8D3FC;
+    --blue: #81BFFA;
     --dark-grey: #2a2a2a;
     --light-grey: #a1a1a1;
-    --sky-blue: #bbdeff;
+    --background: var(--light-blue);
     --borders: var(--light-grey);
     --borders-active: var(--dark-grey);
+    --primary: var(--blue);
+    --primary-hover: var(--light-blue-2);
 }
 
 *,
@@ -22,7 +26,7 @@ html {
 }
 
 body {
-    background-color: var(--light-blue);
+    background-color: var(--background);
     color: var(--dark-grey);
     font-family: 'Open Sans', 'Arial', sans-serif;
     font-size: 1.6rem;
@@ -30,8 +34,8 @@ body {
 
 h2, button, label {
     text-transform: capitalize;
-    font-family: 'Nunito Sans','Arial', sans-serif;
-    font-width: 700;
+    font-family: 'Open Sans','Arial', sans-serif;
+    font-weight: 700;
 }
 
 input, textarea, select {
