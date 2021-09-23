@@ -11,6 +11,8 @@
     --borders-active: var(--dark-grey);
     --primary: var(--blue);
     --primary-hover: var(--light-blue-2);
+    --alternate: white;
+    --alternate-hover: var(--blue);
 }
 
 *,
@@ -46,6 +48,7 @@ input, textarea, select {
 button {
     text-decoration: none;
     outline: none;
+    border: none;
 }
 
 ::placeholder {

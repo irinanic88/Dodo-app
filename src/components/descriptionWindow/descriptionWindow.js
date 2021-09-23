@@ -33,6 +33,7 @@ DescriptionWindow = ({
 
     const handleChangeStatus = (event) => {
         event.preventDefault();
+
         const destinationColumnTitle = getValues('status');
         return changeStatusDispatcher(ticketId, ticket.status, destinationColumnTitle, 0, boardId);
     };
@@ -55,7 +56,12 @@ DescriptionWindow = ({
                             <option key={item} {...register(item)}>{item}</option> 
                         )}
                     </select>
-                    <button className={cn(styles.submit, styles.formElement)} onClick={handleChangeStatus}>Submit</button>
+                    <Button
+                        className={cn(styles.submit, styles.formElement)}
+                        onClick={handleChangeStatus}
+                        name={'Submit'}
+                        isAlternate={true}
+                    />
                 </form>
             </div>
             <div className={styles.delete}>
