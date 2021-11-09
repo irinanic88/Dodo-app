@@ -8,16 +8,16 @@ import styles from './app.module.css';
 import cn from "classnames";
 
 import {Route, Switch, Link} from 'react-router-dom';
-import {ReactComponent as Logo} from '../../icons/logo.svg';
+import Logo from '../logo/logo';
 import OpenCreateBoard from "../openCreateBoard";
 import BoardPage from "../boardPage";
 import Loader from '../loader';
 
 const App = ({loading}) => {
     return (
-        <div className={styles.header}>
-            <Link to='/'>
-                <Logo className={cn(styles.logo, styles.header__logo)}/>
+        <div>
+            <Link to='/' className={styles.header}>
+                <Logo />
             </Link>
             {loading ? <Loader /> : null}
             <Switch>
@@ -29,6 +29,10 @@ const App = ({loading}) => {
                 <Route path='/board/:boardId/tickets/:ticketId' component={BoardPage} />
             </Switch>
         </div>
+
+
+
+
     );
 }
 

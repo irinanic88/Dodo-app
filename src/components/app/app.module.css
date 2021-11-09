@@ -1,16 +1,14 @@
-.header__logo {
-    position: absolute;
-    top: 2rem;
-    left: 50%;
-    margin-left: -50px;
-    z-index: 999;
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    height: 140px;
 }
 
+
 @media (min-width: 768px) {
-    .header__logo {
-        position: absolute;
-        margin-left: 0;
-        top: 3rem;
-        left: 6rem;
+    .header {
+
     }
 }

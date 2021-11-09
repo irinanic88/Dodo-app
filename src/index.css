@@ -1,6 +1,7 @@
 @import '~normalize.css/normalize.css';
 
 :root {
+    --white: white;
     --light-blue: #e3f1fe;
     --light-blue-2: #A8D3FC;
     --blue: #81BFFA;

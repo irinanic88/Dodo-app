@@ -1,0 +1,28 @@
+.logo {
+    position: relative;
+    width: 90px;
+    height: 90px;
+}
+
+.logo__bg {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background-color: var(--white);
+}
+
+.logo__stroke {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border: solid 1px var(--borders);
+    transform: translateX(50%);
+}
+
+.logo__name {
+    position: absolute;
+    font-size: 37px;
+    font-weight: 700;
+    line-height: 37px;
+    transform: translate(-3px, 20px);
+}
