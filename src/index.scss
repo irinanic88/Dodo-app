@@ -29,16 +29,21 @@ body {
     font-size: 16px;
 }
 
-button {
-    text-decoration: none;
-    outline: none;
+h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+
 }
 
 ::placeholder {
 
 }
 
-a{
+a {
     color: inherit;
     text-decoration: none;
+
+    &:focus {
+        outline: none;
+    }
 }
