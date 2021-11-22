@@ -7,7 +7,7 @@ import {loadingSelector} from '../../redux/selectors';
 import styles from './app.module.css';
 
 import {Route, Switch, Link} from 'react-router-dom';
-import {ReactComponent as Logo} from '../../icons/logo.svg';
+import Logo from '../logo';
 import OpenCreateBoard from "../openCreateBoard";
 import BoardPage from "../boardPage";
 import Loader from '../loader';
@@ -15,10 +15,12 @@ import Loader from '../loader';
 const App = ({loading}) => {
 
     return (
-        <div>
-            <Link to='/'>
-                <Logo className={styles.logo}/>
-            </Link>
+        <div className={styles.app__container}>
+            <div className={styles.app__logo}>
+                <Link to='/'>
+                    <Logo/>
+                </Link>
+            </div>
             {loading ? <Loader /> : null}
             <Switch>
                 <Route path='/' exact component={OpenCreateBoard}/>

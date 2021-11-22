@@ -1,0 +1,9 @@
+@import '../../assets/scss/mixins';
+
+.header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 90px;
+  @include flex-container($direction: column, $justify: space-between, $align: flex-end)
+}

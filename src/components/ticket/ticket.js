@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import {ticketSelector} from '../../redux/selectors';
 
 import cn from 'classnames';
-import styles from './ticket.module.css';
+import styles from './ticket.module.scss';
 
 import {Link} from 'react-router-dom';
 

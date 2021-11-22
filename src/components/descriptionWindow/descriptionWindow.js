@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import {columnsSelector, ticketSelector} from '../../redux/selectors';
 import {changeStatus, deleteTicket} from '../../redux/actions';
 
-import styles from './descriptionWindow.module.css';
+import styles from './descriptionWindow.module.scss';
 import cn from 'classnames';
 
 export let DescriptionWindow;

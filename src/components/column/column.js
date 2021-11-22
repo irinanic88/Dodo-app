@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Droppable} from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 
-import styles from './column.module.css';
+import styles from './column.module.scss';
 import cn from 'classnames';
 
 import Ticket from '../ticket';

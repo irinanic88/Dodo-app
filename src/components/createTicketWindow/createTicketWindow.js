@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import cn from 'classnames';
-import styles from './createTicketWindow.module.css';
+import styles from './createTicketWindow.module.scss';
 
 import {useForm} from 'react-hook-form';
 import {Link, useHistory} from "react-router-dom";

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './closeButton.module.css';
+import styles from './closeButton.module.scss';
 
 import { ReactComponent as CloseRound } from '../../../icons/closeRound.svg';
 import { ReactComponent as CloseCross } from '../../../icons/closeCross.svg';

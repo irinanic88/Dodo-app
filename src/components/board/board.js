@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {DragDropContext} from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 
-import styles from './board.module.css';
+import styles from './board.module.scss';
 
 import Column from '../column';
 import {columnTitles} from '../../columns';
