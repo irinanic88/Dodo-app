@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import styles from './board.module.scss';
 
 import Column from '../column';
-import {columnTitles} from '../../columns';
+import {columnTitles} from '../../config/columns';
 
 import {
     loadColumnTitles,

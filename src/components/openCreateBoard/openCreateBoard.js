@@ -1,16 +1,16 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
+import {useHistory, Link} from 'react-router-dom';
+import {useForm} from "react-hook-form";
 import PropTypes from 'prop-types';
 
 import styles from './openCreateBoard.module.css';
-import cn from 'classnames';
 
 import {createNewBoard} from '../../redux/actions';
 import {newBoardIdSelector} from "../../redux/selectors";
 
-import {useHistory, Link} from 'react-router-dom';
+
 import Button from "../button/button";
-import {useForm} from "react-hook-form";
 
 export let OpenCreateBoard;
 OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
@@ -39,7 +39,7 @@ OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
               <p>or</p>
               <label >Introduce your board ID:</label>
               <input className={styles.openCreateBoard__input} {...register('boardId')}
-                     maxlength="10" size="10" placeholder="Ex: 0123456789"/>
+                     maxLength="10" size="10" placeholder="Ex: 0123456789"/>
               <Button name={'Open'} onClick={openBoard}/>
           </div>
       </div>

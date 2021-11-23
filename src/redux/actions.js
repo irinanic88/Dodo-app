@@ -7,7 +7,7 @@ import {
     CHANGE_TICKET_STATUS,
     DELETE_TICKET, 
     } from './actionTypes';
-import {HOST} from '../constants';
+import {HOST} from '../config/constants';
 
 export const createNewBoard = ({
     type: CREATE_BOARD,

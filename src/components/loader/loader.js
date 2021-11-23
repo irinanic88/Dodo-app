@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './loader.module.scss';
 
-import { ReactComponent as LoaderIcon } from '../../icons/loader.svg';
+import { ReactComponent as LoaderIcon } from '../../assets/icons/loader.svg';
 
 const Loader = () => {
     return (
