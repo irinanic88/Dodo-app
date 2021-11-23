@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
-import {useHistory, Link} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import {useForm} from "react-hook-form";
 import PropTypes from 'prop-types';
 
@@ -21,7 +21,7 @@ OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
         if (newBoardId) {
             history.push(`/board/${newBoardId}`);
         }
-    }, [newBoardId]);
+    }, [newBoardId, history]);
 
     const openBoard = (event) => {
         event.preventDefault();

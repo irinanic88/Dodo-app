@@ -43,13 +43,16 @@ BoardPage = ({match,
         return (
             <div data-id="board-page" className={styles.boardPage}>
                 <div className={styles.boardPage__header} data-id="header">
-                    <h2 data-id="board-number" className={styles.boardPage__boardNumber}>Board: {requestedBoardId}</h2>
+                    <h2 data-id="board-number">Board: {requestedBoardId}</h2>
                     <Link to={`/board/${requestedBoardId}/tickets/create`}>
                         <Button name={'New ticket'} onClick={() => {}}/>
                     </Link>
                 </div>
+
                 <Board boardId={requestedBoardId}/>
+
                 {requestedTicketId ? <DescriptionWindow boardId={requestedBoardId} ticketId={requestedTicketId} /> : null}
+
                 {createTicket ? <CreateTicketWindow boardId={requestedBoardId} /> : null}
             </div>
         );

@@ -7,7 +7,7 @@ import {loadingSelector} from '../../redux/selectors';
 import styles from './app.module.css';
 
 import {Route, Switch, Link} from 'react-router-dom';
-import Logo from '../logo';
+import Header from '../header';
 import OpenCreateBoard from "../openCreateBoard";
 import BoardPage from "../boardPage";
 import Loader from '../loader';
@@ -15,17 +15,11 @@ import Loader from '../loader';
 const App = ({loading}) => {
 
     return (
-        <div className={styles.app}>
-
-            {loading ? <Loader /> : null}
-
-            <div className={styles.app__container}>
-                <div className={styles.app__logo}>
-                    <Link to='/'>
-                        <Logo/>
-                    </Link>
-                </div>
-
+            <div className={styles.app}>
+                <Link to='/'>
+                    <Header/>
+                </Link>
+                {loading ? <Loader /> : null}
                 <Switch>
                     <Route path='/' exact component={OpenCreateBoard}/>
                     <Route path='/board/:boardId' exact component={BoardPage} />
@@ -35,7 +29,6 @@ const App = ({loading}) => {
                     <Route path='/board/:boardId/tickets/:ticketId' component={BoardPage} />
                 </Switch>
             </div>
-        </div>
 
     );
 }

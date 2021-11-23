@@ -9,7 +9,7 @@
     .board {
         flex-direction: row;
         gap: 10px;
-        min-height: calc(100vh - 90px - 3.5rem - 5rem - 10px);
+        min-height: calc(100vh - 3.5rem - 75px - 3rem - 40px - 1rem - 15px);
 
             &__column {
                 flex: 1;

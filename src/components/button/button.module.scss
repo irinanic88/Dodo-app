@@ -4,30 +4,30 @@
     text-decoration: none;
     outline: none;
     border: none;
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: .5px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .button__primary {
-    padding: 13px 26px;
-    border-radius: 8px;
+    padding: 10px 15px;
+    border-radius: 6px;
     background-color: $blue;
     color: $font-secondary;
 
     &:hover {
         background-color: $green;
-        transition: background-color .2s ease-in-out;
+        transition: background-color .5s ease-in-out;
     }
 
     &:focus {
         background-color: $green;
-        transition: background-color .2s ease-in-out;
+        transition: background-color .5s ease-in-out;
     }
 
     &:active {
         transform: translateY(1px);
-        transition: transform .2s ease;
+        transition: transform .5s ease;
     }
 
     &:disabled {
@@ -36,27 +36,29 @@
 }
 
 .button__secondary {
-    padding: 8px 26px;
+    padding: 6px 20px;
     border-radius: 50px;
-    border: 3px solid $green;
+    border: 2px solid transparent;
+    box-shadow: 0 0 0 1px $green;
     background-color: transparent;
     color: $green;
 
     &:hover {
-        color: $dark-green;
-        border: 3px solid $dark-green;
-        transition: color .2s ease-in-out, border .2s ease-in-out;
+        border: 2px solid $green;
+        background-color: rgba($light-green, .4);
+        transition: border .3s ease-in-out, background-color .3s ease-in-out;
     }
 
     &:focus {
-        color: $dark-green;
-        border: 3px solid $dark-green;
-        transition: color .2s ease-in-out, border .2s ease-in-out;
+        border: 2px solid $green;
+        background-color: $light-green;
+        transition: border .3s ease-in-out, background-color .3s ease-in-out;
     }
 
     &:active {
-        transform: translateY(1px);
-        transition: transform .2s ease;
+        border: 2px solid $green;
+        background-color: $light-green;
+        transition: border .3s ease-in-out, background-color .3s ease-in-out;
     }
 
     &:disabled {
