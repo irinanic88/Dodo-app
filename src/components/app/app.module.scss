@@ -1,12 +1,14 @@
 .app__container {
-  position: relative;
-  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
   max-width: 1200px;
 }
 
 .app__logo {
   margin-top: 3.5rem;
+  padding-left: 15px;
   width: 138px;
   height: 90px;
-
 }

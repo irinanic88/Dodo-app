@@ -25,16 +25,16 @@ Ticket = ({ticketId, boardId, index, ticket}) => {
                 return (
                     <Link to={`/board/${boardId}/tickets/${ticketId}`}>
                         <div
-                             className={cn(styles.ticket, {[styles.drag]: isDragging})}
+                             className={cn(styles.ticket, {[styles.ticket__isDragging]: isDragging})}
                              data-id="ticket"
                              ref={provided.innerRef}
                              {...provided.draggableProps}
                              {...provided.dragHandleProps}
                         >
-                            <div className={styles.info}>
-                                <p className={styles.name} data-id="title">{title}</p>
-                                <p className={styles.number} data-id="number">{id}</p>
-                            </div>
+
+                                <p className={styles.ticket__title} data-id="title">{title}</p>
+                                <p className={styles.ticket__number} data-id="number">{id}</p>
+
                         </div>
                     </Link>
                     )

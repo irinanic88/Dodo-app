@@ -43,7 +43,7 @@ Board = ({
         <DragDropContext onDragEnd={onDragEnd}>
             <div className={styles.board} data-id="board">
                 {columnTitles.map((column) => (
-                    <div className={styles.column} data-id="column-wrapper" key={column}>
+                    <div className={styles.board__column} data-id="column-wrapper" key={column}>
                         <Column boardId={boardId} columnTitle={column}/>
                     </div>
                 ))}

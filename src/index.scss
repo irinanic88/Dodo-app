@@ -19,10 +19,12 @@
 }
 
 html {
+    height: 100%;
     font-size: 10px;
 }
 
 body {
+    height: 100%;
     background-color: $background;
     color: $font-primary;
     font-family: 'Inter', 'Arial', sans-serif;
@@ -32,10 +34,6 @@ body {
 h2 {
     font-size: 2.4rem;
     font-weight: 700;
-
-}
-
-::placeholder {
 
 }
 

@@ -1,41 +1,44 @@
-  .column {
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.column {
+  height: 100%;
+  @include flex-container($direction: column, $justify: flex-start);
+
+  &__header {
+    width: 100%;
+    padding: 13px 0;
+    background-color: $green;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: $font-secondary;
+  }
+
+  &__body {
+    padding: 10px 0;
+    width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 0 0 1.5px var(--light-grey-font);
-    margin-bottom: 1rem;
+    @include flex-container($direction: column, $justify: flex-start, $align: stretch, $gap: 10px);
+    background-color: $background-light;
   }
 
-  .smallScreen {
-      background-color: rebeccapurple;
+  &__overColumn {
+    background-color: rgba($background-light, .6);
+    transition: background-color .3s ease-in-out;
   }
+}
 
-  .header {
-    margin-top: 2rem;
-    font-size: 1.6rem;
-    color: var(--dark-grey-font);
-    }
 
-  .headerBottomLine {
-    margin: 1.5rem 0;
-    background-color: var(--dark-grey-font);
-    justify-content: flex-end;
-    width: 60%;
-    height: 1.5px;
-  }
 
-  .body {
-      display: flex;
-      flex-direction: column;
-      width: 85%;
-      margin-top: 2rem;
-  }
 
-  .overColumn {
-    box-shadow: 0 0 0 1.5px var(--dark-grey-font);
-  }
+
+
+
+
+
+
 

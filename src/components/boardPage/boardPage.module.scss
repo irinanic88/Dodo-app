@@ -1,9 +1,22 @@
 @import '../../assets/scss/mixins';
 
-.header {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 90px;
-  @include flex-container($direction: column, $justify: space-between, $align: flex-end)
+.boardPage {
+  margin-top: 5rem;
+
+    &__header {
+      position: absolute;
+      top: 3.5rem;
+      right: 0;
+      height: 90px;
+      padding: 0 15px;
+      max-width: 1200px;
+      @include flex-container($direction: column, $justify: space-between, $align: flex-end)
+    }
 }
+
+@media (min-width: 768px) {
+  .boardPage {
+    padding: 0 15px;
+  }
+}
+
