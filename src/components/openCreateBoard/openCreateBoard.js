@@ -37,10 +37,9 @@ OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
               <p data-id="create-new-board">Click here to create a new board:</p>
               <Button name={'Create board'} onClick={createNewBoardDispatch}/>
               <p>or</p>
-
-                  <label >Introduce your board ID:</label>
-                  <input className={styles.openCreateBoard__input} {...register('boardId')} maxlength="10" size="10"/>
-
+              <label >Introduce your board ID:</label>
+              <input className={styles.openCreateBoard__input} {...register('boardId')}
+                     maxlength="10" size="10" placeholder="Ex: 0123456789"/>
               <Button name={'Open'} onClick={openBoard}/>
           </div>
       </div>

@@ -2,7 +2,7 @@
 @import '../../assets/scss/mixins';
 
 .board {
-    @include flex-container($direction: column, $gap: 20px, $align: stretch);
+    @include flex-container($gap: 20px, $align: stretch);
 }
 
 @media (min-width: 768px) {

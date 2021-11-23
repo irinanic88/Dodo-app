@@ -10,7 +10,7 @@
       height: 90px;
       padding: 0 15px;
       max-width: 1200px;
-      @include flex-container($direction: column, $justify: space-between, $align: flex-end)
+      @include flex-container($justify: space-between, $align: flex-end)
     }
 }
 

@@ -3,7 +3,7 @@
 
 .column {
   height: 100%;
-  @include flex-container($direction: column, $justify: flex-start);
+  @include flex-container;
 
   &__header {
     width: 100%;
@@ -22,7 +22,7 @@
     padding: 10px 0;
     width: 100%;
     height: 100%;
-    @include flex-container($direction: column, $justify: flex-start, $align: stretch, $gap: 10px);
+    @include flex-container($align: stretch, $gap: 10px);
     background-color: $background-light;
   }
 
