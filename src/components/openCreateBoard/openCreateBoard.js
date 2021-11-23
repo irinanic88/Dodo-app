@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 
@@ -17,6 +17,12 @@ OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
     const { register, getValues } = useForm();
     const history = useHistory();
 
+    useEffect(() => {
+        if (newBoardId) {
+            history.push(`/board/${newBoardId}`);
+        }
+    }, [newBoardId]);
+
     const openBoard = (event) => {
         event.preventDefault();
         const boardId = getValues('boardId');
@@ -26,33 +32,16 @@ OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
     }
 
     return (
-      <div data-id="open-create-board">
-          <div className={styles.inner}>
-              <form className={styles.form}>
-                  <label className={cn(styles.element, styles.text)}>Introduce your board ID:</label>
-                  <input className={cn(styles.element, styles.input)}
-                         {...register('boardId')}
-                  />
-                  <Button className={styles.element} name={'Open'} onClick={openBoard}/>
-              </form>
-              {
-                  newBoardId ?
-                      <div data-id="new-board-link">
-                          <p className={cn(styles.element, styles.text)}>Go to your board:</p>
-                          <Link to={`/board/${newBoardId}`}
-                                className={cn(styles.element, styles.newBoardLink)}
-                          >
-                              {window.location.origin}/board/{newBoardId}
-                          </Link>
-                      </div>
-                  : <div className={styles.create} data-id="create-new-board">
-                          <p className={cn(styles.element, styles.text)}>Or generate a new board:</p>
-                          <Button className={styles.element}
-                                  name={'Create'}
-                                  onClick={createNewBoardDispatch}
-                          />
-                    </div>
-              }
+      <div data-id="open-create-board" className={styles.openCreateBoard}>
+          <div className={styles.openCreateBoard__inner}>
+              <p data-id="create-new-board">Click here to create a new board:</p>
+              <Button name={'Create board'} onClick={createNewBoardDispatch}/>
+              <p>or</p>
+
+                  <label >Introduce your board ID:</label>
+                  <input className={styles.openCreateBoard__input} {...register('boardId')} maxlength="10" size="10"/>
+
+              <Button name={'Open'} onClick={openBoard}/>
           </div>
       </div>
     );
