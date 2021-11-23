@@ -44,7 +44,7 @@ CreateTicketWindow = ({
                     <div className={styles.createTicketWindow__form_element}>
                         <label className={styles.createTicketWindow__label}>Description:</label>
                         <textarea {...register('description')}
-                                  type="text" id="create-description" size="2000"
+                                  type="text" id="create-description" size="1000"
                                   className={cn(styles.createTicketWindow__input, styles.createTicketWindow__description)}>
                     </textarea>
                     </div>

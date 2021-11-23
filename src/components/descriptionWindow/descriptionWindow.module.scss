@@ -1,134 +1,52 @@
-.modal {
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.descriptionWindow {
     position: fixed;
     z-index: 999;
     top: 0;
     left: 0;
     height: 100vh;
     width: 100vw;
+    background-color: rgba($background, .5);
     overflow-y: auto;
-    display: block;
-}
 
-.overlay {
-    height: 100%;
-    width: 100%;
-    background-color: var(--background-fill);
-    opacity: 0.75;
-}
-
-.inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: auto;
-    background-color: white;
-    padding: 3rem;
-}
-
-.element {
-    margin: 2rem 0;
-}
-
-.number {
-    font-family: 'Nunito', 'Arial', sans-serif;
-    color: var(--light-grey-font);
-}
-
-.title {
-    word-wrap: break-word;
-    font-size: 2rem;
-    font-weight: 700;
-
-}
-
-.description {
-    height: 10rem;
-    font-size: 1.6rem;
-    word-wrap: break-word;
-    overflow-y: auto;
-}
-
-.form {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.formElement {
-    margin-bottom: 1rem;
-}
-
-.statusLabel {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-right: 2rem;
-}
-
-.statusInput {
-    padding: 1rem;
-    margin-right: 2rem;
-    border: solid 2px var(--light-grey-font);
-}
-
-.statusInput:focus {
-    outline: none;
-    border: solid 2px var(--dark-grey-font);
-    color: var(--dark-grey-font);
-}
-
-.submit {
-    height: 3rem;
-    background-color: var(--light-grey-font);
-    color: white;
-    border: none;
-    border-radius: 30px;
-    font-size: 1.6rem;
-    font-weight: 700;
-    width: 80%;
-}
-
-.submit:hover{
-    color: var(--dark-grey-font);
-    background-color: white;
-    border: solid 2px var(--dark-grey-font);
-}
-
-.submit:focus{
-    color: var(--dark-grey-font);
-}
-
-.submit:active{
-    border: solid 2px var(--light-grey-font);
-    color: var(--light-grey-font);
-}
-
-.options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.delete {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-}
-
-@media (min-width: 768px) {
-    .inner {
-        width: 60%;
-        padding: 4rem;
-        border: solid 2px var(--light-grey-font);
-        border-radius: 5px;
+    &__container {
+        @include center-element;
+        padding: 4rem 10rem;
+        @include flex-container($align: flex-start, $gap: 20px);
+        background-color: $background-light;
+        font-size: 1.6rem;
+        font-weight: 700;
     }
 
-    .form {
-        flex-direction: row;
-        justify-content: left;
-        align-items: center;
+    &__number {
+        color: $blue;
+    }
+
+    &__description {
+        width: 600px;
+        height: 200px;
+        overflow: auto;
+    }
+
+    &__form {
+        margin-top: 3rem;
+        width: 100%;
+        @include flex-container($align: stretch, $gap: 7px);
+    }
+
+    &__input {
+        @include input;
+    }
+
+    &__close {
+        margin: 0 auto;
     }
 }
+
+.invisible {
+    display: none;
+}
+
 

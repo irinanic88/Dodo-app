@@ -38,29 +38,34 @@ DescriptionWindow = ({
     };
 
     return (
-    <div className={styles.modal} data-id="description-window">
-        <div className={styles.overlay} />
-        <div className={styles.inner}>
-            <Link to={`/board/${boardId}`}>
-                <CloseButton/>
+    <div className={styles.descriptionWindow} data-id="description-window">
+        <div className={styles.descriptionWindow__container}>
+
+            <p className={styles.descriptionWindow__number}>№ {id}</p>
+
+            <h2 className={styles.descriptionWindow__title}>{title}</h2>
+
+            <p className={styles.descriptionWindow__status}>{status}</p>
+
+            <p className={styles.descriptionWindow__description}>{description}</p>
+
+            <form className={styles.descriptionWindow__form}>
+                <label className={styles.descriptionWindow__label}>Change status: </label>
+                <select {...register('status')} value={status} className={styles.descriptionWindow__input}>
+                        {columns.map((item) =>
+                        <option key={item} {...register(item)}>{item}</option>
+                    )}
+                </select>
+
+                <button className={styles.invisible} onClick={handleChangeStatus}>Submit</button>
+
+            </form>
+
+            <Button className={styles.descriptionWindow__delete} name={'Delete ticket'} onClick={deleteTicketDispatcher} buttonStyle={'secondary'}/>
+
+            <Link to={`/board/${boardId}`} className={styles.descriptionWindow__close}>
+                <Button name={'Close'} onClick={() => {}}/>
             </Link>
-            <h2 className={cn(styles.element, styles.title)}>{title}</h2>
-            <p className={cn(styles.element, styles.number)}>{id}</p>
-            <p className={cn(styles.element, styles.description)}>{description}</p>
-            <div className={styles.options}>
-                <form className={cn(styles.element, styles.form)}>
-                    <label className={cn(styles.statusLabel, styles.formElement)}>Change status: </label>
-                    <select {...register('status')} value={status} className={cn(styles.statusInput, styles.formElement)}>
-                            {columns.map((item) =>
-                            <option key={item} {...register(item)}>{item}</option> 
-                        )}
-                    </select>
-                    <button className={cn(styles.submit, styles.formElement)} onClick={handleChangeStatus}>Submit</button>
-                </form>
-            </div>
-            <div className={styles.delete}>
-                <Button name={'Delete ticket'} onClick={deleteTicketDispatcher}/>
-            </div>
         </div>
     </div>
     );
