@@ -1,7 +1,8 @@
 import React from 'react';
-import { ReactComponent as LoaderIcon } from '../../icons/loader.svg';
 
 import styles from './loader.module.scss';
+
+import { ReactComponent as LoaderIcon } from '../../icons/loader.svg';
 
 const Loader = () => {
     return (

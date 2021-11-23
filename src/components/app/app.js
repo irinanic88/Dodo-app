@@ -15,22 +15,28 @@ import Loader from '../loader';
 const App = ({loading}) => {
 
     return (
-        <div className={styles.app__container}>
-            <div className={styles.app__logo}>
-                <Link to='/'>
-                    <Logo/>
-                </Link>
-            </div>
+        <div className={styles.app}>
+
             {loading ? <Loader /> : null}
-            <Switch>
-                <Route path='/' exact component={OpenCreateBoard}/>
-                <Route path='/board/:boardId' exact component={BoardPage} />
-                <Route path='/board/:boardId/tickets/create' render={(props) => (
-                    <BoardPage {...props} createTicket={true} />
-                )}/>
-                <Route path='/board/:boardId/tickets/:ticketId' component={BoardPage} />
-            </Switch>
+
+            <div className={styles.app__container}>
+                <div className={styles.app__logo}>
+                    <Link to='/'>
+                        <Logo/>
+                    </Link>
+                </div>
+
+                <Switch>
+                    <Route path='/' exact component={OpenCreateBoard}/>
+                    <Route path='/board/:boardId' exact component={BoardPage} />
+                    <Route path='/board/:boardId/tickets/create' render={(props) => (
+                        <BoardPage {...props} createTicket={true} />
+                    )}/>
+                    <Route path='/board/:boardId/tickets/:ticketId' component={BoardPage} />
+                </Switch>
+            </div>
         </div>
+
     );
 }
 
