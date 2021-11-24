@@ -6,7 +6,7 @@ import {loadingSelector} from '../../redux/selectors';
 
 import styles from './app.module.css';
 
-import {Route, Switch, Link} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import Header from '../header';
 import OpenCreateBoard from "../openCreateBoard";
 import BoardPage from "../boardPage";
@@ -16,9 +16,7 @@ const App = ({loading}) => {
 
     return (
             <div className={styles.app}>
-                <Link to='/'>
-                    <Header/>
-                </Link>
+                <Header/>
                 {loading ? <Loader /> : null}
                 <Switch>
                     <Route path='/' exact component={OpenCreateBoard}/>
