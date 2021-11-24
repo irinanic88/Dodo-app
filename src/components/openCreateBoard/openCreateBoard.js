@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import {createNewBoard} from '../../redux/actions';
 import {newBoardIdSelector} from "../../redux/selectors";
 
-import styles from './openCreateBoard.module.css';
+import styles from './openCreateBoard.module.scss';
 
 import Button from "../button/button";
 

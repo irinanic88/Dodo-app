@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import {boardInfoSelector} from '../../redux/selectors';
 import {checkBoardId} from "../../redux/actions";
 
-import styles from './boardPage.module.css';
+import styles from './boardPage.module.scss';
 
 import Board from '../board';
 import Button from "../button/button";

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './button.module.css';
+import styles from './button.module.scss';
 import cn from 'classnames';
 
 export const Button = ({

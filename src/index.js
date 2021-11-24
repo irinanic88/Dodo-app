@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
 import store from './redux/store';
 import 'normalize.css';
-import './assets/main/index.css';
+import './assets/main/index.scss';
 
 import App from '../src/components/app';
 
