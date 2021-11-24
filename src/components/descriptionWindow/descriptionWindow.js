@@ -1,20 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
 import {useForm} from 'react-hook-form';
-import Button from '../button';
-import CloseButton from '../button/closeButton/closeButton';
-import { Link } from 'react-router-dom';
 
 import {columnsSelector, ticketSelector} from '../../redux/selectors';
 import {changeStatus, deleteTicket} from '../../redux/actions';
 
 import styles from './descriptionWindow.module.scss';
-import cn from 'classnames';
 
-export let DescriptionWindow;
-DescriptionWindow = ({
+import Button from '../button';
+import { Link } from 'react-router-dom';
+
+export let DescriptionWindow = ({
     columns,
     ticketId,
     boardId,
@@ -42,16 +39,18 @@ DescriptionWindow = ({
         <div className={styles.descriptionWindow__container}>
 
             <p className={styles.descriptionWindow__number}>№ {id}</p>
-
             <h2 className={styles.descriptionWindow__title}>{title}</h2>
-
             <p className={styles.descriptionWindow__status}>{status}</p>
-
             <p className={styles.descriptionWindow__description}>{description}</p>
 
             <form className={styles.descriptionWindow__form}>
-                <label className={styles.descriptionWindow__label}>Change status: </label>
-                <select {...register('status')} value={status} className={styles.descriptionWindow__input}>
+                <label className={styles.descriptionWindow__label}>
+                    Change status:
+                </label>
+                <select {...register('status')}
+                        value={status}
+                        className={styles.descriptionWindow__input}
+                >
                         {columns.map((item) =>
                         <option key={item} {...register(item)}>{item}</option>
                     )}
@@ -60,9 +59,11 @@ DescriptionWindow = ({
                 <button className={styles.invisible} onClick={handleChangeStatus}>Submit</button>
 
             </form>
-
-            <Button className={styles.descriptionWindow__delete} name={'Delete ticket'} onClick={deleteTicketDispatcher} buttonStyle={'secondary'}/>
-
+            <Button className={styles.descriptionWindow__delete}
+                    name={'Delete ticket'}
+                    onClick={deleteTicketDispatcher}
+                    buttonStyle={'secondary'}
+            />
             <Link to={`/board/${boardId}`} className={styles.descriptionWindow__close}>
                 <Button name={'Close'} onClick={() => {}}/>
             </Link>
@@ -91,8 +92,18 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-    changeStatusDispatcher: (ticketId, sourceColumnTitle, destinationColumnTitle, destinationIndex, boardId) =>
-        dispatch(changeStatus(ticketId, sourceColumnTitle, destinationColumnTitle, destinationIndex, boardId)),
+    changeStatusDispatcher: (ticketId,
+                             sourceColumnTitle,
+                             destinationColumnTitle,
+                             destinationIndex,
+                             boardId) =>
+        dispatch(changeStatus(
+            ticketId,
+            sourceColumnTitle,
+            destinationColumnTitle,
+            destinationIndex,
+            boardId
+        )),
     deleteTicketDispatcher: () => dispatch(deleteTicket(props)),
 });
 

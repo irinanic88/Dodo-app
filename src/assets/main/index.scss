@@ -2,13 +2,6 @@
 
 @import '../scss/variables';
 
-:root {
-
-    --dark-grey-font: #2a2a2a;
-    --light-grey-font: #a1a1a1;
-    --sky-blue-button: #bbdeff;
-}
-
 *,
 *::before,
 *::after {
@@ -22,10 +15,9 @@ html {
 }
 
 body {
-    background-color: $background;
-    color: $font-primary;
     font-family: 'Inter', 'Arial', sans-serif;
-    font-size: 16px;
+    color: $font-primary;
+    background-color: $background;
 }
 
 h2 {

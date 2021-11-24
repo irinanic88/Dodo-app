@@ -44,7 +44,8 @@ BoardPage = ({match,
             <div data-id="board-page" className={styles.boardPage}>
                 <div className={styles.boardPage__header} data-id="header">
                     <h2 data-id="board-number">Board: {requestedBoardId}</h2>
-                    <Link to={`/board/${requestedBoardId}/tickets/create`}>
+                    <Link to={`/board/${requestedBoardId}/tickets/create`}
+                          className={styles.boardPage__button}>
                         <Button name={'New ticket'} onClick={() => {}}/>
                     </Link>
                 </div>

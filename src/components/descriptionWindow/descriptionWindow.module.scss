@@ -21,6 +21,7 @@
     }
 
     &__number {
+        font-size: 1.8rem;
         color: $blue;
     }
 
@@ -28,6 +29,7 @@
         width: 600px;
         height: 200px;
         overflow: auto;
+        font-weight: 400;
     }
 
     &__form {

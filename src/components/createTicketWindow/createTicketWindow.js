@@ -35,7 +35,7 @@ CreateTicketWindow = ({
 
                     <div className={styles.createTicketWindow__form_element}>
                         <label className={styles.createTicketWindow__label}>Title:</label>
-                        <input {...register('title')} required maxLength={50} type="text" size="50"
+                        <input {...register('title')} required maxLength={60} type="text" size="50"
                                onChange={(event => setInputValue(event.target.value))}
                                className={cn(styles.createTicketWindow__input, styles.createTicketWindow__title)} />
                     </div>
