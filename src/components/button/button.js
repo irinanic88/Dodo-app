@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import styles from './button.module.css';
 import cn from 'classnames';
 
-export const Button = ({name, onClick, isDisabled, buttonStyle='primary'}) => {
+export const Button = ({
+   name,
+   onClick,
+   isDisabled,
+   buttonStyle='primary'
+}) => {
     return (
         <button data-id="button"
                 className={cn(styles.button, {

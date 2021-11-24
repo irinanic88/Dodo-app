@@ -4,16 +4,14 @@ import {useHistory} from 'react-router-dom';
 import {useForm} from "react-hook-form";
 import PropTypes from 'prop-types';
 
-import styles from './openCreateBoard.module.css';
-
 import {createNewBoard} from '../../redux/actions';
 import {newBoardIdSelector} from "../../redux/selectors";
 
+import styles from './openCreateBoard.module.css';
 
 import Button from "../button/button";
 
-export let OpenCreateBoard;
-OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
+export let OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
     const { register, getValues } = useForm();
     const history = useHistory();
 
@@ -36,7 +34,9 @@ OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
           <div className={styles.openCreateBoard__inner}>
               <p data-id="create-new-board">Click here to create a new board:</p>
               <Button name={'Create board'} onClick={createNewBoardDispatch}/>
+
               <p>or</p>
+
               <label >Introduce your board ID:</label>
               <input className={styles.openCreateBoard__input} {...register('boardId')}
                      maxLength="10" size="10" placeholder="Ex: 0123456789"/>

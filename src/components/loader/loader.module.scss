@@ -9,13 +9,16 @@
     height: 100vh;
     width: 100vw;
     background-color: rgba($background-light, .5);
-}
 
-.loaderIcon {
-    @include center-element;
-    width: 50px;
-    color: $blue;
-    animation: spin 2s linear infinite;
+    &__container {
+        @include center-element;
+    }
+
+    &__icon {
+        width: 50px;
+        color: $blue;
+        animation: spin 2s linear infinite;
+    }
 }
 
 @keyframes spin {

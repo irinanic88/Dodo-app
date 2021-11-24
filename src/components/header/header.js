@@ -1,8 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import styles from './header.module.css';
 
-import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 
 const Header = () => {

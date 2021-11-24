@@ -4,12 +4,25 @@
 .openCreateBoard {
 
     &__inner {
-      @include center-element;
-      padding: 4rem 10rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      padding: 4rem 5rem;
       @include flex-container($gap: 20px);
       background-color: $background-light;
       font-size: 1.6rem;
       font-weight: 700;
+
+      @include responsive(phone) {
+        @include center-element;
+        width: auto;
+        white-space: nowrap;
+      }
+
+      @include responsive(tablet) {
+        padding: 4rem 10rem;
+      }
     }
 
   &__input {

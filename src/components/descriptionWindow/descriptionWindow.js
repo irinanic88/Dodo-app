@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import {useForm} from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import {columnsSelector, ticketSelector} from '../../redux/selectors';
 import {changeStatus, deleteTicket} from '../../redux/actions';
@@ -9,7 +10,6 @@ import {changeStatus, deleteTicket} from '../../redux/actions';
 import styles from './descriptionWindow.module.scss';
 
 import Button from '../button';
-import { Link } from 'react-router-dom';
 
 export let DescriptionWindow = ({
     columns,

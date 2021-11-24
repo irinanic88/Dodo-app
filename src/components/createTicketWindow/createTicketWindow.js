@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-
-import cn from 'classnames';
-import styles from './createTicketWindow.module.scss';
-
 import {useForm} from 'react-hook-form';
 import {Link, useHistory} from "react-router-dom";
-import Button from '../button';
+import PropTypes from 'prop-types';
 
 import {createTicket} from '../../redux/actions';
 import {columnsSelector} from "../../redux/selectors";
 
+import cn from 'classnames';
+import styles from './createTicketWindow.module.scss';
+
+import Button from '../button';
+
 export let CreateTicketWindow;
 CreateTicketWindow = ({
-                                boardId,
-                                statuses,
-                                createTicketRequest
+    boardId,
+    statuses,
+    createTicketRequest
 }) => {
     const {register, handleSubmit} = useForm();
     const history = useHistory();
@@ -40,7 +40,6 @@ CreateTicketWindow = ({
                                className={cn(styles.createTicketWindow__input, styles.createTicketWindow__title)} />
                     </div>
 
-
                     <div className={styles.createTicketWindow__form_element}>
                         <label className={styles.createTicketWindow__label}>Description:</label>
                         <textarea {...register('description')}
@@ -48,7 +47,6 @@ CreateTicketWindow = ({
                                   className={cn(styles.createTicketWindow__input, styles.createTicketWindow__description)}>
                     </textarea>
                     </div>
-
 
                     <div className={styles.createTicketWindow__form_element}>
                         <label className={styles.createTicketWindow__label}>Status: </label>
@@ -59,7 +57,6 @@ CreateTicketWindow = ({
                             )}
                         </select>
                     </div>
-
 
                     <div className={styles.createTicketWindow__buttons}>
                         <Button name={'Create'} onClick={() => {}} isDisabled={inputValue === ''}/>

@@ -7,7 +7,9 @@ import { ReactComponent as LoaderIcon } from '../../assets/icons/loader.svg';
 const Loader = () => {
     return (
         <div className={styles.loader} data-id="loader">
-            <LoaderIcon className={styles.loaderIcon}/>
+            <div className={styles.loader__container}>
+                <LoaderIcon className={styles.loader__icon}/>
+            </div>
         </div>
     );
 };

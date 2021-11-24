@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 import styles from './board.module.scss';
 
 import Column from '../column';
-import {columnTitles} from '../../config/columns';
+
+import { columnTitles } from '../../config/columns';
 
 import {
     loadColumnTitles,
@@ -64,8 +65,17 @@ Board.propTypes = {
 const mapDispatchToProps = (dispatch, props) => ({
         loadColumnTitlesDispatch: (columnTitles) => (dispatch(loadColumnTitles(columnTitles, props.boardId))),
         loadTicketsDispatch: () => dispatch(loadTickets(props.boardId)),
-        changeStatusDispatch: (ticketId, sourceColumnTitle, destinationColumnTitle, destinationIndex) =>
-            dispatch(changeStatus(ticketId, sourceColumnTitle, destinationColumnTitle, destinationIndex, props.boardId))
+        changeStatusDispatch: (ticketId,
+                               sourceColumnTitle,
+                               destinationColumnTitle,
+                               destinationIndex) =>
+            dispatch(changeStatus(
+                ticketId,
+                sourceColumnTitle,
+                destinationColumnTitle,
+                destinationIndex,
+                props.boardId
+            ))
     });
 
 export default connect(null, mapDispatchToProps) (Board);

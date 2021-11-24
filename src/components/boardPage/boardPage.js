@@ -1,20 +1,21 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-
 import { useHistory, Link } from 'react-router-dom';
-import Board from '../board';
-import CreateTicketWindow from '../createTicketWindow';
-import Button from "../button/button";
+import PropTypes from 'prop-types';
 
 import {boardInfoSelector} from '../../redux/selectors';
 import {checkBoardId} from "../../redux/actions";
 
 import styles from './boardPage.module.css';
+
+import Board from '../board';
+import Button from "../button/button";
+import CreateTicketWindow from '../createTicketWindow';
 import DescriptionWindow from "../descriptionWindow";
 
 export let BoardPage;
-BoardPage = ({match,
+BoardPage = ({
+                 match,
                  createTicket,
                  boardInfo,
                  checkBoardIdDispatch,
@@ -24,7 +25,9 @@ BoardPage = ({match,
     const requestedBoardId = match.params.boardId;
     const history = useHistory();
 
-    useEffect(() => checkBoardIdDispatch(requestedBoardId), [checkBoardIdDispatch, requestedBoardId]);
+    useEffect(() => { checkBoardIdDispatch(requestedBoardId) },
+        [checkBoardIdDispatch, requestedBoardId]);
+
     useEffect(() => {
         if ( requestedTicketId || createTicket ) {
            return document.body.style.overflow = 'hidden';
@@ -44,17 +47,16 @@ BoardPage = ({match,
             <div data-id="board-page" className={styles.boardPage}>
                 <div className={styles.boardPage__header} data-id="header">
                     <h2 data-id="board-number">Board: {requestedBoardId}</h2>
-                    <Link to={`/board/${requestedBoardId}/tickets/create`}
-                          className={styles.boardPage__button}>
+                    <Link to={`/board/${requestedBoardId}/tickets/create`}>
                         <Button name={'New ticket'} onClick={() => {}}/>
                     </Link>
                 </div>
 
                 <Board boardId={requestedBoardId}/>
 
-                {requestedTicketId ? <DescriptionWindow boardId={requestedBoardId} ticketId={requestedTicketId} /> : null}
-
                 {createTicket ? <CreateTicketWindow boardId={requestedBoardId} /> : null}
+
+                {requestedTicketId ? <DescriptionWindow boardId={requestedBoardId} ticketId={requestedTicketId} /> : null}
             </div>
         );
 };

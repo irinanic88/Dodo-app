@@ -4,7 +4,7 @@
 .ticket {
     margin: 0 auto;
     width: calc(100% - 20px);
-    height: 100px;
+    height: 80px;
     padding: 15px 20px 10px;
     @include flex-container($justify: space-between);
     background-color: $light-green;
@@ -36,5 +36,13 @@
     &:focus {
         outline: 1px solid $green;
         transition: outline .3s ease;
+    }
+
+    @include responsive(tablet) {
+        height: 125px;
+    }
+
+    @include responsive(laptop) {
+        height: 100px;
     }
 }

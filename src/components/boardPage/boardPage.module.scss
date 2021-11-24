@@ -5,25 +5,27 @@
   margin: 3rem auto 0;
   max-width: 1200px;
 
-    &__header {
-      margin-bottom: 1.5rem;
-      height: 40px;
-      padding: 0 15px;
-      @include flex-container($direction: row, $justify: space-between, $align: flex-end);
-    }
-
-  &__button {
-    margin-bottom: 1rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .boardPage {
+  @include responsive(phone) {
     padding: 0 15px;
+  }
 
-    &__header {
+  &__header {
+    margin-bottom: 1.5rem;
+    padding: 0 15px;
+    @include flex-container(
+            $align: flex-start,
+            $gap: 10px);
+
+    @include responsive(phone) {
       padding: 0;
     }
+
+    @include responsive(tablet) {
+      height: 40px;
+      @include flex-container(
+              $direction: row,
+              $justify: space-between,
+              $align: flex-end);
+    }
   }
 }
-

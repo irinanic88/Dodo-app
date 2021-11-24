@@ -11,20 +11,40 @@
     background-color: rgba($background, .5);
     overflow-y: auto;
 
-        &__container {
-            @include center-element;
-            padding: 4rem 10rem;
-            background-color: $background-light;
-            font-size: 1.6rem;
-            font-weight: 700;
+    &__container {
+        position: absolute;
+        top: 140px;
+        width: 100%;
+        padding: 3rem;
+        background-color: $background-light;
+        font-size: 1.6rem;
+        font-weight: 700;
+
+        @include responsive(phone) {
+            padding: 4rem 6rem;
         }
 
+        @include responsive(tablet) {
+            @include center-element;
+            top: 140px;
+            transform: translateX(-50%);
+            width: auto;
+            padding: 4rem 10rem;
+        }
+    }
+
     &__form {
-        @include flex-container($align: flex-start, $gap: 20px);
+        @include flex-container(
+                $align: flex-start,
+                $gap: 20px
+        );
 
         &_element {
             width: 100%;
-            @include flex-container($align: stretch, $gap: 7px);
+            @include flex-container(
+                    $align: stretch,
+                    $gap: 7px
+            );
         }
     }
 
@@ -37,7 +57,10 @@
     }
     &__buttons {
         margin: 2rem auto 0;
-        @include flex-container($direction: row, $gap: 20px);
+        @include flex-container(
+                $direction: row,
+                $gap: 20px
+        );
     }
 }
 
