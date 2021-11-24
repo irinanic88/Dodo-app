@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-
-import cn from 'classnames';
-import styles from './createTicketWindow.module.css';
-
 import {useForm} from 'react-hook-form';
 import {Link, useHistory} from "react-router-dom";
-import Button from '../button';
-import CloseButton from '../button/closeButton/closeButton';
+import PropTypes from 'prop-types';
 
 import {createTicket} from '../../redux/actions';
 import {columnsSelector} from "../../redux/selectors";
 
+import cn from 'classnames';
+import styles from './createTicketWindow.module.scss';
+
+import Button from '../button';
+
 export let CreateTicketWindow;
 CreateTicketWindow = ({
-                                boardId,
-                                statuses,
-                                createTicketRequest
+    boardId,
+    statuses,
+    createTicketRequest
 }) => {
     const {register, handleSubmit} = useForm();
     const history = useHistory();
@@ -30,41 +29,41 @@ CreateTicketWindow = ({
     const [inputValue, setInputValue] = useState('');
 
     return (
-        <div className={styles.modal} data-id="create-ticket-window">
-            <div className={styles.overlay}/>
-            <div className={styles.inner}>
-                <Link to={`/board/${boardId}`}>
-                    <CloseButton/>
-                </Link>
-                <form className={styles.form} onSubmit={handleSubmit(createTicket)}>
-                    <div className={styles.formElement}>
-                        <label className={styles.label}>Title:</label>
-                        <input {...register('title')} required maxLength={50} type="text" size="50"
+        <div className={styles.createTicketWindow} data-id="create-ticket-window">
+            <div className={styles.createTicketWindow__container}>
+                <form className={styles.createTicketWindow__form} onSubmit={handleSubmit(createTicket)}>
+
+                    <div className={styles.createTicketWindow__form_element}>
+                        <label className={styles.createTicketWindow__label}>Title:</label>
+                        <input {...register('title')} required maxLength={60} type="text" size="50"
                                onChange={(event => setInputValue(event.target.value))}
-                        className={cn(styles.title, styles.input)} />
+                               className={cn(styles.createTicketWindow__input, styles.createTicketWindow__title)} />
                     </div>
-                    <div className={cn(styles.formElement, styles.description)}>
-                        <label className={styles.label}>Description:</label>
+
+                    <div className={styles.createTicketWindow__form_element}>
+                        <label className={styles.createTicketWindow__label}>Description:</label>
                         <textarea {...register('description')}
-                            type="text" id="create-description" size="2000" 
-                            className={cn(styles.input, styles.descriptionInput)}>
-                        </textarea>
+                                  type="text" id="create-description" size="1000"
+                                  className={cn(styles.createTicketWindow__input, styles.createTicketWindow__description)}>
+                    </textarea>
                     </div>
-                    <div className={styles.formElement}>
-                        <label className={styles.label}>Status: </label>
-                         <select className={cn(styles.statusInput, styles.input)}
+
+                    <div className={styles.createTicketWindow__form_element}>
+                        <label className={styles.createTicketWindow__label}>Status: </label>
+                        <select className={cn(styles.createTicketWindow__status, styles.createTicketWindow__input)}
                                 {...register('status', {value: statuses[0]})}>
                             {statuses.map((item) =>
                                 <option key={item}>{item}</option>
                             )}
                         </select>
                     </div>
-                    <div className={styles.buttons}>
-                        <Button name={'Create'}
-                                onClick={() => {}}
-                                isDisabled={inputValue === ''}/>
-                    </div>
 
+                    <div className={styles.createTicketWindow__buttons}>
+                        <Button name={'Create'} onClick={() => {}} isDisabled={inputValue === ''}/>
+                        <Link to={`/board/${boardId}`}>
+                            <Button name={'Close'} onClick={() => {}}/>
+                        </Link>
+                    </div>
                 </form>
             </div>
         </div>

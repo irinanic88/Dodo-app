@@ -3,10 +3,11 @@ import {connect} from 'react-redux';
 import {DragDropContext} from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 
-import styles from './board.module.css';
+import styles from './board.module.scss';
 
 import Column from '../column';
-import {columnTitles} from '../../columns';
+
+import { columnTitles } from '../../config/columns';
 
 import {
     loadColumnTitles,
@@ -43,7 +44,7 @@ Board = ({
         <DragDropContext onDragEnd={onDragEnd}>
             <div className={styles.board} data-id="board">
                 {columnTitles.map((column) => (
-                    <div className={styles.column} data-id="column-wrapper" key={column}>
+                    <div className={styles.board__column} data-id="column-wrapper" key={column}>
                         <Column boardId={boardId} columnTitle={column}/>
                     </div>
                 ))}
@@ -64,8 +65,17 @@ Board.propTypes = {
 const mapDispatchToProps = (dispatch, props) => ({
         loadColumnTitlesDispatch: (columnTitles) => (dispatch(loadColumnTitles(columnTitles, props.boardId))),
         loadTicketsDispatch: () => dispatch(loadTickets(props.boardId)),
-        changeStatusDispatch: (ticketId, sourceColumnTitle, destinationColumnTitle, destinationIndex) =>
-            dispatch(changeStatus(ticketId, sourceColumnTitle, destinationColumnTitle, destinationIndex, props.boardId))
+        changeStatusDispatch: (ticketId,
+                               sourceColumnTitle,
+                               destinationColumnTitle,
+                               destinationIndex) =>
+            dispatch(changeStatus(
+                ticketId,
+                sourceColumnTitle,
+                destinationColumnTitle,
+                destinationIndex,
+                props.boardId
+            ))
     });
 
 export default connect(null, mapDispatchToProps) (Board);

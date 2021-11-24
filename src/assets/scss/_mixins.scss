@@ -1,0 +1,57 @@
+@import './variables';
+
+@mixin center-element () {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin flex-container (
+  $direction: column,
+  $justify: flex-start,
+  $align: center,
+  $gap: 0 0
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin input {
+  padding: 5px 10px;
+  background-color: $light-green;
+  border: 1px solid $green;
+
+    &:focus {
+      outline: 1px solid $green;
+      transition: outline .5s ease;
+    }
+
+    &::placeholder {
+      color: rgba($font-primary, .2);
+    }
+}
+
+@mixin responsive ($breakpoint) {
+
+  @if $breakpoint == laptop {
+    @media screen and (min-width: 992px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == phone {
+    @media screen and (min-width: 576px) {
+      @content;
+    }
+  }
+}

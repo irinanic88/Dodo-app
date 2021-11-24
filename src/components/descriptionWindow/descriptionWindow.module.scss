@@ -1,0 +1,74 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.descriptionWindow {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba($background, .5);
+    overflow-y: auto;
+
+    &__container {
+        position: absolute;
+        top: 140px;
+        width: 100%;
+        padding: 3rem;
+        @include flex-container(
+                $align: flex-start,
+                $gap: 20px
+        );
+        background-color: $background-light;
+        font-size: 1.6rem;
+        font-weight: 700;
+
+        @include responsive(phone) {
+            padding: 4rem 6rem;
+        }
+
+        @include responsive(tablet) {
+            @include center-element;
+            top: 140px;
+            transform: translateX(-50%);
+            width: auto;
+            padding: 4rem 10rem;
+        }
+    }
+
+    &__number {
+        font-size: 1.8rem;
+        color: $blue;
+    }
+
+    &__description {
+        width: 600px;
+        max-height: 200px;
+        overflow: auto;
+        font-weight: 400;
+    }
+
+    &__form {
+        margin-top: 3rem;
+        width: 100%;
+        @include flex-container(
+                $align: stretch,
+                $gap: 7px
+        );
+    }
+
+    &__input {
+        @include input;
+    }
+
+    &__close {
+        margin: 2rem auto 0;
+    }
+}
+
+.invisible {
+    display: none;
+}
+
+

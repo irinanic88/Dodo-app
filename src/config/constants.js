@@ -1,0 +1,1 @@
+export const HOST = 'http://api.dodo-app.net/api';

@@ -1,0 +1,72 @@
+@import '../../assets/scss/variables';
+
+.button {
+    text-decoration: none;
+    outline: none;
+    border: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.button__primary {
+    padding: 10px 18px;
+    border-radius: 6px;
+    background-color: $blue;
+    color: $font-secondary;
+
+    &:hover {
+        background-color: $green;
+        transition: background-color .3s ease-in-out;
+    }
+
+    &:focus {
+        background-color: $green;
+        transition: background-color .3s ease-in-out;
+    }
+
+    &:active {
+        transform: translateY(1px);
+        transition: transform .3s ease;
+    }
+
+    &:disabled {
+        opacity: .5;
+    }
+}
+
+.button__secondary {
+    padding: 5px 15px;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    box-shadow: 0 0 0 1px $green;
+    background-color: transparent;
+    color: $green;
+
+    &:hover {
+        border: 2px solid $green;
+        background-color: rgba($light-green, .4);
+        transition: border .3s ease-in-out, background-color .3s ease-in-out;
+    }
+
+    &:focus {
+        border: 2px solid $green;
+        background-color: $light-green;
+        transition: border .3s ease-in-out, background-color .3s ease-in-out;
+    }
+
+    &:active {
+        border: 2px solid $green;
+        background-color: $light-green;
+        transition: border .3s ease-in-out, background-color .3s ease-in-out;
+    }
+
+    &:disabled {
+        opacity: .5;
+    }
+}
+
+
+
+
+  

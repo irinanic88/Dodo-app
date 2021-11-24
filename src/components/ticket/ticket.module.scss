@@ -1,0 +1,48 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.ticket {
+    margin: 0 auto;
+    width: calc(100% - 20px);
+    height: 80px;
+    padding: 15px 20px 10px;
+    @include flex-container($justify: space-between);
+    background-color: $light-green;
+    border: 1px solid $green;
+
+    &__title {
+        width: 100%;
+        word-wrap: break-word;
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+
+    &__number {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: $blue;
+    }
+
+    &__isDragging {
+        outline: 1px solid $green;
+        transition: outline .3s ease;
+    }
+
+    &:hover {
+        outline: 1px solid $green;
+        transition: outline .3s ease;
+    }
+
+    &:focus {
+        outline: 1px solid $green;
+        transition: outline .3s ease;
+    }
+
+    @include responsive(tablet) {
+        height: 125px;
+    }
+
+    @include responsive(laptop) {
+        height: 100px;
+    }
+}
