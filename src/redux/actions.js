@@ -25,7 +25,7 @@ export const checkBoardId = (boardId) => ({
     boardId,
 });
 
-export const loadColumnTitles = (columnTitles, boardId) => ({
+export const loadColumns = (columnTitles, boardId) => ({
     type: LOAD_COLUMN_TITLES,
     columnTitles,
     boardId,

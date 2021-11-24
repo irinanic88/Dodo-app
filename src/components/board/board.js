@@ -8,9 +8,10 @@ import styles from './board.module.scss';
 import Column from '../column';
 
 import { columnTitles } from '../../config/columns';
+import { toCamelCase } from "../../config/utils";
 
 import {
-    loadColumnTitles,
+    loadColumns,
     loadTickets,
     changeStatus
 } from '../../redux/actions';
@@ -19,11 +20,13 @@ export let Board;
 Board = ({
              boardId,
              loadTicketsDispatch,
-             loadColumnTitlesDispatch,
+             loadColumnsDispatch,
              changeStatusDispatch
 }) => {
 
-    useEffect(() => loadColumnTitlesDispatch(columnTitles), [loadColumnTitlesDispatch]);
+    const columns = toCamelCase(columnTitles);
+
+    useEffect(() => loadColumnsDispatch(columns), [loadColumnsDispatch]);
     useEffect(() => loadTicketsDispatch(), [loadTicketsDispatch]);
 
     const onDragEnd = (result) => {
@@ -43,7 +46,7 @@ Board = ({
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <div className={styles.board} data-id="board">
-                {columnTitles.map((column) => (
+                {columns.map((column) => (
                     <div className={styles.board__column} data-id="column-wrapper" key={column}>
                         <Column boardId={boardId} columnTitle={column}/>
                     </div>
@@ -55,15 +58,12 @@ Board = ({
 
 Board.propTypes = {
     boardId: PropTypes.string.isRequired,
-    columnTitles: PropTypes.arrayOf(
-            PropTypes.string,
-        ),
     loadTicketsDispatch: PropTypes.func.isRequired,
     changeStatusDispatcher: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch, props) => ({
-        loadColumnTitlesDispatch: (columnTitles) => (dispatch(loadColumnTitles(columnTitles, props.boardId))),
+        loadColumnsDispatch: (columns) => (dispatch(loadColumns(columns, props.boardId))),
         loadTicketsDispatch: () => dispatch(loadTickets(props.boardId)),
         changeStatusDispatch: (ticketId,
                                sourceColumnTitle,
