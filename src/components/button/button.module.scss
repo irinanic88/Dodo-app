@@ -1,6 +1,7 @@
 @import '../../assets/scss/variables';
 
 .button {
+    border-radius: 50px;
     text-decoration: none;
     outline: none;
     border: none;
@@ -11,7 +12,6 @@
 
 .button__primary {
     padding: 10px 25px;
-    border-radius: 50px;
     background-color: $blue;
     color: $font-secondary;
 
@@ -36,8 +36,7 @@
 }
 
 .button__secondary {
-    padding: 5px 15px;
-    border-radius: 50px;
+    padding: 6px 15px;
     border: 2px solid transparent;
     box-shadow: 0 0 0 1px $green;
     background-color: transparent;
