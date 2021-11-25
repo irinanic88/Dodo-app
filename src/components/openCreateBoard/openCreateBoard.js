@@ -38,8 +38,10 @@ export let OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
               <p>or</p>
 
               <label >Introduce your board ID:</label>
-              <input className={styles.openCreateBoard__input} {...register('boardId')}
-                     maxLength="10" size="10" placeholder="Ex: 0123456789"/>
+              <input {...register('boardId', {maxLength: 10})}
+                     placeholder="Ex: 0123456789"
+                     className={styles.openCreateBoard__input}
+              />
               <Button name={'Open'} onClick={openBoard}/>
           </div>
       </div>

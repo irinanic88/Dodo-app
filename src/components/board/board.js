@@ -26,7 +26,7 @@ Board = ({
 
     const columns = toCamelCase(columnTitles);
 
-    useEffect(() => loadColumnsDispatch(columns), [loadColumnsDispatch]);
+    useEffect(() => loadColumnsDispatch(columns), [loadColumnsDispatch, columns]);
     useEffect(() => loadTicketsDispatch(), [loadTicketsDispatch]);
 
     const onDragEnd = (result) => {

@@ -26,6 +26,7 @@
     }
 
   &__input {
+    width: 15rem;
     @include input;
   }
 }
