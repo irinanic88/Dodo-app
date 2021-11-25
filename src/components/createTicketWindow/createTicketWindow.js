@@ -18,6 +18,8 @@ CreateTicketWindow = ({
     statuses,
     createTicketRequest
 }) => {
+
+    const [inputValue, setInputValue] = useState('');
     const {register, handleSubmit} = useForm();
     const history = useHistory();
 
@@ -26,24 +28,27 @@ CreateTicketWindow = ({
         history.push(`/board/${boardId}`);
     }
 
-    const [inputValue, setInputValue] = useState('');
+    const onTitleChange = (event) => {
+        return setInputValue(event.target.value);
+    }
 
     return (
         <div className={styles.createTicketWindow} data-id="create-ticket-window">
             <div className={styles.createTicketWindow__container}>
+
                 <form className={styles.createTicketWindow__form} onSubmit={handleSubmit(createTicket)}>
 
                     <div className={styles.createTicketWindow__form_element}>
                         <label className={styles.createTicketWindow__label}>Title:</label>
-                        <input {...register('title')} required maxLength={60} type="text" size="50"
-                               onChange={(event => setInputValue(event.target.value))}
+                        <input {...register('title', { required: true, maxLength: 60} )}
+                               onChange={onTitleChange}
                                className={cn(styles.createTicketWindow__input, styles.createTicketWindow__title)} />
                     </div>
 
                     <div className={styles.createTicketWindow__form_element}>
                         <label className={styles.createTicketWindow__label}>Description:</label>
                         <textarea {...register('description')}
-                                  type="text" id="create-description" size="1000"
+                                  id="create-description"
                                   className={cn(styles.createTicketWindow__input, styles.createTicketWindow__description)}>
                     </textarea>
                     </div>
@@ -65,6 +70,7 @@ CreateTicketWindow = ({
                         </Link>
                     </div>
                 </form>
+
             </div>
         </div>
     );

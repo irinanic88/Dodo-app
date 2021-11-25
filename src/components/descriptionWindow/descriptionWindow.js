@@ -20,7 +20,7 @@ export let DescriptionWindow = ({
     deleteTicketDispatcher
 }) => {
 
-    const {register, getValues} = useForm();
+    const { register } = useForm();
 
     if (!ticket) {
         return null;
@@ -30,7 +30,7 @@ export let DescriptionWindow = ({
 
     const handleChangeStatus = (event) => {
         event.preventDefault();
-        const destinationColumnTitle = getValues('status');
+        const destinationColumnTitle = event.target.value;
         return changeStatusDispatcher(ticketId, ticket.status, destinationColumnTitle, 0, boardId);
     };
 
@@ -47,16 +47,15 @@ export let DescriptionWindow = ({
                 <label className={styles.descriptionWindow__label}>
                     Change status:
                 </label>
-                <select {...register('status')}
-                        value={status}
+
+                <select {...register('status', { value: status })}
                         className={styles.descriptionWindow__input}
+                        onChange={handleChangeStatus}
                 >
-                        {columns.map((item) =>
-                        <option key={item} {...register(item)}>{item}</option>
+                    {columns.map((item) =>
+                    <option key={item}>{item}</option>
                     )}
                 </select>
-
-                <button className={styles.invisible} onClick={handleChangeStatus}>Submit</button>
 
             </form>
             <Button className={styles.descriptionWindow__delete}

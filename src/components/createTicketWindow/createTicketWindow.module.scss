@@ -50,6 +50,14 @@
 
     &__input {
         @include input;
+
+        @include responsive(tablet) {
+            width: 400px;
+        }
+
+        @include responsive(laptop) {
+            width: 500px;
+        }
     }
 
     &__description {
