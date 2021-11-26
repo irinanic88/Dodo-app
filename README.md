@@ -2,7 +2,7 @@
 A light-weight scrum board called Dodo-app.<br>
 Try it: https://dodo-app.net/
 
-![Dodo-app.Demo](https://i.ibb.co/0Xzf0t5/Frame-1board-S.png)
+![Dodo-app.Demo](https://i.ibb.co/mhZH3rB/Frame-1board.png)
 # Description
 ## Front-end
 This is my pet project to learn, exercise and visualize the skills of front-end programming. First it was made on pure JavaScript classes, then it was all passed to React components using Redux to store information. Jest/Enzyme technologies are used for unit testing. 
@@ -19,7 +19,7 @@ The backend part was made by @dmitrii606 who also kindly mentored me in this pro
 
 2.	Please, write down your Board ID to be able to open your board after exit it. You can use Routing to navigate. Or you can access then to your board from the main page.
 
-3.	Once you are in your Board page, press Create button to make a new ticket. You can choose its status while creating or editing it, or you can just drag it to a corresponding column. 
+3.	Once you are in your Board page, press "New ticket" button to make a new ticket. You can choose its status while creating or editing it, or you can just drag it to a corresponding column. 
 4.	Click the ticket on the column to see its description or delete it. 
 5.	That’s it. Have fun, and don’t stop yourself of being creative on tickets you make.
 # Few more words
