@@ -64,7 +64,11 @@ CreateTicketWindow = ({
                     </div>
 
                     <div className={styles.createTicketWindow__buttons}>
-                        <Button name={'Create'} onClick={() => {}} isDisabled={inputValue === ''}/>
+                        <Button name={'Create'}
+                                onClick={() => {}}
+                                isDisabled={inputValue === ''}
+                                data-id="create-button"
+                        />
                         <Link to={`/board/${boardId}`}>
                             <Button name={'Close'} onClick={() => {}}/>
                         </Link>

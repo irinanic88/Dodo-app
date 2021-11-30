@@ -34,7 +34,7 @@ describe('CreateTicketWindow', () => {
             </MemoryRouter>
         );
         wrapper.find('input').simulate('change', { target: {value: ''}});
-        expect(wrapper.find('[data-id="button"]').props().disabled).toEqual(true);
+        expect(wrapper.find('[data-id="create-button"]').find('[data-id="button"]').props().disabled).toEqual(true);
     });
 
     it('enables button if title input is not empty', () => {
@@ -46,7 +46,7 @@ describe('CreateTicketWindow', () => {
             </MemoryRouter>
         );
         wrapper.find('input').simulate('change', { target: {value: '1'}});
-        expect(wrapper.find('[data-id="button"]').props().disabled).toEqual(false);
+        expect(wrapper.find('[data-id="create-button"]').find('[data-id="button"]').props().disabled).toEqual(false);
     });
 
     it('constructs select options from given array', () => {

@@ -78,7 +78,7 @@ describe('DescriptionWindow', () => {
                 />
             </MemoryRouter>
         );
-        expect(wrapper.find('p').at(0).text()).toBe(simulateTicket.id);
+        expect(wrapper.find('p').at(0).text()).toBe(`№ ${simulateTicket.id}`);
     });
 
     it('should display given ticket description', () => {
@@ -93,7 +93,7 @@ describe('DescriptionWindow', () => {
                 />
             </MemoryRouter>
         );
-        expect(wrapper.find('p').at(1).text()).toBe(simulateTicket.description);
+        expect(wrapper.find('p').last().text()).toBe(simulateTicket.description);
     });
 
     it('constructs select options from given array', () => {
@@ -114,7 +114,7 @@ describe('DescriptionWindow', () => {
         })).toHaveLength(1);
     });
 
-    it('ticket`s status option should be selected by default', () => {
+    it('ticket`s status option should be selected', () => {
         const wrapper = mount(
             <MemoryRouter>
                 <DescriptionWindow columns={simulateColumns}
