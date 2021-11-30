@@ -10,8 +10,7 @@ import cn from 'classnames';
 
 import Ticket from '../ticket';
 
-export let Column;
-Column = ({tickets, columnTitle, boardId}) => {
+export let Column = ({tickets, columnTitle, boardId}) => {
 
     return (
             <Droppable droppableId={columnTitle}>

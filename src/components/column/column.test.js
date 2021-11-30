@@ -13,19 +13,19 @@ const mockStore = configureMockStore();
 const store = mockStore({
     tickets: { '123456789': {
             '1': {
-                status: 'to do',
+                status: 'To Do',
                 id: '1',
                 title: 'test',
                 description: 'pass the test',
             },
             '2': {
-                status: 'in review',
+                status: 'In Review',
                 id: '2',
                 title: 'test2',
                 description: 'not pass the test',
             },
             '3': {
-                status: 'to do',
+                status: 'To Do',
                 id: '3',
                 title: 'test3',
                 description: 'pass the test',
@@ -43,7 +43,7 @@ describe('Column', () => {
             <Provider store={store}>
                 <MemoryRouter>
                     <DragDropContext>
-                        <Column columnTitle={'to do'}
+                        <Column columnTitle={'To Do'}
                                 boardId={'123456789'}
                                 tickets={simulateTickets} />
                     </DragDropContext>
@@ -58,7 +58,7 @@ describe('Column', () => {
             <Provider store={store}>
                 <MemoryRouter>
                     <DragDropContext>
-                        <Column columnTitle={'to do'}
+                        <Column columnTitle={'To Do'}
                                 boardId={'123456789'}
                                 tickets={simulateTickets} />
                     </DragDropContext>

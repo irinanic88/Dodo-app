@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from "react-redux";
 import {useHistory} from 'react-router-dom';
 import {useForm} from "react-hook-form";
@@ -15,6 +15,8 @@ export let OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
     const { register, getValues } = useForm();
     const history = useHistory();
 
+    const [inputValue, setinputValue] = useState('');
+
     useEffect(() => {
         if (newBoardId) {
             history.push(`/board/${newBoardId}`);
@@ -29,6 +31,10 @@ export let OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
         }
     }
 
+    const onBoardIdInputChange = (event) => {
+        return setinputValue(event.target.value);
+    }
+
     return (
       <div data-id="open-create-board" className={styles.openCreateBoard}>
           <div className={styles.openCreateBoard__inner}>
@@ -38,11 +44,14 @@ export let OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
               <p>or</p>
 
               <label >Introduce your board ID:</label>
-              <input {...register('boardId', {maxLength: 10})}
+              <input {...register('boardId')}
+                     maxLength="10"
                      placeholder="Ex: 0123456789"
-                     className={styles.openCreateBoard__input}
+                     className={styles.openCreateBoard__input} onChange={onBoardIdInputChange}
               />
-              <Button name={'Open'} onClick={openBoard}/>
+              <Button name={'Open'}
+                      onClick={openBoard}
+                      isDisabled={inputValue === '' || inputValue.length !== 10}/>
           </div>
       </div>
     );

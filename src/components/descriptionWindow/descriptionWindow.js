@@ -48,7 +48,8 @@ export let DescriptionWindow = ({
                     Change status:
                 </label>
 
-                <select {...register('status', { value: status })}
+                <select {...register('status')}
+                        value={status}
                         className={styles.descriptionWindow__input}
                         onChange={handleChangeStatus}
                 >

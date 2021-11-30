@@ -1,13 +1,13 @@
-
 import React from "react";
 import Enzyme, { mount } from 'enzyme';
-
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+
 import { Provider } from "react-redux";
 import configureMockStore from 'redux-mock-store';
+
 import { MemoryRouter } from 'react-router-dom';
+
 import {BoardPage} from "./boardPage";
-import React from "react";
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -21,7 +21,7 @@ const mockStore = configureMockStore();
 const store = mockStore({
         tickets: { '123456789': {
                 '1': {
-                    status: 'to do',
+                    status: 'To Do',
                     id: '1',
                     title: 'test',
                     description: 'render Description window',
@@ -29,29 +29,29 @@ const store = mockStore({
             }
         },
         columnsWithTickets: {
-            'to do': {
-                title: 'to do',
+            'To Do': {
+                title: 'To Do',
                 boardId: '123456789',
                 tickets: ['1'],
             },
-            'in progress': {
-                title: 'to do',
+            'In Progress': {
+                title: 'To Do',
                 boardId: '123456789',
                 tickets: [],
             },
-            'in review': {
-                title: 'to do',
+            'In Review': {
+                title: 'To Do',
                 boardId: '123456789',
                 tickets: [],
             },
-            'done': {
-                title: 'to do',
+            'Done': {
+                title: 'To Do',
                 boardId: '123456789',
                 tickets: [],
             },
 
         },
-        columns: ['to do', 'in progress', 'in review', 'done'],
+        columns: ['To Do', 'In Progress', 'In Review', 'Done'],
         board: {
             '123456789': '123456789'
         }
