@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {useForm} from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {columnsSelector, ticketSelector} from '../../redux/selectors';
@@ -21,8 +21,11 @@ export let DescriptionWindow = ({
 }) => {
 
     const { register } = useForm();
+    const history = useHistory();
+
 
     if (!ticket) {
+        history.goBack();
         return null;
     }
 
