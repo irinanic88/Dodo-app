@@ -7,7 +7,7 @@ Try it: https://dodo-app.net/
 ## Front-end
 This is my pet project to learn, exercise and visualize the skills of front-end programming. First it was made on pure JavaScript classes, then it was all passed to React components using Redux to store information. Jest/Enzyme technologies are used for unit testing. 
 ### Used technologies
-HTML5 🔸 CSS3 🔸 JavaScript(ES6) 🔸 React 🔸 Redux 🔸 React Routing 🔸 react-beautiful-dnd 🔸 Jest/Enzyme
+HTML5 🔸 SCSS 🔸 JavaScript(ES6) 🔸 React 🔸 Redux 🔸 React Routing 🔸 react-beautiful-dnd 🔸 Jest/Enzyme
 ## Backend
 The backend part was made by @dmitrii606 who also kindly mentored me in this project. 
 # How it works
