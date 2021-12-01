@@ -51,7 +51,8 @@ export let OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
               />
               <Button name={'Open'}
                       onClick={openBoard}
-                      isDisabled={inputValue === '' || inputValue.length !== 10}/>
+                      isDisabled={inputValue === '' || inputValue.length !== 10}
+                      data-id="open-button"/>
           </div>
       </div>
     );
