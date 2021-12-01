@@ -23,6 +23,10 @@ export let OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
         }
     }, [newBoardId, history]);
 
+    const createBoard = () => {
+        createNewBoardDispatch();
+    }
+
     const openBoard = (event) => {
         event.preventDefault();
         const boardId = getValues('boardId');
@@ -39,7 +43,7 @@ export let OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
       <div data-id="open-create-board" className={styles.openCreateBoard}>
           <div className={styles.openCreateBoard__inner}>
               <p data-id="create-new-board">Click here to create a new board:</p>
-              <Button name={'Create board'} onClick={createNewBoardDispatch}/>
+              <Button name={'Create board'} onClick={createBoard}/>
 
               <p>or</p>
 

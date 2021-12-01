@@ -17,11 +17,14 @@ const board = (state = {}, action) => {
             return {...state, newId: data.uuid};
         }
         case CHECK_BOARD_ID + SUCCESS: {
-            return {...state, [boardId]: boardId};
+            const {newId, ...rest} = {...state};
+
+            return {...rest, [boardId]: boardId};
         }
         case CHECK_BOARD_ID + FAILURE: {
             alert("Wrong Id");
             console.log(error);
+
             return {...state, [boardId]: null};
         }
 
