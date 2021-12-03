@@ -11,6 +11,7 @@ import cn from 'classnames';
 import styles from './createTicketWindow.module.scss';
 
 import Button from '../button';
+import Close from "../closeButton";
 
 export let CreateTicketWindow;
 CreateTicketWindow = ({
@@ -32,9 +33,25 @@ CreateTicketWindow = ({
         return setInputValue(event.target.value);
     }
 
+    const handleWindowClick = (event) => {
+        const clickedArea = event.target;
+
+        if (clickedArea.dataset.id) {
+            history.push(`/board/${boardId}`);
+        }
+        return;
+    }
+
     return (
-        <div className={styles.createTicketWindow} data-id="create-ticket-window">
+        <div className={styles.createTicketWindow}
+             data-id="create-ticket-window"
+             onClick={handleWindowClick}
+        >
             <div className={styles.createTicketWindow__container}>
+
+                <Link to={`/board/${boardId}`}>
+                    <Close />
+                </Link>
 
                 <form className={styles.createTicketWindow__form} onSubmit={handleSubmit(createTicket)}>
 

@@ -37,8 +37,20 @@ export let DescriptionWindow = ({
         return changeStatusDispatcher(ticketId, ticket.status, destinationColumnTitle, 0, boardId);
     };
 
+    const handleWindowClick = (event) => {
+        const clickedArea = event.target;
+
+        if (clickedArea.dataset.id) {
+            history.push(`/board/${boardId}`);
+        }
+        return;
+    }
+
     return (
-    <div className={styles.descriptionWindow} data-id="description-window">
+    <div className={styles.descriptionWindow}
+         data-id="description-window"
+         onClick={handleWindowClick}
+    >
         <div className={styles.descriptionWindow__container}>
 
             <p className={styles.descriptionWindow__number}>№ {id}</p>
