@@ -10,6 +10,7 @@ import {changeStatus, deleteTicket} from '../../redux/actions';
 import styles from './descriptionWindow.module.scss';
 
 import Button from '../button';
+import Close from "../closeButton";
 
 export let DescriptionWindow = ({
     columns,
@@ -52,6 +53,10 @@ export let DescriptionWindow = ({
          onClick={handleWindowClick}
     >
         <div className={styles.descriptionWindow__container}>
+
+            <Link to={`/board/${boardId}`}>
+                <Close />
+            </Link>
 
             <p className={styles.descriptionWindow__number}>№ {id}</p>
             <h2 className={styles.descriptionWindow__title}>{title}</h2>

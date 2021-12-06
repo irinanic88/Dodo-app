@@ -36,7 +36,7 @@ CreateTicketWindow = ({
     const handleWindowClick = (event) => {
         const clickedArea = event.target;
 
-        if (clickedArea.dataset.id) {
+        if (clickedArea.dataset.id === "create-ticket-window") {
             history.push(`/board/${boardId}`);
         }
         return;
