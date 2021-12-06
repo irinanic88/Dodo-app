@@ -41,7 +41,7 @@ export let DescriptionWindow = ({
     const handleWindowClick = (event) => {
         const clickedArea = event.target;
 
-        if (clickedArea.dataset.id) {
+        if (clickedArea.dataset.id === "description-window") {
             history.push(`/board/${boardId}`);
         }
         return;
