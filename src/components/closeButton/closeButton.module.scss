@@ -1,0 +1,26 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 25px;
+  height: 25px;
+  padding: 6px;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 1px $green;
+  background-color: transparent;
+  color: $green;
+
+  &:hover {
+    border: 2px solid $green;
+    background-color: rgba($light-green, .4);
+    transition: border .3s ease-in-out, background-color .3s ease-in-out;
+  }
+
+  &__icon {
+    @include center-element;
+  }
+}

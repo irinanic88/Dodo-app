@@ -10,6 +10,7 @@ import {changeStatus, deleteTicket} from '../../redux/actions';
 import styles from './descriptionWindow.module.scss';
 
 import Button from '../button';
+import Close from "../closeButton";
 
 export let DescriptionWindow = ({
     columns,
@@ -37,9 +38,25 @@ export let DescriptionWindow = ({
         return changeStatusDispatcher(ticketId, ticket.status, destinationColumnTitle, 0, boardId);
     };
 
+    const handleWindowClick = (event) => {
+        const clickedArea = event.target;
+
+        if (clickedArea.dataset.id === "description-window") {
+            history.push(`/board/${boardId}`);
+        }
+        return;
+    }
+
     return (
-    <div className={styles.descriptionWindow} data-id="description-window">
+    <div className={styles.descriptionWindow}
+         data-id="description-window"
+         onClick={handleWindowClick}
+    >
         <div className={styles.descriptionWindow__container}>
+
+            <Link to={`/board/${boardId}`}>
+                <Close />
+            </Link>
 
             <p className={styles.descriptionWindow__number}>№ {id}</p>
             <h2 className={styles.descriptionWindow__title}>{title}</h2>
