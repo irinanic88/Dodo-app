@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
+import PropTypes from 'prop-types';
 
 import styles from './alert.module.scss';
 import cn from 'classnames';
@@ -38,7 +39,15 @@ const Alert = ({alert, closeAlertDispatch}) => {
     );
 }
 
-//addPropTypes
+Alert.propTypes = {
+    alert: PropTypes.shape({
+        type: PropTypes.string.isRequired,
+        message: PropTypes.string.isRequired,
+        data: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+    }).isRequired,
+    closeAlertDispatch: PropTypes.func.isRequired
+}
 
 const mapDispatchToProps = (dispatch) => ({
     closeAlertDispatch: (id) =>  (dispatch(closeAlert(id))),
