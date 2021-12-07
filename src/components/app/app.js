@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {connect} from "react-redux";
 import {Route, Switch} from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -12,7 +12,6 @@ import Loader from '../loader';
 import Alert from "../alert";
 
 const App = ({loading, alerts}) => {
-    console.log(alerts);
 
 
     return (
@@ -23,7 +22,7 @@ const App = ({loading, alerts}) => {
 
                 {alerts.length > 0 ?
                     alerts.map((alert, index) =>
-                    <Alert key={index} context={alert.type} text={alert.message} />
+                    <Alert key={index} alert={alert} />
                     )
                     : null
                 }
