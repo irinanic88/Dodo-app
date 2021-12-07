@@ -1,4 +1,4 @@
-import {CLOSE_ALERT, CREATE_BOARD, FAILURE, SUCCESS} from '../actionTypes';
+import {CHECK_BOARD_ID, CLOSE_ALERT, CREATE_BOARD, FAILURE, SUCCESS} from '../actionTypes';
 
 import {generateId} from "../utils";
 
@@ -21,8 +21,15 @@ const alerts = (state = [], action) => {
             return [...state, {
                 type: 'ERROR',
                 message: 'Failed to create a new board. Please, try again!',
-                data: error,
+                data: error.message,
             }]
+        }
+        case CHECK_BOARD_ID + FAILURE: {
+            return [...state, {
+                type: 'ERROR',
+                message: 'Failed to open the board',
+                data: error.message,
+            }];
         }
         default:
             return state;

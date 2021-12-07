@@ -1,16 +1,15 @@
 @import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
 
 .alert {
     position: fixed;
     top: 3.5rem;
     left: 50%;
     transform: translateX(-50%);
-    min-width: 300px;
     padding: 2rem 4rem 2rem 2rem;
     background-color: $white;
-    text-align: center;
     font-family: "Inter", "Arial", sans-serif;
-    font-size: 14px;
+
 
     &_success {
         border: 2px solid $green;
@@ -46,5 +45,32 @@
         &_tip {
             color: $blue;
         }
+    }
+
+    &__text {
+        font-size: 1.4rem;
+    }
+
+    &__details {
+        margin-top: 1rem;
+
+        display: flex;
+    }
+
+    &__summary {
+        font-size: 1.2rem;
+        text-decoration: underline;
+        cursor: pointer;
+        list-style: none;
+
+
+        &::marker {
+            display: none;
+        }
+    }
+
+    &__details_text {
+        margin-top: .5rem;
+        text-decoration: none;
     }
 }

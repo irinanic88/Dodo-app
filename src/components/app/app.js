@@ -28,7 +28,6 @@ const App = ({loading, alerts}) => {
                 }
 
 
-
                 <Switch>
                     <Route path='/' exact component={OpenCreateBoard}/>
                     <Route path='/board/:boardId' exact component={BoardPage} />

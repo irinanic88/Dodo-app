@@ -9,8 +9,8 @@ import {closeAlert} from '../../redux/actions';
 import {ReactComponent as CloseIcon} from '../../assets/icons/close.svg';
 
 const Alert = ({alert, closeAlertDispatch}) => {
-    const {type, message, id} = alert;
-    const closeAlertTime = 3000;
+    const {type, message, data, id} = alert;
+    const closeAlertTime = 5000;
 
     useEffect(() => {
         setTimeout(() => closeAlertDispatch(id), closeAlertTime);
@@ -23,6 +23,10 @@ const Alert = ({alert, closeAlertDispatch}) => {
             [styles.alert_tip]: type === 'TIP'
         })}>
             <p className={styles.alert__text}>{message}</p>
+            <details className={styles.alert__details}>
+                <summary className={styles.alert__summary}>details</summary>
+                <p className={styles.alert__details_text}>{data}</p>
+            </details>
             <button className={cn(styles.alert__close, {
                 [styles.alert__close_success]: type === 'SUCCESS',
                 [styles.alert__close_error]: type === 'ERROR',
