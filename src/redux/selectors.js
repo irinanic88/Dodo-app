@@ -4,6 +4,7 @@ export const newBoardIdSelector = (state) => state.board.newId;
 
 export const columnsSelector = (state) => state.columns;
 export const loadingSelector = (state) => state.loader.loading;
+export const alertsSelector = (state) => state.alerts;
 
 export const ticketsForColumnSelector =  (state, {columnTitle, boardId}) => {
 

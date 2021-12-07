@@ -3,7 +3,8 @@ import {combineReducers} from 'redux';
 import board from './board';
 import tickets from './tickets';
 import loader from './loader';
-import  columns from './columns';
+import columns from './columns';
+import alerts from './alerts';
 import columnsWithTickets from "./columnsWithTickets";
 
 export default combineReducers({
@@ -12,4 +13,5 @@ export default combineReducers({
     tickets,
     columnsWithTickets,
     loader,
+    alerts
 });

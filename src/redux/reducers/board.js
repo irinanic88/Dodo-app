@@ -9,7 +9,6 @@ const board = (state = {}, action) => {
         type,
         boardId,
         data,
-        error,
     } = action;
 
     switch(type) {
@@ -22,8 +21,6 @@ const board = (state = {}, action) => {
             return {...rest, [boardId]: boardId};
         }
         case CHECK_BOARD_ID + FAILURE: {
-            console.log(error);
-
             return {...state, [boardId]: null};
         }
 

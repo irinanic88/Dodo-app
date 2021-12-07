@@ -1,20 +1,20 @@
 @import '../../assets/scss/variables';
 
-.message {
+.alert {
     position: fixed;
     top: 3.5rem;
     left: 50%;
     transform: translateX(-50%);
     min-width: 300px;
-    padding: 2rem;
+    padding: 2rem 4rem 2rem 2rem;
     background-color: $white;
     text-align: center;
     font-family: "Inter", "Arial", sans-serif;
     font-size: 14px;
 
     &_success {
-        border: 2px solid $blue;
-        color: $blue;
+        border: 2px solid $green;
+        color: $green;
     }
 
     &_error {
@@ -23,8 +23,8 @@
     }
 
     &_tip {
-        border: 2px solid $green;
-        color: $green;
+        border: 2px solid $blue;
+        color: $blue;
     }
 
     &__close {
@@ -36,7 +36,7 @@
         cursor: pointer;
 
         &_success {
-            color: #1C5D99;
+            color: $green;
         }
 
         &_error {
@@ -44,7 +44,7 @@
         }
 
         &_tip {
-            color: $green;
+            color: $blue;
         }
     }
 }
