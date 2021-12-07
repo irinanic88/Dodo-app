@@ -1,0 +1,50 @@
+@import '../../assets/scss/variables';
+
+.message {
+    position: fixed;
+    top: 3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 300px;
+    padding: 2rem;
+    background-color: $white;
+    text-align: center;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 14px;
+
+    &_success {
+        border: 2px solid $blue;
+        color: $blue;
+    }
+
+    &_error {
+        border: 2px solid $red;
+        color: $red;
+    }
+
+    &_tip {
+        border: 2px solid $green;
+        color: $green;
+    }
+
+    &__close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+
+        &_success {
+            color: #1C5D99;
+        }
+
+        &_error {
+            color: $red;
+        }
+
+        &_tip {
+            color: $green;
+        }
+    }
+}

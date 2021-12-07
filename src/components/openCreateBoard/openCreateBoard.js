@@ -9,7 +9,8 @@ import {newBoardIdSelector} from "../../redux/selectors";
 
 import styles from './openCreateBoard.module.scss';
 
-import Button from "../button/button";
+import Button from '../button/button';
+import Message from '../message/message';
 
 export let OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
     const { register, getValues } = useForm();
@@ -58,6 +59,8 @@ export let OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
                       isDisabled={inputValue === '' || inputValue.length !== 10}
                       data-id="open-button"/>
           </div>
+
+          <Message context={'tip'} text={'You are such a good person!'} />
       </div>
     );
 };
