@@ -2,14 +2,10 @@
 @import '../../assets/scss/mixins';
 
 .alert {
-    position: fixed;
-    top: 3.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 2rem 4rem 2rem 2rem;
+    position: relative;
+    padding: 1rem 3rem 1rem 1rem;
     background-color: $white;
     font-family: "Inter", "Arial", sans-serif;
-
 
     &_success {
         border: 2px solid $green;
@@ -52,9 +48,8 @@
     }
 
     &__details {
-        margin-top: 1rem;
-
-        display: flex;
+        margin: 1rem .5rem 0;
+        font-style: italic;
     }
 
     &__summary {
@@ -62,7 +57,6 @@
         text-decoration: underline;
         cursor: pointer;
         list-style: none;
-
 
         &::marker {
             display: none;
