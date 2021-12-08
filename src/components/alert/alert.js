@@ -18,7 +18,7 @@ const Alert = ({alert, closeAlertDispatch}) => {
 
     useEffect(() => {
         timeout.current = setTimeout(() => closeAlertDispatch(id), closeAlertTime);
-    }, []);
+    });
 
     const deleteTimeout = () => {
         if (timeout.current !== null) {

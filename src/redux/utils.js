@@ -30,5 +30,5 @@ export const ticketsToColumns = (columns, tickets) => {
 export const stringifyId = (ticket) => ({...ticket, id: ticket.id.toString()});
 export const stringifyAll = (tickets) => tickets.map(ticket => stringifyId(ticket));
 
-export const generateId = () => uuidv4();
+export const generateId = uuidv4;
 
