@@ -1,0 +1,70 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.alert {
+    position: relative;
+    padding: 1rem 3rem 1rem 1rem;
+    background-color: $white;
+    font-family: "Inter", "Arial", sans-serif;
+
+    &_success {
+        border: 2px solid $green;
+        color: $green;
+    }
+
+    &_error {
+        border: 2px solid $red;
+        color: $red;
+    }
+
+    &_tip {
+        border: 2px solid $blue;
+        color: $blue;
+    }
+
+    &__close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+
+        &_success {
+            color: $green;
+        }
+
+        &_error {
+            color: $red;
+        }
+
+        &_tip {
+            color: $blue;
+        }
+    }
+
+    &__text {
+        font-size: 1.4rem;
+    }
+
+    &__details {
+        margin: 1rem .5rem 0;
+        font-style: italic;
+    }
+
+    &__summary {
+        font-size: 1.2rem;
+        text-decoration: underline;
+        cursor: pointer;
+        list-style: none;
+
+        &::marker {
+            display: none;
+        }
+    }
+
+    &__details_text {
+        margin-top: .5rem;
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,15 @@
+@import '../../assets/scss/mixins';
+
+.app__alerts_block {
+  position: fixed;
+  z-index: 1000;
+  top: 3.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  @include flex-container($align: stretch, $gap: 2px);
+
+  @include responsive(phone) {
+    width: 500px;
+  }
+}

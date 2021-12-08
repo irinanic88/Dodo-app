@@ -5,7 +5,8 @@ import {
     LOAD_TICKETS,
     CREATE_TICKET,
     CHANGE_TICKET_STATUS,
-    DELETE_TICKET, 
+    DELETE_TICKET,
+    CLOSE_ALERT
     } from './actionTypes';
 import {HOST} from '../config/constants';
 
@@ -75,5 +76,11 @@ export const deleteTicket = ({ticketId, boardId}) => ({
     ticketId,
     boardId,
 });
+
+export const closeAlert = (id) =>  ({
+    type: CLOSE_ALERT,
+    id,
+});
+
 
 

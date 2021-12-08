@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export const arrToMap = (arr) =>
     arr.reduce((acc, item) => ({...acc, [item.id]: item}), {});
 
@@ -27,3 +29,6 @@ export const ticketsToColumns = (columns, tickets) => {
 };
 export const stringifyId = (ticket) => ({...ticket, id: ticket.id.toString()});
 export const stringifyAll = (tickets) => tickets.map(ticket => stringifyId(ticket));
+
+export const generateId = uuidv4;
+

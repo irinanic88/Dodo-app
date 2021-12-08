@@ -25,14 +25,14 @@
   background-color: $light-green;
   border: 1px solid $green;
 
-    &:focus {
-      outline: 1px solid $green;
-      transition: outline .5s ease;
-    }
+  &:focus {
+    outline: 1px solid $green;
+    transition: outline .5s ease;
+  }
 
-    &::placeholder {
-      color: rgba($font-primary, .2);
-    }
+  &::placeholder {
+    color: rgba($font-primary, .2);
+  }
 }
 
 @mixin responsive ($breakpoint) {

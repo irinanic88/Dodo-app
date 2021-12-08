@@ -14,10 +14,10 @@ const fetchGet = (store) => (next) => async (action) => {
     
     try {
         const data = await fetch(callAPI).then((response) => {
-                if (response.status !== 404) {
+                if (response.status < 300) {
                     return response.json();
                 } else {
-                    throw new Error();
+                    throw new Error(response.statusText);
                 }
             }
         );
