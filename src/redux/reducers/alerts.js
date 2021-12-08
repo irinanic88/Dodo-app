@@ -13,7 +13,7 @@ import {SUCCESS_ALERT, ERROR_ALERT} from '../variables/alertTypes';
 import {generateId} from "../utils";
 
 const alerts = (state = [], action) => {
-    const {type, error, data, id, ticketId, destinationColumnTitle} = action;
+    const {type, error, data, id, ticketId} = action;
 
     switch(type) {
         case CLOSE_ALERT: {
