@@ -12,11 +12,12 @@ import {ReactComponent as CloseIcon} from '../../assets/icons/close.svg';
 
 const Alert = ({alert, closeAlertDispatch}) => {
     const {type, message, details, id} = alert;
-    const closeAlertTime = 5000;
+    const closeAlertTime = 2000;
 
-    // useEffect(() => {
-    //     setTimeout(() => closeAlertDispatch(id), closeAlertTime);
-    // }, []);
+    useEffect(() => {
+        setTimeout(() => closeAlertDispatch(id), closeAlertTime);
+        console.log();
+    }, []);
 
     return (
         <div className={cn(styles.alert, {

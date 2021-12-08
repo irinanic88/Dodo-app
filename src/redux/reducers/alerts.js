@@ -10,7 +10,7 @@ import {
 
 import {SUCCESS_ALERT, ERROR_ALERT} from '../variables/alertTypes';
 
-import {generateId, stringifyId} from "../utils";
+import {generateId} from "../utils";
 
 const alerts = (state = [], action) => {
     const {type, error, data, id, ticketId, destinationColumnTitle} = action;
@@ -18,14 +18,6 @@ const alerts = (state = [], action) => {
     switch(type) {
         case CLOSE_ALERT: {
             return state.filter((alert) => alert.id !== id);
-        }
-        case CREATE_BOARD + SUCCESS: {
-            return [...state, {
-                id: generateId(),
-                type: SUCCESS_ALERT,
-                message: 'Board created!',
-                details: `ID: ${data.uuid}`,
-            }];
         }
         case CREATE_BOARD + FAILURE: {
             return [...state, {
@@ -58,14 +50,6 @@ const alerts = (state = [], action) => {
                 message: 'Failed to create new ticket',
                 details: `Error: ${error.message}`,
             }];
-        }
-        case CHANGE_TICKET_STATUS + SUCCESS: {
-            return [...state, {
-                id: generateId(),
-                type: SUCCESS_ALERT,
-                message: `Ticket's status has been changed`,
-                details: `Ticket №${ticketId} has status ${destinationColumnTitle}`,
-            }]
         }
         case CHANGE_TICKET_STATUS + FAILURE: {
             return [...state, {
