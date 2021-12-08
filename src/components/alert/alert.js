@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 
@@ -12,12 +12,20 @@ import {ReactComponent as CloseIcon} from '../../assets/icons/close.svg';
 
 const Alert = ({alert, closeAlertDispatch}) => {
     const {type, message, details, id} = alert;
+    const timeout = useRef(null);
+
     const closeAlertTime = 2000;
 
     useEffect(() => {
-        setTimeout(() => closeAlertDispatch(id), closeAlertTime);
-        console.log();
+        timeout.current = setTimeout(() => closeAlertDispatch(id), closeAlertTime);
     }, []);
+
+    const deleteTimeout = () => {
+        if (timeout.current !== null) {
+            clearTimeout(timeout.current);
+            timeout.current = null;
+        }
+    }
 
     return (
         <div className={cn(styles.alert, {
@@ -26,7 +34,7 @@ const Alert = ({alert, closeAlertDispatch}) => {
             [styles.alert_tip]: type === TIP_ALERT
         })}>
             <p className={styles.alert__text}>{message}</p>
-            <details className={styles.alert__details}>
+            <details className={styles.alert__details} onClick={deleteTimeout}>
                 <summary className={styles.alert__summary}>details</summary>
                 <p className={styles.alert__details_text}>{details}</p>
             </details>
