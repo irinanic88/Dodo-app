@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {useHistory, Link} from 'react-router-dom';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
@@ -27,6 +27,10 @@ BoardPage = ({
     const requestedBoardId = match.params.boardId;
     const history = useHistory();
 
+    const copyTimeDuration = 1000;
+
+    const [isCopied, setIsCopied] = useState(false);
+
     useEffect(() => { checkBoardIdDispatch(requestedBoardId) },
         [checkBoardIdDispatch, requestedBoardId]);
 
@@ -45,16 +49,20 @@ BoardPage = ({
         history.push('/');
     }
 
+    const onBoardIdCopy = () => {
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), copyTimeDuration)
+    }
+
     return (
         <div data-id="board-page" className={styles.boardPage}>
             <div className={styles.boardPage__header} data-id="header">
                 <div className={styles.boardPage__boardID}>
                     <h2 data-id="board-number">Board: {requestedBoardId}</h2>
-                    <CopyToClipboard text={requestedBoardId} onCopy={()=>console.log('copied')}>
-                        <button onClick={() => {}}>
-                            <Copy />
-                        </button>
+                    <CopyToClipboard text={requestedBoardId} onCopy={onBoardIdCopy}>
+                        <Copy className={styles.boardPage__boardID_copy} />
                     </CopyToClipboard>
+                    {isCopied ? <p className={styles.boardPage__boardID_tooltip}>Copied!</p> : null}
                 </div>
 
                 <Link to={`/board/${requestedBoardId}/tickets/create`}>
