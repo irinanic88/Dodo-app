@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
-import { connect } from 'react-redux';
-import { useHistory, Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {useHistory, Link} from 'react-router-dom';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 import PropTypes from 'prop-types';
 
 import {boardInfoSelector} from '../../redux/selectors';
@@ -11,7 +12,8 @@ import styles from './boardPage.module.scss';
 import Board from '../board';
 import Button from "../button/button";
 import CreateTicketWindow from '../createTicketWindow';
-import DescriptionWindow from "../descriptionWindow";
+import DescriptionWindow from '../descriptionWindow';
+import {ReactComponent as Copy} from '../../assets/icons/copy.svg';
 
 export let BoardPage;
 BoardPage = ({
@@ -30,7 +32,7 @@ BoardPage = ({
 
     useEffect(() => {
         if ( requestedTicketId || createTicket ) {
-           return document.body.style.overflow = 'hidden';
+            return document.body.style.overflow = 'hidden';
         } else {
             return document.body.style.overflow = 'auto';
         }
@@ -43,38 +45,46 @@ BoardPage = ({
         history.push('/');
     }
 
-        return (
-            <div data-id="board-page" className={styles.boardPage}>
-                <div className={styles.boardPage__header} data-id="header">
+    return (
+        <div data-id="board-page" className={styles.boardPage}>
+            <div className={styles.boardPage__header} data-id="header">
+                <div className={styles.boardPage__boardID}>
                     <h2 data-id="board-number">Board: {requestedBoardId}</h2>
-                    <Link to={`/board/${requestedBoardId}/tickets/create`}>
-                        <Button name={'New ticket'} onClick={() => {}}/>
-                    </Link>
+                    <CopyToClipboard text={requestedBoardId} onCopy={()=>console.log('copied')}>
+                        <button onClick={() => {}}>
+                            <Copy />
+                        </button>
+                    </CopyToClipboard>
                 </div>
 
-                <Board boardId={requestedBoardId}/>
-
-                {createTicket ? <CreateTicketWindow boardId={requestedBoardId} /> : null}
-
-                {requestedTicketId ? <DescriptionWindow boardId={requestedBoardId} ticketId={requestedTicketId} /> : null}
+                <Link to={`/board/${requestedBoardId}/tickets/create`}>
+                    <Button name={'New ticket'} onClick={() => {}}/>
+                </Link>
             </div>
-        );
+
+            <Board boardId={requestedBoardId}/>
+
+            {createTicket ? <CreateTicketWindow boardId={requestedBoardId} /> : null}
+
+            {requestedTicketId ? <DescriptionWindow boardId={requestedBoardId} ticketId={requestedTicketId} /> : null}
+        </div>
+    );
 };
 
 BoardPage.propTypes = {
     match: PropTypes.shape({
-            params: PropTypes.shape({
-                ticketId: PropTypes.string,
-                boardId: PropTypes.string,
-            }),
+        params: PropTypes.shape({
+            ticketId: PropTypes.string,
+            boardId: PropTypes.string,
         }),
+    }),
     createTicket: PropTypes.bool,
     boardInfo: PropTypes.string,
     checkBoardIdDispatch: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state, props) => ({
-  boardInfo: boardInfoSelector(state, props.match.params.boardId),
+    boardInfo: boardInfoSelector(state, props.match.params.boardId),
 });
 
 const mapDispatchToProps = (dispatch) => ({

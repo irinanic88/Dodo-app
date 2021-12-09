@@ -28,4 +28,8 @@
               $align: flex-end);
     }
   }
+
+  &__boardID {
+    @include flex-container($direction: row, $gap: 10px);
+  }
 }
