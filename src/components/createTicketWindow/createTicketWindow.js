@@ -57,7 +57,7 @@ CreateTicketWindow = ({
 
                     <div className={styles.createTicketWindow__form_element}>
                         <label className={styles.createTicketWindow__label}>Title:</label>
-                        <input {...register('title', { required: true, maxLength: 60} )}
+                        <input {...register('title', { required: true, maxLength: 60} )} autoFocus
                                onChange={onTitleChange}
                                className={cn(styles.createTicketWindow__input, styles.createTicketWindow__title)} />
                     </div>
