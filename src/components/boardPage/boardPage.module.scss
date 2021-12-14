@@ -28,4 +28,37 @@
               $align: flex-end);
     }
   }
+
+  &__boardID {
+    position: relative;
+    @include flex-container($direction: row, $gap: 10px);
+
+    &_copy {
+      cursor: pointer;
+      color: $green;
+    }
+
+    &_tooltip {
+      position: absolute;
+      right: -20px;
+      bottom: 100%;
+      transform: translateY(-5px);
+      padding: 5px 10px;
+      background-color: $green;
+      border-radius: 4px;
+      font-family: Inter, sans-serif;
+      font-size: 1rem;
+      color: $font-secondary;
+      white-space: nowrap;
+
+      &:after {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, calc(100% + 5px));
+        content: '';
+        border: 6px solid transparent;
+        border-top: 4px solid $green;
+      }
+    }
+  }
 }
