@@ -20,7 +20,7 @@ export let Column = ({tickets, columnTitle, boardId}) => {
                     return (
                         <div className={styles.column} data-id="column">
                             <div className={styles.column__header}>
-                                <h2 className={styles.column__title}>{columnTitle}</h2>
+                                <h3 className={styles.column__title}>{columnTitle}</h3>
                             </div>
 
                             <div className={cn(styles.column__body,

@@ -47,16 +47,20 @@ export let OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
 
               <p>or</p>
 
-              <label >Introduce your board ID:</label>
-              <input {...register('boardId')}
-                     maxLength="10"
-                     placeholder="Ex: 0123456789"
-                     className={styles.openCreateBoard__input} onChange={onBoardIdInputChange}
-              />
-              <Button name={'Open'}
-                      onClick={openBoard}
-                      isDisabled={inputValue === '' || inputValue.length !== 10}
-                      data-id="open-button"/>
+              <form className={styles.openCreateBoard__form} onSubmit={openBoard}>
+                  <label htmlFor="open-board">Introduce your board ID:</label>
+                  <input {...register('boardId')}
+                         maxLength="10"
+                         placeholder="Ex: 0123456789"
+                         className={styles.openCreateBoard__input}
+                         onChange={onBoardIdInputChange}
+                         id="open-board"
+                  />
+                  <Button name={'Open'}
+                          isDisabled={inputValue === '' || inputValue.length !== 10}
+                          data-id="open-button"/>
+              </form>
+
           </div>
       </div>
     );

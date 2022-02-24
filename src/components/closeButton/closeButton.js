@@ -6,9 +6,9 @@ import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
 
 const Close = () => {
     return (
-        <div className={styles.closeButton}>
+        <button className={styles.closeButton} aria-label="close">
             <CloseIcon className={styles.closeButton__icon} />
-        </div>
+        </button>
     );
 };
 
