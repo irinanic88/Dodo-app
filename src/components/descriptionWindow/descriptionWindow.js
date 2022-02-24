@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {useForm} from 'react-hook-form';
+import useEscapeToExit from '../../hooks/useEscapeToExit'
 import { useHistory, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -24,6 +25,9 @@ export let DescriptionWindow = ({
     const { register } = useForm();
     const history = useHistory();
 
+    const exitModal = () => history.push(`/board/${boardId}`);
+
+    useEscapeToExit(exitModal);
 
     if (!ticket) {
         history.goBack();
@@ -42,7 +46,7 @@ export let DescriptionWindow = ({
         const clickedArea = event.target;
 
         if (clickedArea.dataset.id === "description-window") {
-            history.push(`/board/${boardId}`);
+            exitModal();
         }
         return;
     }

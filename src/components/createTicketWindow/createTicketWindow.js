@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {useForm} from 'react-hook-form';
+import useEscapeToExit from '../../hooks/useEscapeToExit'
 import {Link, useHistory} from "react-router-dom";
 import PropTypes from 'prop-types';
 
@@ -24,9 +25,31 @@ CreateTicketWindow = ({
     const {register, handleSubmit} = useForm();
     const history = useHistory();
 
+    const exitModal = () => history.push(`/board/${boardId}`);
+
+    useEscapeToExit(exitModal);
+
+
+    // useEffect(() => {
+    //     const handleKeyDown = (event) => {
+    //         console.log(event.key);
+    //         if (event.key === 'Escape') {
+    //             exitModal();
+    //         }
+    //         return;
+    //     }
+    //
+    //     document.addEventListener('keydown', handleKeyDown);
+    //
+    //     return () => document.removeEventListener('keydown', handleKeyDown);
+    // });
+
+
+
+
     const createTicket = (formData) => {
         createTicketRequest(formData);
-        history.push(`/board/${boardId}`);
+        exitModal();
     }
 
     const onTitleChange = (event) => {
@@ -37,7 +60,7 @@ CreateTicketWindow = ({
         const clickedArea = event.target;
 
         if (clickedArea.dataset.id === "create-ticket-window") {
-            history.push(`/board/${boardId}`);
+            exitModal();
         }
         return;
     }
