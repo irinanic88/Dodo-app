@@ -29,7 +29,7 @@ Ticket = ({
 
                 return (
                     <Link to={`/board/${boardId}/tickets/${ticketId}`}>
-                        <div
+                        <span
                              className={cn(styles.ticket,
                                  {[styles.ticket__isDragging]: isDragging}
                                  )}
@@ -41,7 +41,7 @@ Ticket = ({
 
                         <p className={styles.ticket__title} data-id="title">{title}</p>
                         <p className={styles.ticket__number} data-id="number">{id}</p>
-                        </div>
+                        </span>
                     </Link>
                     )
                 }
