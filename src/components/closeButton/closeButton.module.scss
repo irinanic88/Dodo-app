@@ -18,6 +18,14 @@
     border: 2px solid $green;
     background-color: rgba($light-green, .4);
     transition: border .3s ease-in-out, background-color .3s ease-in-out;
+    cursor: pointer;
+  }
+
+  &:focus-visible {
+    outline: none;
+    border: 2px solid $green;
+    background-color: rgba($light-green, .4);
+    transition: border .3s ease-in-out, background-color .3s ease-in-out;
   }
 
   &__icon {

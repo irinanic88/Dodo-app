@@ -25,6 +25,10 @@
       }
     }
 
+  &__form {
+    @include flex-container($gap: 20px);
+  }
+
   &__input {
     width: 15rem;
     @include input;

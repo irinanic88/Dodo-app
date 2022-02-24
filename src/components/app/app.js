@@ -15,7 +15,7 @@ import Alert from "../alert";
 
 const App = ({loading, alerts}) => {
     return (
-        <div>
+        <React.Fragment>
             <Header/>
 
             {loading ? <Loader /> : null}
@@ -27,16 +27,17 @@ const App = ({loading, alerts}) => {
                 </div>
                 : null
             }
-
-            <Switch>
-                <Route path='/' exact component={OpenCreateBoard}/>
-                <Route path='/board/:boardId' exact component={BoardPage} />
-                <Route path='/board/:boardId/tickets/create' render={(props) => (
-                    <BoardPage {...props} createTicket={true} />
-                )}/>
-                <Route path='/board/:boardId/tickets/:ticketId' component={BoardPage} />
-            </Switch>
-        </div>
+            <main>
+                <Switch>
+                    <Route path='/' exact component={OpenCreateBoard}/>
+                    <Route path='/board/:boardId' exact component={BoardPage} />
+                    <Route path='/board/:boardId/tickets/create' render={(props) => (
+                        <BoardPage {...props} createTicket={true} />
+                    )}/>
+                    <Route path='/board/:boardId/tickets/:ticketId' component={BoardPage} />
+                </Switch>
+            </main>
+        </React.Fragment>
 
     );
 }

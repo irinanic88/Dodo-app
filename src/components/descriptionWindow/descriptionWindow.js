@@ -59,7 +59,7 @@ export let DescriptionWindow = ({
             </Link>
 
             <p className={styles.descriptionWindow__number}>№ {id}</p>
-            <h2 className={styles.descriptionWindow__title}>{title}</h2>
+            <h4 className={styles.descriptionWindow__title}>{title}</h4>
             <p className={styles.descriptionWindow__status}>{status}</p>
             <p className={styles.descriptionWindow__description}>{description}</p>
 

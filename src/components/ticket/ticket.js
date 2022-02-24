@@ -39,7 +39,7 @@ Ticket = ({
                              {...provided.dragHandleProps}
                         >
 
-                        <p className={styles.ticket__title} data-id="title">{title}</p>
+                        <h4 className={styles.ticket__title} data-id="title">{title}</h4>
                         <p className={styles.ticket__number} data-id="number">{id}</p>
                         </span>
                     </Link>
