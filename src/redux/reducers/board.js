@@ -2,7 +2,7 @@ import {
     CHECK_BOARD_ID,
     CREATE_BOARD, FAILURE,
     SUCCESS,
-} from '../actionTypes';
+} from '@redux/actionTypes';
 
 const board = (state = {}, action) => {
     const {

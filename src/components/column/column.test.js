@@ -5,7 +5,7 @@ import configureMockStore from 'redux-mock-store';
 import {DragDropContext, Droppable} from "react-beautiful-dnd";
 import { Provider } from "react-redux";
 import {MemoryRouter} from 'react-router-dom';
-import {Column} from "./column";
+import {Column} from "@column";
 
 Enzyme.configure({ adapter: new Adapter() });
 

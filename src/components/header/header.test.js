@@ -2,7 +2,7 @@ import Enzyme, {mount} from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { MemoryRouter } from 'react-router-dom';
 
-import Header from './header';
+import Header from '@header';
 
 Enzyme.configure({adapter: new Adapter});
 

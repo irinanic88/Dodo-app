@@ -4,12 +4,12 @@ import {useHistory} from 'react-router-dom';
 import {useForm} from "react-hook-form";
 import PropTypes from 'prop-types';
 
-import {createNewBoard} from '../../redux/actions';
-import {newBoardIdSelector} from "../../redux/selectors";
+import {createNewBoard} from '@redux/actions';
+import {newBoardIdSelector} from "@redux/selectors";
 
 import styles from './openCreateBoard.module.scss';
 
-import Button from "../button/button";
+import Button from "@button";
 
 export let OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
     const { register, getValues } = useForm();
@@ -58,7 +58,9 @@ export let OpenCreateBoard = ({newBoardId, createNewBoardDispatch}) => {
                   />
                   <Button name={'Open'}
                           isDisabled={inputValue === '' || inputValue.length !== 10}
-                          data-id="open-button"/>
+                          data-id="open-button"
+                          onClick={() => {}}
+                  />
               </form>
 
           </div>

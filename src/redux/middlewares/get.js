@@ -1,4 +1,4 @@
-import {REQUEST, SUCCESS, FAILURE} from '../actionTypes';
+import {REQUEST, SUCCESS, FAILURE} from '@redux/actionTypes';
 
 const fetchGet = (store) => (next) => async (action) => {
     if(!action.callAPI || action.method !== 'GET') {

@@ -9,9 +9,9 @@ import styles from './app.module.scss';
 
 import OpenCreateBoard from "../openCreateBoard";
 import BoardPage from "../boardPage";
-import Header from '../header';
-import Loader from '../loader';
-import Alert from "../alert";
+import Header from '@header';
+import Loader from '@loader';
+import Alert from '@alert';
 
 const App = ({loading, alerts}) => {
     return (

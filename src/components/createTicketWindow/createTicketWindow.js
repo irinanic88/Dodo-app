@@ -1,18 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {useForm} from 'react-hook-form';
-import useEscapeToExit from '../../hooks/useEscapeToExit'
 import {Link, useHistory} from "react-router-dom";
 import PropTypes from 'prop-types';
+import useEscapeToExit from '@hooks/useEscapeToExit'
 
-import {createTicket} from '../../redux/actions';
-import {columnsSelector} from "../../redux/selectors";
+import {createTicket} from '@redux/actions';
+import {columnsSelector} from '@redux/selectors';
 
 import cn from 'classnames';
 import styles from './createTicketWindow.module.scss';
 
-import Button from '../button';
-import Close from "../closeButton";
+import Button from '@button';
+import Close from "@closeButton";
 
 export let CreateTicketWindow;
 CreateTicketWindow = ({
@@ -28,24 +28,6 @@ CreateTicketWindow = ({
     const exitModal = () => history.push(`/board/${boardId}`);
 
     useEscapeToExit(exitModal);
-
-
-    // useEffect(() => {
-    //     const handleKeyDown = (event) => {
-    //         console.log(event.key);
-    //         if (event.key === 'Escape') {
-    //             exitModal();
-    //         }
-    //         return;
-    //     }
-    //
-    //     document.addEventListener('keydown', handleKeyDown);
-    //
-    //     return () => document.removeEventListener('keydown', handleKeyDown);
-    // });
-
-
-
 
     const createTicket = (formData) => {
         createTicketRequest(formData);

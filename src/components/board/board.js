@@ -5,16 +5,16 @@ import PropTypes from 'prop-types';
 
 import styles from './board.module.scss';
 
-import Column from '../column';
+import Column from '@column';
 
-import { columnTitles } from '../../config/columns';
-import { toCamelCase } from "../../config/utils";
+import { columnTitles } from '@config/columns';
+import { toCamelCase } from "@config/utils";
 
 import {
     loadColumns,
     loadTickets,
     changeStatus
-} from '../../redux/actions';
+} from '@redux/actions';
 
 export let Board;
 Board = ({

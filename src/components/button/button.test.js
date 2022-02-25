@@ -1,6 +1,6 @@
 import Enzyme, {mount} from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
-import { Button } from './button';
+import { Button } from '@button';
 
 Enzyme.configure({adapter: new Adapter});
 const buttonName = 'Button name';

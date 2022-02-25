@@ -4,8 +4,8 @@ import {
     DELETE_TICKET, 
     LOAD_TICKETS, 
     SUCCESS, 
-} from '../actionTypes';
-import {stringifyId, stringifyAll,arrToMap, deleteKey} from '../utils';
+} from '@redux/actionTypes';
+import {stringifyId, stringifyAll,arrToMap, deleteKey} from '@redux/utils';
 
 const tickets = (state = {}, action) => {
     const {

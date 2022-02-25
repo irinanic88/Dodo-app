@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './closeButton.module.scss';
 
-import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
+import { ReactComponent as CloseIcon } from '@icons/close.svg';
 
 const Close = () => {
     return (

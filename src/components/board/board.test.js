@@ -5,7 +5,7 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from "react-redux";
 
-import { Board }  from './board';
+import { Board }  from '@board';
 
 Enzyme.configure({ adapter: new Adapter() });
 

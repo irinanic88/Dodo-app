@@ -6,9 +6,9 @@ import {
     CREATE_TICKET, DELETE_TICKET,
     FAILURE,
     SUCCESS
-} from '../actionTypes';
+} from '@redux/actionTypes';
 
-import {SUCCESS_ALERT, ERROR_ALERT} from '../variables/alertTypes';
+import {SUCCESS_ALERT, ERROR_ALERT} from '@config/alertTypes';
 
 import {generateId} from "../utils";
 
