@@ -61,7 +61,7 @@ CreateTicketWindow = ({
                 <form className={styles.createTicketWindow__form} onSubmit={handleSubmit(createTicket)}>
 
                     <div className={styles.createTicketWindow__form_element}>
-                        <label className={styles.createTicketWindow__label} for="create-title">Title:</label>
+                        <label className={styles.createTicketWindow__label} htmlFor="create-title">Title:</label>
                         <input {...register('title', { required: true, maxLength: 60} )} autoFocus
                                onChange={onTitleChange}
                                className={cn(styles.createTicketWindow__input, styles.createTicketWindow__title)}
@@ -70,7 +70,7 @@ CreateTicketWindow = ({
                     </div>
 
                     <div className={styles.createTicketWindow__form_element}>
-                        <label className={styles.createTicketWindow__label} for="create-description">Description:</label>
+                        <label className={styles.createTicketWindow__label} htmlFor="create-description">Description:</label>
                         <textarea {...register('description')}
                                   id="create-description"
                                   className={cn(styles.createTicketWindow__input, styles.createTicketWindow__description)}>
@@ -78,7 +78,7 @@ CreateTicketWindow = ({
                     </div>
 
                     <div className={styles.createTicketWindow__form_element}>
-                        <label className={styles.createTicketWindow__label} for="create-status">Status: </label>
+                        <label className={styles.createTicketWindow__label} htmlFor="create-status">Status: </label>
                         <select className={cn(styles.createTicketWindow__status, styles.createTicketWindow__input)}
                                 id="create-status"
                                 {...register('status', {value: statuses[0]})}>
