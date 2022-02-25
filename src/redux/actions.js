@@ -7,8 +7,8 @@ import {
     CHANGE_TICKET_STATUS,
     DELETE_TICKET,
     CLOSE_ALERT
-    } from './actionTypes';
-import {HOST} from '../config/constants';
+    } from '@redux/actionTypes';
+import {HOST} from '@config/constants';
 
 export const createNewBoard = ({
     type: CREATE_BOARD,

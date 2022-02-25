@@ -3,8 +3,8 @@ import Enzyme, {mount} from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 import { MemoryRouter } from 'react-router-dom';
-import { DescriptionWindow } from './descriptionWindow';
-import {CreateTicketWindow} from "../createTicketWindow/createTicketWindow";
+import { DescriptionWindow } from '@descriptionWindow';
+import {CreateTicketWindow} from "@createTicketWindow";
 
 Enzyme.configure({ adapter: new Adapter() });
 

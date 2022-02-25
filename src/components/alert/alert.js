@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import styles from './alert.module.scss';
 import cn from 'classnames';
 
-import {closeAlert} from '../../redux/actions';
-import {SUCCESS_ALERT, ERROR_ALERT, TIP_ALERT} from '../../redux/variables/alertTypes';
+import {closeAlert} from '@redux/actions';
+import {SUCCESS_ALERT, ERROR_ALERT, TIP_ALERT} from '@config/alertTypes';
 
-import {ReactComponent as CloseIcon} from '../../assets/icons/close.svg';
+import {ReactComponent as CloseIcon} from '@icons/close.svg';
 
 const Alert = ({alert, closeAlertDispatch}) => {
     const {type, message, details, id} = alert;

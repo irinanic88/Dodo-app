@@ -1,4 +1,4 @@
-import {LOAD_COLUMN_TITLES} from '../actionTypes';
+import {LOAD_COLUMN_TITLES} from '@redux/actionTypes';
 
 const columns = (state = [], action) => {
     const {type, columnTitles} = action;

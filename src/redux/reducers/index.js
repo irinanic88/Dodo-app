@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux';
 
-import board from './board';
-import tickets from './tickets';
-import loader from './loader';
-import columns from './columns';
-import alerts from './alerts';
-import columnsWithTickets from "./columnsWithTickets";
+import board from '@reducers/board';
+import tickets from '@reducers/tickets';
+import loader from '@reducers/loader';
+import columns from '@reducers/columns';
+import alerts from '@reducers/alerts';
+import columnsWithTickets from "@reducers/columnsWithTickets";
 
 export default combineReducers({
     board,

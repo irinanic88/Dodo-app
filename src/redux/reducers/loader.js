@@ -2,7 +2,7 @@ import {
     REQUEST, 
     SUCCESS, 
     FAILURE
-} from '../actionTypes';
+} from '@redux/actionTypes';
 
 
 const loader = (state = {loading: false}, action) => {

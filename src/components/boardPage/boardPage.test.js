@@ -7,7 +7,7 @@ import configureMockStore from 'redux-mock-store';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import {BoardPage} from "./boardPage";
+import {BoardPage} from "@boardPage";
 
 Enzyme.configure({adapter: new Adapter()});
 

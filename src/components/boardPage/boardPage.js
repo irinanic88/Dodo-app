@@ -4,16 +4,16 @@ import {useHistory, Link} from 'react-router-dom';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import PropTypes from 'prop-types';
 
-import {boardInfoSelector} from '../../redux/selectors';
-import {checkBoardId} from "../../redux/actions";
+import {boardInfoSelector} from '@redux/selectors';
+import {checkBoardId} from "@redux/actions";
 
 import styles from './boardPage.module.scss';
 
-import Board from '../board';
-import Button from "../button/button";
-import CreateTicketWindow from '../createTicketWindow';
-import DescriptionWindow from '../descriptionWindow';
-import {ReactComponent as Copy} from '../../assets/icons/copy.svg';
+import Board from '@board';
+import Button from '@button';
+import CreateTicketWindow from '@createTicketWindow';
+import DescriptionWindow from '@descriptionWindow';
+import {ReactComponent as Copy} from '@icons/copy.svg';
 
 export let BoardPage;
 BoardPage = ({

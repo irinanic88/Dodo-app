@@ -4,7 +4,7 @@ import {Draggable} from 'react-beautiful-dnd';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import {ticketSelector} from '../../redux/selectors';
+import {ticketSelector} from '@redux/selectors';
 
 import styles from './ticket.module.scss';
 import cn from 'classnames';

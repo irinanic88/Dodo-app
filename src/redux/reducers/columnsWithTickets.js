@@ -5,8 +5,8 @@ import {
     FAILURE,
     REQUEST,
     CHANGE_TICKET_STATUS, DELETE_TICKET, CREATE_TICKET
-} from "../actionTypes";
-import {stringifyId, stringifyAll, columnsToMap, ticketsToColumns} from "../utils";
+} from '@redux/actionTypes';
+import {stringifyId, stringifyAll, columnsToMap, ticketsToColumns} from "@redux/utils";
 
 const columnsWithTickets = (state={}, action) => {
     const {
